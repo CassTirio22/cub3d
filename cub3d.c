@@ -13,6 +13,7 @@
 #include "cub3d.h"
 #include <stdio.h>
 
+
 void	ft_set_param(t_cub3d *param)
 {
 	param->weight = 70;
@@ -142,4 +143,5 @@ int	main(void)
 	mlx_loop(param.mlx_ptr);
 	return (0);
 }
-//		gcc -lmlx -framework OpenGL -framework AppKit cub3d.c
+//	19 : gcc -lmlx -framework OpenGL -framework AppKit cub3d.c
+//	home : A SUIVRE
