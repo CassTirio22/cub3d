@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/04 15:05:20 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/07 17:09:24 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 //# include "get_next_line.h"
 //# include "ft_printf.h"
 # include <mlx.h>
+# include <math.h>
+# include <stdlib.h>
+# include <stdio.h>
+
+# define PI 3.14159265359
 
 typedef struct	s_cub3d
 {
@@ -25,6 +30,9 @@ typedef struct	s_cub3d
 	int		weight;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	int		angle;
+	int		mouse_x;
+	int		mouse_y;
 }				t_cub3d;
 
 #endif
