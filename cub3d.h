@@ -21,6 +21,11 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+int	g_rose = 32123123;
+int	g_orange = 100100100;
+int g_red = 150150150;
+int	g_wall_color = 071230140;
+
 # define PI 3.14159265359
 
 typedef struct	s_cub3d
@@ -31,8 +36,6 @@ typedef struct	s_cub3d
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		angle;
-	int		mouse_x;
-	int		mouse_y;
 }				t_cub3d;
 
 #endif
