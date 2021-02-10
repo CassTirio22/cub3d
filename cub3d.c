@@ -6,23 +6,11 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/07 18:28:23 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:28:53 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-<<<<<<< HEAD
-=======
-#include <stdio.h>
-
-
-void	ft_set_param(t_cub3d *param)
-{
-	param->weight = 70;
-	param->x_p = 960 - param->weight / 2;
-	param->y_p = 540 - param->weight / 2;
-}
->>>>>>> a8d85ebd5e65963d8247c1fe6285bf94eb5b0449
 
 void	ft_reset(t_cub3d param)
 {
@@ -45,33 +33,50 @@ void	ft_set_param(t_cub3d *param)
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr, 1920, 1080, "cub3d");
 	param->weight = 10;
-	param->angle = 0;
+	param->angle = 90;
 	param->x_p = 480 - param->weight / 2;
 	param->y_p = 270 - param->weight / 2;
 }
 
-void	ft_put_player(t_cub3d param)
+void	ft_put_line(t_cub3d param, int color)
 {
 	float	dx;
 	float	dy;
+	float	x;
+	float	y;
+	int		i;
+
+	dx = cos((PI / 180) * param.angle) * 30;
+	dy = sin((PI / 180) * param.angle) * 30;
+	if (fabsf(dx) > fabsf(dy))
+		i = fabsf(dx);
+	else
+		i = fabsf(dy);
+	dx /= i;
+	dy /= i;
+	while (i--)
+	{
+		x += dx;
+		y += dy;
+		mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p - x, param.y_p - y, color);
+	}
+}
+
+void	ft_put_player(t_cub3d param, int color)
+{
 	float	i;
 	int		j;
 
-	/*i = -1;
-	while (++i <= param.weight)
+	i = -1;
+	while (++i <= param.weight / 2)
 	{
 		j = -1;
-		while (++j <= param.weight)
-			mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p + i, param.y_p + j, 001203230);
+		while (++j <= param.weight / 2)
+			mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p + i, param.y_p + j, color);
 	}
-	*/
-	ft_reset(param);
-	i = -1;
-	dx = cos((PI / 180) * (param.angle + 90)) * 30;
-	dy = sin((PI / 180) * (param.angle + 90)) * 30;
-	printf("dx : %f\ndy : %f\n%f\n",  dx, dy, param.y_p + dy * (0 - param.x_p) / dx);
-	while (++i < dx)
-		mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p + i, param.y_p + dy * (i - param.x_p) / dx, 241069123);
+	if (color)
+		color = 32123123;
+	ft_put_line(param, color);
 }
 
 void	ft_square(int x, int y, int wall_or_not, t_cub3d param)
@@ -120,135 +125,84 @@ void	ft_draw_map(t_cub3d param)
 	}
 }
 
-void	ft_up(t_cub3d *param)
+void	ft_a(t_cub3d *param)
 {
-	int	i;
-	int	j;
+	float	dx;
+	float	dy;
 
-	i = -1;
-	if (param->y_p >= 27)
-		param->y_p -= 27;
-	while (++i <= param->weight)
-	{
-		j = -1;
-		while (++j <= param->weight / 2)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->x_p + i, param->y_p + j + param->weight, 0);
-	}
-	ft_put_player(*param);
+	ft_put_player(*param, 0);
+	dx = cos((PI / 180) * param->angle) * 13;
+	dy = sin((PI / 180) * param->angle) * 13;
+	param->x_p -= dy;
+	param->y_p += dx;
+	ft_put_player(*param, 100100100);
 }
 
-void	ft_down(t_cub3d *param)
+void	ft_d(t_cub3d *param)
 {
-	int	i;
-	int	j;
+	float	dx;
+	float	dy;
 
-	i = -1;
-	if (param->y_p <= 1053)
-		param->y_p += 27;
-	while (++i <= param->weight)
-	{
-		j = -1;
-		while (++j <= param->weight / 2)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->x_p + i, param->y_p + j - param->weight / 2, 0);
-	}
-	ft_put_player(*param);
+	ft_put_player(*param, 0);
+	dx = cos((PI / 180) * param->angle) * 13;
+	dy = sin((PI / 180) * param->angle) * 13;
+	param->x_p += dy;
+	param->y_p -= dx;
+	ft_put_player(*param, 100100100);
 }
 
-void	ft_left(t_cub3d *param)
+void	ft_w(t_cub3d *param)
 {
-	int	i;
-	int	j;
+	float	dx;
+	float	dy;
 
-	i = -1;
-	if (param->x_p >= 27)
-		param->x_p -= 27;
-	while (++i <= param->weight / 2)
-	{
-		j = -1;
-		while (++j <= param->weight)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->x_p + i + param->weight, param->y_p + j, 0);
-	}
-	ft_put_player(*param);
+	ft_put_player(*param, 0);
+	dx = cos((PI / 180) * param->angle) * 13;
+	dy = sin((PI / 180) * param->angle) * 13;
+	param->x_p -= dx;
+	param->y_p -= dy;
+	ft_put_player(*param, 100100100);
 }
 
-void	ft_right(t_cub3d *param)
+void	ft_s(t_cub3d *param)
 {
-	int	i;
-	int	j;
+	float	dx;
+	float	dy;
 
-	i = -1;
-	if (param->x_p <= 1893)
-		param->x_p += 27;
-	while (++i <= param->weight / 2)
-	{
-		j = -1;
-		while (++j <= param->weight)
-			mlx_pixel_put(param->mlx_ptr, param->win_ptr, param->x_p + i + param->weight / 2 - param->weight, param->y_p + j, 0);
-	}
-	ft_put_player(*param);
+	ft_put_player(*param, 0);
+	dx = cos((PI / 180) * param->angle) * 13;
+	dy = sin((PI / 180) * param->angle) * 13;
+	param->x_p += dx;
+	param->y_p += dy;
+	ft_put_player(*param, 100100100);
 }
 
 void	ft_rotate_left(t_cub3d *param)
 {
-	param->angle += 45;
+	ft_put_player(*param, 0);
+	param->angle -= 15;
 	param->angle %= 360;
-	ft_put_player(*param);
+	ft_put_player(*param, 100100100);
 }
 
 void	ft_rotate_right(t_cub3d *param)
 {
-	param->angle -= 45;
+	ft_put_player(*param, 0);
+	param->angle += 15;
 	param->angle %= 360;
-	ft_put_player(*param);
+	ft_put_player(*param, 100100100);
 }
 
 int		ft_key_hook(int key_code, t_cub3d *param)
 {
-	printf("%d\n", key_code);
 	if (key_code == 13)
-	{
-		if (!param->angle || param->angle == -360)
-			ft_up(param);
-		else if (param->angle == 90 || param->angle == -270)
-			ft_left(param);
-		else if (param->angle == 180 || param->angle == -180)
-			ft_down(param);
-		else if (param->angle == 270 || param->angle == -90)
-			ft_right(param);
-	}
+		ft_w(param);
 	else if (key_code == 1)
-	{
-		if (!param->angle || param->angle == -360)
-			ft_down(param);
-		else if (param->angle == 90 || param->angle == -270)
-			ft_right(param);
-		else if (param->angle == 180 || param->angle == -180)
-			ft_up(param);
-		else if (param->angle == 270 || param->angle == -90)
-			ft_left(param);
-	}
-	else if (!key_code)
-	{
-		if (!param->angle || param->angle == -360)
-			ft_left(param);
-		else if (param->angle == 90 || param->angle == -270)
-			ft_down(param);
-		else if (param->angle == 180 || param->angle == -180)
-			ft_right(param);
-		else if (param->angle == 270 || param->angle == -90)
-			ft_up(param);
-	}
+		ft_s(param);
+	else if (key_code == 0)
+		ft_a(param);
 	else if (key_code == 2)
-	{
-		if (!param->angle || param->angle == -360)
-			ft_right(param);
-		else if (param->angle == 90 || param->angle == -270)
-			ft_up(param);
-		else if (param->angle == 180 || param->angle == -180)
-			ft_left(param);
-		else if (param->angle == 270 || param->angle == -90)
-			ft_down(param);
-	}
+		ft_d(param);
 	else if (key_code == 123)
 		ft_rotate_left(param);
 	else if (key_code == 124)
@@ -266,19 +220,21 @@ int		ft_mouse_hook(int bouton, int x, int y, t_cub3d *param)
 
 int	main(void)
 {
+	int		width;
+	int		height;
 	t_cub3d param;
+	void	*img_ptr;
 
 	ft_set_param(&param);
-	//ft_draw_map(param);
-	ft_put_player(param);
+	img_ptr = mlx_new_image(param.mlx_ptr, 10, 10);
+	img_ptr = mlx_xpm_file_to_image(param.mlx_ptr, "image.png", &width, &height);
+	//mlx_put_image_to_window(param.mlx_ptr, param.win_ptr, img_ptr, param.x_p, param.y_p);
+	ft_draw_map(param);
+	ft_put_player(param, 100100100);
 	mlx_key_hook(param.win_ptr, ft_key_hook, &param);
 	mlx_mouse_hook(param.win_ptr, ft_mouse_hook, &param);
 	mlx_loop(param.mlx_ptr);
 	return (0);
 }
-<<<<<<< HEAD
+
 //		gcc -lmlx -framework OpenGL -framework AppKit cub3d.c && ./a.out
-=======
-//	19 : gcc -lmlx -framework OpenGL -framework AppKit cub3d.c
-//	home : A SUIVRE
->>>>>>> a8d85ebd5e65963d8247c1fe6285bf94eb5b0449
