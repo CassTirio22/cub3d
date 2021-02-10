@@ -11,6 +11,18 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
+<<<<<<< HEAD
+=======
+#include <stdio.h>
+
+
+void	ft_set_param(t_cub3d *param)
+{
+	param->weight = 70;
+	param->x_p = 960 - param->weight / 2;
+	param->y_p = 540 - param->weight / 2;
+}
+>>>>>>> a8d85ebd5e65963d8247c1fe6285bf94eb5b0449
 
 void	ft_reset(t_cub3d param)
 {
@@ -264,4 +276,9 @@ int	main(void)
 	mlx_loop(param.mlx_ptr);
 	return (0);
 }
+<<<<<<< HEAD
 //		gcc -lmlx -framework OpenGL -framework AppKit cub3d.c && ./a.out
+=======
+//	19 : gcc -lmlx -framework OpenGL -framework AppKit cub3d.c
+//	home : A SUIVRE
+>>>>>>> a8d85ebd5e65963d8247c1fe6285bf94eb5b0449
