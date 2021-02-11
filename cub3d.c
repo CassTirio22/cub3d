@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/10 18:28:53 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:06:18 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,47 @@ void	ft_set_param(t_cub3d *param)
 	param->y_p = 270 - param->weight / 2;
 }
 
+int		ft_is_wall(int x, int y)
+{
+	//printf("x : %d\ny : %d\n%d\n", x / 108, y / 108, y);
+	if (g_map[y / 108][x / 108] == 1)
+		return (1);
+	return (0);
+}
+
 void	ft_put_line(t_cub3d param, int color)
 {
 	float	dx;
 	float	dy;
 	int		i;
 
-	i = 30;
+	i = 0;
 	dx = cos((PI / 180) * param.angle);
 	dy = sin((PI / 180) * param.angle);
-	while (i--)
+	while (++i < 1000 && !ft_is_wall(param.x_p - (i * dx), param.y_p - (i * dy)))
 		mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p - (i * dx), param.y_p - (i * dy), color);
+}
+
+void	ft_put_view(t_cub3d *param, int color)
+{
+	int	i;
+	int	j;
+
+	j = 30;
+	i = -1;
+	while (++i < j)
+	{
+		param->angle++;
+		ft_put_line(*param, color);
+	}
+	param->angle -= j;
+	i = -1;
+	while (++i < j)
+	{
+		param->angle--;
+		ft_put_line(*param, color);
+	}
+	param->angle += j;
 }
 
 void	ft_put_player(t_cub3d param, int color)
@@ -59,11 +89,12 @@ void	ft_put_player(t_cub3d param, int color)
 	{
 		j = -1;
 		while (++j <= param.weight / 2)
-			mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p + i, param.y_p + j, color);
+			mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p + i - param.weight / 4, param.y_p + j - param.weight / 4, color);
 	}
 	if (color)
-		color = g_rose;
+		color = g_green;
 	ft_put_line(param, color);
+	ft_put_view(&param, color);
 }
 
 void	ft_square(int x, int y, int wall_or_not, t_cub3d param)
@@ -74,10 +105,10 @@ void	ft_square(int x, int y, int wall_or_not, t_cub3d param)
 	if (!wall_or_not)
 		return ;
 	i = -1;
-	while (++i < 108)
+	while (++i < 106)
 	{
 		j = -1;
-		while (++j < 108)
+		while (++j < 106)
 			mlx_pixel_put(param.mlx_ptr, param.win_ptr, x * 108 + i, y * 108 + j, g_wall_color);
 	}
 }
@@ -88,16 +119,6 @@ void	ft_draw_map(t_cub3d param)
 	int	j;
 	int mapX;
 	int	mapY;
-	int	map[] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-				 1, 0, 0, 0, 0, 1, 0, 0, 0, 1,
-				 1, 1, 1, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 1, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 1, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 1, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
 	i = -1;
 	mapX = 10;
@@ -106,7 +127,7 @@ void	ft_draw_map(t_cub3d param)
 	{
 		j =-1;
 		while (++j < mapY)
-			ft_square(i, j, map[j * mapX + i], param);
+			ft_square(i, j, g_map[j][i], param);
 	}
 }
 
@@ -114,10 +135,20 @@ void	ft_a(t_cub3d *param)
 {
 	float	dx;
 	float	dy;
+	int		i;
+	int		j;
 
+	i = -1;
+	dx = cos((PI / 180) * param->angle) * 5;
+	dy = sin((PI / 180) * param->angle) * 5;
+	while (++i < param->weight / 2)
+	{
+		j = -1;
+		while (++j < param->weight / 2)
+			if (ft_is_wall(param->x_p - dy + i - 2 * dy / 13, param->y_p + dx + j + 2 * dx / 13))
+				return ;
+	}
 	ft_put_player(*param, 0);
-	dx = cos((PI / 180) * param->angle) * 13;
-	dy = sin((PI / 180) * param->angle) * 13;
 	param->x_p -= dy;
 	param->y_p += dx;
 	ft_put_player(*param, g_orange);
@@ -127,10 +158,20 @@ void	ft_d(t_cub3d *param)
 {
 	float	dx;
 	float	dy;
+	int		i;
+	int		j;
 
+	i = -1;
+	dx = cos((PI / 180) * param->angle) * 5;
+	dy = sin((PI / 180) * param->angle) * 5;
+	while (++i < param->weight / 2)
+	{
+		j = -1;
+		while (++j < param->weight / 2)
+			if (ft_is_wall(param->x_p + dy + i + 2 * dy / 13, param->y_p - dx + j - 2 * dx / 13))
+				return ;
+	}
 	ft_put_player(*param, 0);
-	dx = cos((PI / 180) * param->angle) * 13;
-	dy = sin((PI / 180) * param->angle) * 13;
 	param->x_p += dy;
 	param->y_p -= dx;
 	ft_put_player(*param, g_orange);
@@ -140,10 +181,20 @@ void	ft_w(t_cub3d *param)
 {
 	float	dx;
 	float	dy;
+	int		i;
+	int		j;
 
+	i = -1;
+	dx = cos((PI / 180) * param->angle) * 5;
+	dy = sin((PI / 180) * param->angle) * 5;
+	while (++i < param->weight / 2)
+	{
+		j = -1;
+		while (++j < param->weight / 2)
+			if (ft_is_wall(param->x_p - dx - 2 * dx / 13 + i, param->y_p - dy + j - 2 * dy / 13))
+				return ;
+	}
 	ft_put_player(*param, 0);
-	dx = cos((PI / 180) * param->angle) * 13;
-	dy = sin((PI / 180) * param->angle) * 13;
 	param->x_p -= dx;
 	param->y_p -= dy;
 	ft_put_player(*param, g_orange);
@@ -153,10 +204,21 @@ void	ft_s(t_cub3d *param)
 {
 	float	dx;
 	float	dy;
+	int		i;
+	int		j;
 
+	i = -1;
+	dx = cos((PI / 180) * param->angle) * 5;
+	dy = sin((PI / 180) * param->angle) * 5;
+	while (++i < param->weight / 2)
+	{
+		j = -1;
+		while (++j < param->weight / 2)
+			if (ft_is_wall(param->x_p + dx + i + 2 * dx / 5, param->y_p + dy + j + 2 * dy / 5))
+				return ;
+	}
 	ft_put_player(*param, 0);
-	dx = cos((PI / 180) * param->angle) * 13;
-	dy = sin((PI / 180) * param->angle) * 13;
+	printf("dx : %f\ndy : %f\n", dx, dy);
 	param->x_p += dx;
 	param->y_p += dy;
 	ft_put_player(*param, g_orange);
@@ -165,7 +227,7 @@ void	ft_s(t_cub3d *param)
 void	ft_rotate_left(t_cub3d *param)
 {
 	ft_put_player(*param, 0);
-	param->angle -= 15;
+	param->angle -= 45;
 	param->angle %= 360;
 	ft_put_player(*param, g_orange);
 }
@@ -173,7 +235,7 @@ void	ft_rotate_left(t_cub3d *param)
 void	ft_rotate_right(t_cub3d *param)
 {
 	ft_put_player(*param, 0);
-	param->angle += 15;
+	param->angle += 45;
 	param->angle %= 360;
 	ft_put_player(*param, g_orange);
 }
@@ -204,12 +266,15 @@ int	main(void)
 	t_cub3d param;
 	void	*img_ptr;
 
+	width = 10;
+	height = 10;
+
 	ft_set_param(&param);
-	img_ptr = mlx_xpm_file_to_image(param.mlx_ptr, "image.png", &width, &height);
+	img_ptr = mlx_xpm_file_to_image(param.mlx_ptr, "circle.XPM", &width, &height);
 	//mlx_put_image_to_window(param.mlx_ptr, param.win_ptr, img_ptr, param.x_p, param.y_p);
 	ft_draw_map(param);
 	ft_put_player(param, g_orange);
-	mlx_key_hook(param.win_ptr, ft_key_hook, &param);
+	mlx_hook(param.win_ptr, 2, 1L<<0, ft_key_hook, &param);
 	mlx_loop(param.mlx_ptr);
 	return (0);
 }
