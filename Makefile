@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2021/02/12 13:58:20 by ctirions         ###   ########.fr        #
+#    Updated: 2021/02/12 15:40:38 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ clean:
 				@make clean -C $(LIBFT)
 				@echo "${RED}Clean done !${RESET}"
 
-fclean:
+fclean:			clean
 				@rm -f ${NAME}
 				@make fclean -C $(LIBFT)
 				@echo "${RED}Fclean done !${RESET}"
