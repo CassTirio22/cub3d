@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/12 14:20:32 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:38:48 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct	s_cub3d
 	int		weight;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	float		angle;
+	int		angle;
 }				t_cub3d;
 
 #endif

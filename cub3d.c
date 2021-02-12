@@ -6,11 +6,11 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/11 15:06:18 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:12:38 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "include/cub3d.h"
 
 void	ft_reset(t_cub3d param)
 {
@@ -44,7 +44,7 @@ int		ft_is_wall(int x, int y)
 	return (0);
 }
 
-void	ft_put_line(t_cub3d param, int color)
+float	ft_put_line(t_cub3d param, int color)
 {
 	float	dx;
 	float	dy;
@@ -55,6 +55,7 @@ void	ft_put_line(t_cub3d param, int color)
 	dy = sin((PI / 180) * param.angle);
 	while (++i < 1000 && !ft_is_wall(param.x_p - (i * dx), param.y_p - (i * dy)))
 		mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p - (i * dx), param.y_p - (i * dy), color);
+	return (sqrt(i * (dx * dx) + (dy * dy) * i));
 }
 
 void	ft_put_view(t_cub3d *param, int color)
@@ -75,6 +76,7 @@ void	ft_put_view(t_cub3d *param, int color)
 	{
 		param->angle--;
 		ft_put_line(*param, color);
+
 	}
 	param->angle += j;
 }
@@ -218,7 +220,6 @@ void	ft_s(t_cub3d *param)
 				return ;
 	}
 	ft_put_player(*param, 0);
-	printf("dx : %f\ndy : %f\n", dx, dy);
 	param->x_p += dx;
 	param->y_p += dy;
 	ft_put_player(*param, g_orange);
@@ -227,7 +228,7 @@ void	ft_s(t_cub3d *param)
 void	ft_rotate_left(t_cub3d *param)
 {
 	ft_put_player(*param, 0);
-	param->angle -= 45;
+	param->angle -= 5;
 	param->angle %= 360;
 	ft_put_player(*param, g_orange);
 }
@@ -235,9 +236,16 @@ void	ft_rotate_left(t_cub3d *param)
 void	ft_rotate_right(t_cub3d *param)
 {
 	ft_put_player(*param, 0);
-	param->angle += 45;
+	param->angle += 5;
 	param->angle %= 360;
 	ft_put_player(*param, g_orange);
+}
+
+int		ft_mlx_close(t_cub3d *param)
+{
+	(void)param;
+	exit(1);
+	return (0);
 }
 
 int		ft_key_hook(int key_code, t_cub3d *param)
@@ -255,7 +263,7 @@ int		ft_key_hook(int key_code, t_cub3d *param)
 	else if (key_code == 124)
 		ft_rotate_right(param);
 	else if (key_code == 53)
-		exit(1);
+		ft_mlx_close(param);
 	return (0);
 }
 
@@ -270,13 +278,12 @@ int	main(void)
 	height = 10;
 
 	ft_set_param(&param);
-	img_ptr = mlx_xpm_file_to_image(param.mlx_ptr, "circle.XPM", &width, &height);
+	img_ptr = mlx_xpm_file_to_image(param.mlx_ptr, "sprite/circle.XPM", &width, &height);
 	//mlx_put_image_to_window(param.mlx_ptr, param.win_ptr, img_ptr, param.x_p, param.y_p);
 	ft_draw_map(param);
 	ft_put_player(param, g_orange);
 	mlx_hook(param.win_ptr, 2, 1L<<0, ft_key_hook, &param);
+	mlx_hook(param.win_ptr, 17, 1L<<17, ft_mlx_close, &param);
 	mlx_loop(param.mlx_ptr);
 	return (0);
 }
-
-//		gcc -lmlx -framework OpenGL -framework AppKit cub3d.c && ./a.out
