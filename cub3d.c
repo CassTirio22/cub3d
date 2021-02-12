@@ -38,7 +38,6 @@ void	ft_set_param(t_cub3d *param)
 
 int		ft_is_wall(int x, int y)
 {
-	//printf("x : %d\ny : %d\n%d\n", x / 108, y / 108, y);
 	if (g_map[y / 108][x / 108] == 1)
 		return (1);
 	return (0);
@@ -51,8 +50,8 @@ float	ft_put_line(t_cub3d param, int color)
 	int		i;
 
 	i = 0;
-	dx = cos((PI / 180) * param.angle);
-	dy = sin((PI / 180) * param.angle);
+	dx = cos((M_PI / 180) * param.angle);
+	dy = sin((M_PI / 180) * param.angle);
 	while (++i < 1000 && !ft_is_wall(param.x_p - (i * dx), param.y_p - (i * dy)))
 		mlx_pixel_put(param.mlx_ptr, param.win_ptr, param.x_p - (i * dx), param.y_p - (i * dy), color);
 	return (sqrt(i * (dx * dx) + (dy * dy) * i));
@@ -141,8 +140,8 @@ void	ft_a(t_cub3d *param)
 	int		j;
 
 	i = -1;
-	dx = cos((PI / 180) * param->angle) * 5;
-	dy = sin((PI / 180) * param->angle) * 5;
+	dx = cos((M_PI / 180) * param->angle) * 5;
+	dy = sin((M_PI / 180) * param->angle) * 5;
 	while (++i < param->weight / 2)
 	{
 		j = -1;
@@ -164,8 +163,8 @@ void	ft_d(t_cub3d *param)
 	int		j;
 
 	i = -1;
-	dx = cos((PI / 180) * param->angle) * 5;
-	dy = sin((PI / 180) * param->angle) * 5;
+	dx = cos((M_PI / 180) * param->angle) * 5;
+	dy = sin((M_PI / 180) * param->angle) * 5;
 	while (++i < param->weight / 2)
 	{
 		j = -1;
@@ -187,8 +186,8 @@ void	ft_w(t_cub3d *param)
 	int		j;
 
 	i = -1;
-	dx = cos((PI / 180) * param->angle) * 5;
-	dy = sin((PI / 180) * param->angle) * 5;
+	dx = cos((M_PI / 180) * param->angle) * 5;
+	dy = sin((M_PI / 180) * param->angle) * 5;
 	while (++i < param->weight / 2)
 	{
 		j = -1;
@@ -210,8 +209,8 @@ void	ft_s(t_cub3d *param)
 	int		j;
 
 	i = -1;
-	dx = cos((PI / 180) * param->angle) * 5;
-	dy = sin((PI / 180) * param->angle) * 5;
+	dx = cos((M_PI / 180) * param->angle) * 5;
+	dy = sin((M_PI / 180) * param->angle) * 5;
 	while (++i < param->weight / 2)
 	{
 		j = -1;
@@ -228,7 +227,11 @@ void	ft_s(t_cub3d *param)
 void	ft_rotate_left(t_cub3d *param)
 {
 	ft_put_player(*param, 0);
+<<<<<<< HEAD
 	param->angle -= 5;
+=======
+	param->angle -= 15;
+>>>>>>> ab3714e456b35a9eaac0ca00e61e8e2ac365b54d
 	param->angle %= 360;
 	ft_put_player(*param, g_orange);
 }
@@ -236,7 +239,11 @@ void	ft_rotate_left(t_cub3d *param)
 void	ft_rotate_right(t_cub3d *param)
 {
 	ft_put_player(*param, 0);
+<<<<<<< HEAD
 	param->angle += 5;
+=======
+	param->angle += 15;
+>>>>>>> ab3714e456b35a9eaac0ca00e61e8e2ac365b54d
 	param->angle %= 360;
 	ft_put_player(*param, g_orange);
 }
