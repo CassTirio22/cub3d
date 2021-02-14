@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/14 15:50:55 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/14 17:45:41 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,14 @@ int	g_map[10][10] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 				 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-int	g_pink = 32123123;
+int	g_pink = 0x00FF69B4;
+int	g_blue = 0x001E90FF;
 int	g_orange = 100100100;
 int g_red = 150150150;
-int	g_green = 07120020;
-int	g_wall_color = 071230140;
+int	g_green = 0x00008000;
+int	g_white = 0x00FFFFFF;
+int	g_purple = 0x00800080;
+int	g_brown = 0x00A52A2A;
 
 # define PI 3.14159265359
 
