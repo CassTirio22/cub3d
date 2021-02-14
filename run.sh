@@ -1,4 +1,4 @@
 #!/bin/sh
 make
-gcc -lmlx -framework OpenGL -framework AppKit cub3d.c
+gcc -lmlx -framework OpenGL -framework AppKit cub3d.a cub3d.c
 ./a.out

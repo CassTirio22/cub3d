@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 13:19:44 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/12 13:16:04 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/14 14:27:36 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ char	*ft_check_error(int fd, char **line)
 	return (buffer);
 }
 
-char	*ft_strdup(char *save)
+char	*ft_strdup_gnl(char *save)
 {
 	size_t	i;
 	char	*res;
 
 	if (!save)
 		return (NULL);
-	if (!(res = (char *)ft_calloc(sizeof(char), ft_strlen(save) + 1)))
+	if (!(res = (char *)ft_calloc_gnl(sizeof(char), ft_strlen_gnl(save) + 1)))
 		return (NULL);
 	i = -1;
 	while (save[++i])
@@ -50,7 +50,7 @@ char	*ft_savecpy(char *save)
 	{
 		if (save[i] == '\n')
 		{
-			res = ft_strdup((char *)(save + i + 1));
+			res = ft_strdup_gnl((char *)(save + i + 1));
 			free((void *)save);
 			return (res);
 		}
@@ -69,7 +69,7 @@ char	*ft_linecpy(char *save)
 		return (NULL);
 	while (save[i] && save[i] != '\n')
 		i++;
-	if (!(res = (char *)ft_calloc(sizeof(char), i + 1)))
+	if (!(res = (char *)ft_calloc_gnl(sizeof(char), i + 1)))
 		return (NULL);
 	i = 0;
 	while (save[i] && save[i] != '\n')

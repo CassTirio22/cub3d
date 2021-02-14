@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2021/02/12 15:40:38 by ctirions         ###   ########.fr        #
+#    Updated: 2021/02/14 13:35:48 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,8 @@ CFLAGS		= 	-Wall -Wextra -Werror
 
 LIBFT		=	./libft
 
-FT_PRINTF	=	./ft_printf
-
 .c.o:			
-				@gcc ${CFLAGS} -c -I ./include $< -o ${<:.c=.o}
+				@gcc ${CFLAGS} -c -I ./ $< -o ${<:.c=.o}
 				@echo "${LIGHTPURPLE}Compilation : $< --> .o${RESET}"
 
 $(NAME):		${OBJS}
@@ -47,8 +45,6 @@ $(NAME):		${OBJS}
 				@echo "${GREEN}Library done !${RESET}"
 
 all:			${NAME}
-
-me:				all clean
 
 clean:
 				@rm -f ${OBJS}
@@ -62,4 +58,4 @@ fclean:			clean
 
 re:				fclean all
 
-.PHONY:			all clean fclean re full me
+.PHONY:			all clean fclean re

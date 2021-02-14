@@ -6,20 +6,25 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/12 15:42:24 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/14 15:50:55 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
-//# include "libft.h"
-//# include "get_next_line.h"
+# include "libft/libft.h"
+# include "gnl/get_next_line.h"
 //# include "ft_printf.h"
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <unistd.h>
+# include <limits.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 int	g_map[10][10] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
@@ -46,7 +51,11 @@ typedef struct	s_cub3d
 	int		weight;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	float	angle;
+	int		angle;
+	int		color_floor;
+	int		color_ground;
+	int		screen_size[2];
+	int		error;
 }				t_cub3d;
 
 #endif

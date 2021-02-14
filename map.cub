@@ -1,0 +1,20 @@
+R 1920 1080
+NO ./path_of_north_wall
+SO ./path_of_south_wall
+WE ./path_of_west_wall
+EA ./path_of_east_wall
+S ./path_of_sprite
+
+F 255,69,0
+C 42,19,88
+
+1111111111
+1001000001
+1000001001
+1111000001
+1000000111
+1000000001
+1001000101
+1010000101
+1000000001
+1111111111
