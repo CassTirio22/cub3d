@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/14 17:45:41 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:03:56 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,12 @@ typedef struct	s_cub3d
 	int		color_ground;
 	int		screen_size[2];
 	int		error;
+	char	*path_north;
+	char	*path_south;
+	char	*path_west;
+	char	*path_east;
+	char	*path_sprite;
+	char	*path_map;
 }				t_cub3d;
 
 #endif

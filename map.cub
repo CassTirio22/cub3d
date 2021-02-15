@@ -1,12 +1,12 @@
-R 2500 1200
+R 1920 1080
 NO ./path_of_north_wall
 SO ./path_of_south_wall
 WE ./path_of_west_wall
 EA ./path_of_east_wall
 S ./path_of_sprite
 
-F 0,191,255
-C 255,105,180
+F 0,100,170
+C 255,105,120
 
 1111111111
 1001000001

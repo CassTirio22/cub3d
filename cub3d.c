@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/14 18:41:15 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:05:10 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int		ft_is_white_space(char c)
 {
-	(void)c;
+	if ((c >= 9 && c <= 13) || c == ' ')
+		return (1);
 	return (0);
 }
 
@@ -36,7 +37,7 @@ int		create_trgb(int t, int r, int g, int b)
 	return(t << 24 | r << 16 | g << 8 | b);
 }
 
-void	ft_is_r(t_cub3d *param, char *line)
+void	ft_get_r(t_cub3d *param, char *line)
 {
 	int i;
 
@@ -60,7 +61,7 @@ void	ft_is_r(t_cub3d *param, char *line)
 	}
 }
 
-void	ft_is_c(t_cub3d *param, char *line)
+void	ft_get_c(t_cub3d *param, char *line)
 {
 	int	r;
 	int	g;
@@ -91,7 +92,7 @@ void	ft_is_c(t_cub3d *param, char *line)
 	param->color_floor = create_trgb(0, r, g, b);
 }
 
-void	ft_is_f(t_cub3d *param, char *line)
+void	ft_get_f(t_cub3d *param, char *line)
 {
 	int	r;
 	int	g;
@@ -121,6 +122,114 @@ void	ft_is_f(t_cub3d *param, char *line)
 	}
 	param->color_ground = create_trgb(0, r, g, b);
 }
+
+void	ft_get_no(t_cub3d *param, char *line)
+{
+	int i;
+
+	if (param->path_north)
+		param->error = 1;
+	if (line[2] != ' ')
+		param->error = 1;
+	i = ft_strlen(line + 3);
+	if (!(param->path_north = (char *)ft_calloc(sizeof(char), i + 1)))
+		return ;
+	while (i--)
+		param->path_north[i] = line[3 + i];
+	if (param->error)
+	{
+		ft_putstr_fd("Error !\nError with north path...\n", 2);
+		exit(1);
+	}
+}
+
+void	ft_get_so(t_cub3d *param, char *line)
+{
+	int i;
+
+	if (param->path_south)
+		param->error = 1;
+	if (line[2] != ' ')
+		param->error = 1;
+	i = ft_strlen(line + 3);
+	if (!(param->path_south = (char *)ft_calloc(sizeof(char), i + 1)))
+		return ;
+	while (i--)
+		param->path_south[i] = line[3 + i];
+	if (param->error)
+	{
+		ft_putstr_fd("Error !\nError with south path...\n", 2);
+		exit(1);
+	}
+}
+
+void	ft_get_we(t_cub3d *param, char *line)
+{
+	int i;
+
+	if (param->path_west)
+		param->error = 1;
+	if (line[2] != ' ')
+		param->error = 1;
+	i = ft_strlen(line + 3);
+	if (!(param->path_west = (char *)ft_calloc(sizeof(char), i + 1)))
+		return ;
+	while (i--)
+		param->path_west[i] = line[3 + i];
+	if (param->error)
+	{
+		ft_putstr_fd("Error !\nError with west path...\n", 2);
+		exit(1);
+	}
+}
+
+void	ft_get_ea(t_cub3d *param, char *line)
+{
+	int i;
+
+	if (param->path_east)
+		param->error = 1;
+	if (line[2] != ' ')
+		param->error = 1;
+	i = ft_strlen(line + 3);
+	if (!(param->path_east = (char *)ft_calloc(sizeof(char), i + 1)))
+		return ;
+	while (i--)
+		param->path_east[i] = line[3 + i];
+	if (param->error)
+	{
+		ft_putstr_fd("Error !\nError with east path...\n", 2);
+		exit(1);
+	}
+}
+
+void	ft_get_s(t_cub3d *param, char *line)
+{
+	int i;
+
+	if (param->path_sprite)
+		param->error = 1;
+	if (line[1] != ' ')
+		param->error = 1;
+	i = ft_strlen(line + 2);
+	if (!(param->path_sprite = (char *)ft_calloc(sizeof(char), i + 1)))
+		return ;
+	while (i--)
+		param->path_sprite[i] = line[2 + i];
+
+	if (param->error)
+	{
+		ft_putstr_fd("Error !\nError with sprite path...\n", 2);
+		exit(1);
+	}
+}
+
+void	ft_get_map(t_cub3d *param, char *line)
+{
+	(void)param;
+	(void)line;
+}
+
 void	ft_get_data(t_cub3d *param)
 {
 	char	*line;
@@ -128,41 +237,43 @@ void	ft_get_data(t_cub3d *param)
 	int		i;
 
 	i = 0;
-	if (!(fd = open("map.cub", O_RDONLY)))
+	if (!(fd = open(param->path_map, O_RDONLY)))
 		return ;
 	while (get_next_line(fd, &line))
 	{
 		if (line[0] == 'R')
-			ft_is_r(param, line);
+			ft_get_r(param, line);
 		else if (line[0] == 'N' && line[1] == 'O')
-			;
+			ft_get_no(param, line);
 		else if (line[0] == 'S' && line[1] == 'O')
-			;
+			ft_get_so(param, line);
 		else if (line[0] == 'W' && line[1] == 'E')
-			;
+			ft_get_we(param, line);
 		else if (line[0] == 'E' && line[1] == 'A')
-			;
+			ft_get_ea(param, line);
 		else if (line[0] == 'S')
-			;
+			ft_get_s(param, line);
 		else if (line[0] == 'F')
-			ft_is_f(param, line);
+			ft_get_f(param, line);
 		else if (line[0] == 'C')
-			ft_is_c(param, line);
-		else if (ft_is_white_space(line[0]) || line[1] == '1')
-			;
-		else if (line[0] == '\0')
-			;
-		else
-			return ;
+			ft_get_c(param, line);
+		if (i == 7)
+			ft_get_map(param, line);
 	}
 }
 
-void	ft_set_param(t_cub3d *param)
+void	ft_set_param(t_cub3d *param, char **argv)
 {
 	param->screen_size[0] = -1;
 	param->error = 0;
 	param->color_floor = 0;
 	param->color_ground = 0;
+	param->path_north = NULL;
+	param->path_south = NULL;
+	param->path_west = NULL;
+	param->path_east = NULL;
+	param->path_sprite = NULL;
+	param->path_map = argv[1];
 	ft_get_data(param);
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr, param->screen_size[0], param->screen_size[1], "cub3d");
@@ -402,11 +513,26 @@ int		ft_key_hook(int key_code, t_cub3d *param)
 	return (0);
 }
 
-int	main(void)
+void	ft_argc_error(int argc)
+{
+	if (argc == 1)
+	{
+		ft_putstr_fd("Error !\nYou didn't put any map...\n", 2);
+		exit(1);
+	}
+	if (argc != 2)
+	{
+		ft_putstr_fd("Error !\nYou put too many arguments...\n", 2);
+		exit(1);
+	}
+}
+
+int	main(int argc, char **argv)
 {
 	t_cub3d param;
 
-	ft_set_param(&param);
+	ft_argc_error(argc);
+	ft_set_param(&param, argv);
 	ft_draw_map(param);
 	ft_put_player(param, g_white);
 	mlx_hook(param.win_ptr, 2, 1L<<0, ft_key_hook, &param);
