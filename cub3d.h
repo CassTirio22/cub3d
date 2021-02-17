@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/15 14:03:56 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/17 18:29:46 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int	g_map[10][10] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 				 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+
+/*
+**	COLORS
+*/
+
 int	g_pink = 0x00FF69B4;
 int	g_blue = 0x001E90FF;
 int	g_orange = 100100100;
@@ -45,7 +50,23 @@ int	g_white = 0x00FFFFFF;
 int	g_purple = 0x00800080;
 int	g_brown = 0x00A52A2A;
 
-# define PI 3.14159265359
+/*
+**	STRUCT
+*/
+
+typedef struct 	s_map
+{
+	char	*path_north;
+	char	*path_south;
+	char	*path_west;
+	char	*path_east;
+	char	*path_sprite;
+	char	*path_map;
+	int		color_floor;
+	int		color_ground;
+	int		screen_size[2];
+	int		error;
+}				t_map;
 
 typedef struct	s_cub3d
 {
@@ -55,16 +76,10 @@ typedef struct	s_cub3d
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		angle;
-	int		color_floor;
-	int		color_ground;
-	int		screen_size[2];
-	int		error;
-	char	*path_north;
-	char	*path_south;
-	char	*path_west;
-	char	*path_east;
-	char	*path_sprite;
-	char	*path_map;
 }				t_cub3d;
+
+/*
+**	FONCTIONS
+*/
 
 #endif

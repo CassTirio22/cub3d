@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_move2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/17 18:24:54 by ctirions         ###   ########.fr       */
+/*   Created: 2021/02/17 18:05:28 by ctirions          #+#    #+#             */
+/*   Updated: 2021/02/17 18:18:30 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	main(int argc, char **argv)
+void	ft_rotate_left(t_cub3d *param)
 {
-	t_cub3d param;
-	t_map	map;
+	ft_put_player(*param, 0);
+	param->angle -= 5;
+	param->angle %= 360;
+	ft_put_player(*param, g_white);
+}
 
-	ft_argc_error(argc);
-	ft_set_param(&param, &map, argv);
-	ft_draw_map(param);
-	ft_put_player(param, g_white);
-	mlx_hook(param.win_ptr, 2, 1L<<0, ft_key_hook, &param);
-	mlx_hook(param.win_ptr, 17, 1L<<17, ft_mlx_close, &param);
-	mlx_loop(param.mlx_ptr);
-	return (0);
+void	ft_rotate_right(t_cub3d *param)
+{
+	ft_put_player(*param, 0);
+	param->angle += 5;
+	param->angle %= 360;
+	ft_put_player(*param, g_white);
 }
