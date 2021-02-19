@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 14:13:21 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:51:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,39 @@ void	ft_get_data(t_map *map)
 	}
 }
 
-void	ft_set_param(t_cub3d *param, t_map *map, char **argv)
+void	ft_set_param(t_cub3d *param, char **argv)
 {
-	map->screen_size[0] = -1;
-	map->error = 0;
-	map->color_floor = 0;
-	map->color_ground = 0;
-	map->path_north = NULL;
-	map->path_south = NULL;
-	map->path_west = NULL;
-	map->path_east = NULL;
-	map->path_sprite = NULL;
-	map->path_map = argv[1];
-	ft_get_data(map);
+	g_blue = 0x001E90FF;
+	g_orange = 100100100;
+	g_red = 150150150;
+	g_brown = 0x00A52A2A;
+	g_purple = 0x00800080;
+	g_white = 0x00FFFFFF;
+	g_green = 0x00008000;
+	param->map.map = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+				 {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
+				 {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
+				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+				 {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
+				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+				 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
+	param->map.screen_size[0] = -1;
+	param->map.error = 0;
+	param->map.color_floor = 0;
+	param->map.color_ground = 0;
+	param->map.path_north = NULL;
+	param->map.path_south = NULL;
+	param->map.path_west = NULL;
+	param->map.path_east = NULL;
+	param->map.path_sprite = NULL;
+	param->map.path_map = argv[1];
+	ft_get_data(&param->map);
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr,\
-		map->screen_size[0], map->screen_size[1], "cub3d");
+		param->map.screen_size[0], param->map.screen_size[1], "cub3d");
 	param->weight = 6;
 	param->angle = 90;
 	param->x_p = 480 - param->weight / 2;

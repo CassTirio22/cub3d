@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:04:17 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 14:40:02 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:50:05 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_a(t_cub3d *param)
 		j = -1;
 		while (++j < param->weight)
 			if (ft_is_wall(param->x_p - dy + i - param->weight / 2,\
-				param->y_p + dx + j - param->weight / 2))
+				param->y_p + dx + j - param->weight / 2, param->map.map))
 				return ;
 	}
 	ft_put_player(*param, 0);
@@ -51,7 +51,7 @@ void	ft_d(t_cub3d *param)
 		j = -1;
 		while (++j < param->weight)
 			if (ft_is_wall(param->x_p + dy + i - param->weight / 2,\
-				param->y_p - dx + j - param->weight / 2))
+				param->y_p - dx + j - param->weight / 2, param->map.map))
 				return ;
 	}
 	ft_put_player(*param, 0);
@@ -75,7 +75,7 @@ void	ft_w(t_cub3d *param)
 		j = -1;
 		while (++j < param->weight)
 			if (ft_is_wall(param->x_p - dx + i - param->weight / 2,\
-				param->y_p - dy + j - param->weight / 2))
+				param->y_p - dy + j - param->weight / 2, param->map.map))
 				return ;
 	}
 	ft_put_player(*param, 0);
@@ -99,7 +99,7 @@ void	ft_s(t_cub3d *param)
 		j = -1;
 		while (++j < param->weight)
 			if (ft_is_wall(param->x_p + dx + i - param->weight / 2,\
-				param->y_p + dy + j - param->weight / 2))
+				param->y_p + dy + j - param->weight / 2, param->map.map))
 				return ;
 	}
 	ft_put_player(*param, 0);

@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:22:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 14:25:52 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:27:57 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int		create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-int		ft_is_wall(int x, int y)
+int		ft_is_wall(int x, int y, int **map)
 {
-	if (g_map[y / 108][x / 108])
+	if (map[y / 108][x / 108])
 		return (1);
 	return (0);
 }

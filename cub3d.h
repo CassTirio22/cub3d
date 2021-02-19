@@ -6,16 +6,16 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 14:52:58 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:55:56 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 
+//# include "ft_printf.h"
 # include "libft/libft.h"
 # include "gnl/get_next_line.h"
-//# include "ft_printf.h"
 # include <mlx.h>
 # include <math.h>
 # include <stdlib.h>
@@ -26,30 +26,19 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-int	g_map[10][10] = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-				 {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
 /*
 **	COLORS
 */
-/*
-int	g_pink = 0x00FF69B4;
-int	g_blue = 0x001E90FF;
-int	g_orange = 100100100;
-int	g_red = 150150150;
-int	g_green = 0x00008000;
-int	g_white = 0x00FFFFFF;
-int	g_purple = 0x00800080;
-int	g_brown = 0x00A52A2A;
-*/
+
+int	g_pink;
+int	g_blue;
+int	g_orange;
+int	g_red;
+int	g_green;
+int	g_white;
+int	g_purple;
+int	g_brown;
+
 /*
 **	STRUCT
 */
@@ -66,10 +55,12 @@ typedef struct 	s_map
 	int		color_ground;
 	int		screen_size[2];
 	int		error;
+	int		**map;
 }				t_map;
 
 typedef struct	s_cub3d
 {
+	t_map	map;
 	float	x_p;
 	float	y_p;
 	int		weight;
@@ -82,7 +73,7 @@ typedef struct	s_cub3d
 **		UTILS
 */
 
-int		ft_is_wall(int x, int y);
+int		ft_is_wall(int x, int y, int **map);
 int		ft_is_white_space(char c);
 int		ft_count(int nbr);
 int		create_trgb(int t, int r, int g, int b);
@@ -116,7 +107,7 @@ void	ft_rotate_right(t_cub3d *param);
 void	ft_get_r(t_map *map, char *line);
 void	ft_get_map(t_map *map, char *line);
 void	ft_get_data(t_map *map);
-void	ft_set_param(t_cub3d *param, t_map *map, char **argv);
+void	ft_set_param(t_cub3d *param, char **argv);
 void	ft_get_c(t_map *map, char *line);
 void	ft_get_f(t_map *map, char *line);
 void	ft_get_no(t_map *map, char *line);

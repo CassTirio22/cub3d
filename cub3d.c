@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 14:39:20 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 17:01:30 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int	main(int argc, char **argv)
 {
 	t_cub3d param;
-	t_map	map;
-
+	
 	ft_argc_error(argc);
-	ft_set_param(&param, &map, argv);
+	ft_set_param(&param, argv);
 	ft_draw_map(param);
 	ft_put_player(param, 0x00FFFFFF);
 	mlx_hook(param.win_ptr, 2, 1L<<0, ft_key_hook, &param);
