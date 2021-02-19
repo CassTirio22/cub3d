@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:04:17 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/17 18:27:30 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:40:02 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_a(t_cub3d *param)
 	ft_put_player(*param, 0);
 	param->x_p -= dy;
 	param->y_p += dx;
-	ft_put_player(*param, g_white);
+	ft_put_player(*param, 0x00FFFFFF);
 }
 
 void	ft_d(t_cub3d *param)
@@ -57,7 +57,7 @@ void	ft_d(t_cub3d *param)
 	ft_put_player(*param, 0);
 	param->x_p += dy;
 	param->y_p -= dx;
-	ft_put_player(*param, g_white);
+	ft_put_player(*param, 0x00FFFFFF);
 }
 
 void	ft_w(t_cub3d *param)
@@ -81,7 +81,7 @@ void	ft_w(t_cub3d *param)
 	ft_put_player(*param, 0);
 	param->x_p -= dx;
 	param->y_p -= dy;
-	ft_put_player(*param, g_white);
+	ft_put_player(*param, 0x00FFFFFF);
 }
 
 void	ft_s(t_cub3d *param)
@@ -105,5 +105,5 @@ void	ft_s(t_cub3d *param)
 	ft_put_player(*param, 0);
 	param->x_p += dx;
 	param->y_p += dy;
-	ft_put_player(*param, g_white);
+	ft_put_player(*param, 0x00FFFFFF);
 }

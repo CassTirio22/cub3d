@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2021/02/14 16:51:30 by ctirions         ###   ########.fr        #
+#    Updated: 2021/02/19 15:55:18 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,16 @@ WHITE		= $(shell tput -Txterm setaf 7)
 RESET		= $(shell tput -Txterm sgr0)
 
 
-SRCS		=	gnl/get_next_line.c\
+SRCS		=	cub3d.c\
+				ft_hook.c\
+				ft_utils.c\
+				gnl/get_next_line.c\
 				gnl/get_next_line_utils.c\
-				cub3d.c\
+				ft_draw/ft_draw.c\
+				ft_move/ft_move.c\
+				ft_move/ft_move2.c\
+				init_data/init_data.c\
+				init_data/init_data2.c\
 
 OBJS		=	${SRCS:.c=.o}
 
@@ -43,6 +50,7 @@ $(NAME):		${OBJS}
 				@ar -rcs ${NAME} ${OBJS}
 				@ranlib ${NAME}
 				@echo "${GREEN}Library done !${RESET}"
+				@gcc -lmlx -framework OpenGL -framework AppKit $(NAME)
 
 all:			${NAME}
 

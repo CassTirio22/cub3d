@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/17 18:24:54 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:39:20 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	ft_argc_error(argc);
 	ft_set_param(&param, &map, argv);
 	ft_draw_map(param);
-	ft_put_player(param, g_white);
+	ft_put_player(param, 0x00FFFFFF);
 	mlx_hook(param.win_ptr, 2, 1L<<0, ft_key_hook, &param);
 	mlx_hook(param.win_ptr, 17, 1L<<17, ft_mlx_close, &param);
 	mlx_loop(param.mlx_ptr);

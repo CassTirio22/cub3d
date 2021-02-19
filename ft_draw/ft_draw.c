@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/17 18:27:21 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/19 14:41:31 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_put_player(t_cub3d param, int color)
 				param.weight / 2, param.y_p + j - param.weight / 2, color);
 	}
 	if (color)
-		color = param.color_floor;
+		color = 0x00FF69B4;
 	ft_put_line(param, color);
 	ft_put_view(&param, color);
 }
@@ -82,7 +82,7 @@ void	ft_square(int x, int y, int wall_or_not, t_cub3d param)
 		j = -1;
 		while (++j < 108)
 			mlx_pixel_put(param.mlx_ptr, param.win_ptr,\
-				x * 108 + i, y * 108 + j, param.color_ground);
+				x * 108 + i, y * 108 + j, 0x001E90FF);
 	}
 }
 
