@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 17:55:56 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/21 14:57:17 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,27 @@ int	g_brown;
 **	STRUCT
 */
 
+typedef struct	s_the_map
+{
+	struct s_the_map	*next;
+	struct s_the_map	*previous;
+	char				*content;
+}				t_the_map;
+
 typedef struct 	s_map
 {
-	char	*path_north;
-	char	*path_south;
-	char	*path_west;
-	char	*path_east;
-	char	*path_sprite;
-	char	*path_map;
-	int		color_floor;
-	int		color_ground;
-	int		screen_size[2];
-	int		error;
-	int		**map;
+	char		*path_north;
+	char		*path_south;
+	char		*path_west;
+	char		*path_east;
+	char		*path_sprite;
+	char		*path_map;
+	int			color_floor;
+	int			color_ground;
+	int			screen_size[2];
+	int			error;
+	int			**map;
+	t_the_map	the_map;
 }				t_map;
 
 typedef struct	s_cub3d
@@ -105,7 +113,7 @@ void	ft_rotate_right(t_cub3d *param);
 */
 
 void	ft_get_r(t_map *map, char *line);
-void	ft_get_map(t_map *map, char *line);
+void	ft_get_map(t_the_map *the_map, char *line);
 void	ft_get_data(t_map *map);
 void	ft_set_param(t_cub3d *param, char **argv);
 void	ft_get_c(t_map *map, char *line);

@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/19 17:51:21 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/21 14:56:40 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	ft_get_r(t_map *map, char *line)
 	}
 }
 
-void	ft_get_map(t_map *map, char *line)
+void	ft_get_map(t_the_map *the_map, char *line)
 {
-	(void)map;
+	(void)the_map;
 	(void)line;
 }
 
@@ -46,27 +46,31 @@ void	ft_get_data(t_map *map)
 {
 	char	*line;
 	int		fd;
+	int		i;
 
 	if (!(fd = open(map->path_map, O_RDONLY)))
 		return ;
+	i = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (line[0] == 'R')
+		if (line[0] == 'R' && ++i)
 			ft_get_r(map, line);
-		else if (line[0] == 'N' && line[1] == 'O')
+		else if (line[0] == 'N' && line[1] == 'O' && ++i)
 			ft_get_no(map, line);
-		else if (line[0] == 'S' && line[1] == 'O')
+		else if (line[0] == 'S' && line[1] == 'O' && ++i)
 			ft_get_so(map, line);
-		else if (line[0] == 'W' && line[1] == 'E')
+		else if (line[0] == 'W' && line[1] == 'E' && ++i)
 			ft_get_we(map, line);
-		else if (line[0] == 'E' && line[1] == 'A')
+		else if (line[0] == 'E' && line[1] == 'A' && ++i)
 			ft_get_ea(map, line);
-		else if (line[0] == 'S')
+		else if (line[0] == 'S' && ++i)
 			ft_get_s(map, line);
-		else if (line[0] == 'F')
+		else if (line[0] == 'F' && ++i)
 			ft_get_f(map, line);
-		else if (line[0] == 'C')
+		else if (line[0] == 'C' && ++i)
 			ft_get_c(map, line);
+		if (i >= 8)
+			ft_get_map(&map->the_map, line);
 	}
 }
 
@@ -79,16 +83,6 @@ void	ft_set_param(t_cub3d *param, char **argv)
 	g_purple = 0x00800080;
 	g_white = 0x00FFFFFF;
 	g_green = 0x00008000;
-	param->map.map = {{1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-				 {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 1, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-				 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
 	param->map.screen_size[0] = -1;
 	param->map.error = 0;
 	param->map.color_floor = 0;
