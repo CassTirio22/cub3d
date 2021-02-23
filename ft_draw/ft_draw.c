@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/21 14:52:38 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/23 17:00:35 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ float	ft_put_line(t_cub3d param, int color)
 	i = 0;
 	dx = cos((M_PI / 180) * param.angle);
 	dy = sin((M_PI / 180) * param.angle);
-	while (++i < 1000 && !ft_is_wall(param.x_p - (i * dx),\
-		param.y_p - (i * dy), param.map.map))
+	while (++i < 1500/* && !ft_is_wall(param.x_p - (i * dx),\
+		param.y_p - (i * dy), param.map.map)*/)
 		mlx_pixel_put(param.mlx_ptr, param.win_ptr,\
 			param.x_p - (i * dx), param.y_p - (i * dy), color);
 	return (sqrt(i * (dx * dx) + (dy * dy) * i));

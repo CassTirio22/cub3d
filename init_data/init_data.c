@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/21 14:56:40 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/23 16:53:33 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void	ft_get_r(t_map *map, char *line)
 	}
 }
 
-void	ft_get_map(t_the_map *the_map, char *line)
-{
-	(void)the_map;
-	(void)line;
-}
-
 void	ft_get_data(t_map *map)
 {
 	char	*line;
@@ -69,9 +63,10 @@ void	ft_get_data(t_map *map)
 			ft_get_f(map, line);
 		else if (line[0] == 'C' && ++i)
 			ft_get_c(map, line);
-		if (i >= 8)
-			ft_get_map(&map->the_map, line);
+		else if (i >= 8)
+			ft_lstadd_back(&map->the_map, ft_lstnew(line));
 	}
+	ft_lstadd_back(&map->the_map, ft_lstnew(line));
 }
 
 void	ft_set_param(t_cub3d *param, char **argv)
@@ -93,6 +88,7 @@ void	ft_set_param(t_cub3d *param, char **argv)
 	param->map.path_east = NULL;
 	param->map.path_sprite = NULL;
 	param->map.path_map = argv[1];
+	param->map.the_map = NULL;
 	ft_get_data(&param->map);
 	param->mlx_ptr = mlx_init();
 	param->win_ptr = mlx_new_window(param->mlx_ptr,\
