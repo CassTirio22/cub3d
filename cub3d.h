@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/23 16:32:46 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:26:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct 	s_map
 	int		screen_size[2];
 	int		error;
 	int		**map;
+	int		height;
+	int		weight;
 	t_list	*the_map;
 }				t_map;
 

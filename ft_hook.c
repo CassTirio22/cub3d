@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 17:59:24 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/23 16:56:46 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:15:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ft_mlx_close(t_cub3d *param)
 
 int		ft_key_hook(int key_code, t_cub3d *param)
 {
-	printf("%d\n", key_code);
+	//printf("%d\n", key_code);
 	if (key_code == 13)
 		ft_w(param);
 	else if (key_code == 1)

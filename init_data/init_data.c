@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/23 16:53:33 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:42:49 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,34 @@ void	ft_get_r(t_map *map, char *line)
 	{
 		ft_putstr_fd("Error !\nError with screen size...\n", 2);
 		exit(1);
+	}
+}
+
+void	ft_get_map(t_map *map)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*str;
+
+	map->height = ft_lstsize(map->the_map);
+	map->weight = 0;
+	if (!(map->map = (int **)malloc(sizeof(int *) * map->height)))
+		return ;
+	k = -1;;
+	while (map->the_map)
+	{
+		k++;
+		i = -1;
+		j = ft_strlen(map->the_map->content);
+		if (j > map->weight)
+			map->weight = j;
+		if (!(map->map[k] = (int *)malloc(sizeof(int) * j)))
+			return ;
+		str = map->the_map->content;
+		while (++i < j)
+			map->map[k][i] = (int)str[i] - '0';
+		map->the_map = map->the_map->next;
 	}
 }
 
@@ -67,6 +95,7 @@ void	ft_get_data(t_map *map)
 			ft_lstadd_back(&map->the_map, ft_lstnew(line));
 	}
 	ft_lstadd_back(&map->the_map, ft_lstnew(line));
+	ft_get_map(map);
 }
 
 void	ft_set_param(t_cub3d *param, char **argv)
