@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/25 14:42:49 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/03/01 13:55:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ void	ft_get_map(t_map *map)
 		j = ft_strlen(map->the_map->content);
 		if (j > map->weight)
 			map->weight = j;
-		if (!(map->map[k] = (int *)malloc(sizeof(int) * j)))
+		if (!(map->map[k] = (int *)ft_calloc(sizeof(int), j)))
 			return ;
 		str = map->the_map->content;
 		while (++i < j)
-			map->map[k][i] = (int)str[i] - '0';
+				map->map[k][i] = (int)str[i] - '0';
 		map->the_map = map->the_map->next;
 	}
 }
