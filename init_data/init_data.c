@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/03/01 13:55:29 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/07 14:48:15 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_get_map(t_map *map)
 	map->weight = 0;
 	if (!(map->map = (int **)malloc(sizeof(int *) * map->height)))
 		return ;
-	k = -1;;
+	k = -1;
 	while (map->the_map)
 	{
 		k++;
@@ -92,13 +92,13 @@ void	ft_get_data(t_map *map)
 		else if (line[0] == 'C' && ++i)
 			ft_get_c(map, line);
 		else if (i >= 8)
-			ft_lstadd_back(&map->the_map, ft_lstnew(line));
+				ft_lstadd_back(&map->the_map, ft_lstnew(line));
 	}
 	ft_lstadd_back(&map->the_map, ft_lstnew(line));
 	ft_get_map(map);
 }
 
-void	ft_set_param(t_cub3d *param, char **argv)
+void	ft_set_param(t_struct_list *struct_list, char **argv)
 {
 	g_blue = 0x001E90FF;
 	g_orange = 100100100;
@@ -107,23 +107,24 @@ void	ft_set_param(t_cub3d *param, char **argv)
 	g_purple = 0x00800080;
 	g_white = 0x00FFFFFF;
 	g_green = 0x00008000;
-	param->map.screen_size[0] = -1;
-	param->map.error = 0;
-	param->map.color_floor = 0;
-	param->map.color_ground = 0;
-	param->map.path_north = NULL;
-	param->map.path_south = NULL;
-	param->map.path_west = NULL;
-	param->map.path_east = NULL;
-	param->map.path_sprite = NULL;
-	param->map.path_map = argv[1];
-	param->map.the_map = NULL;
-	ft_get_data(&param->map);
-	param->mlx_ptr = mlx_init();
-	param->win_ptr = mlx_new_window(param->mlx_ptr,\
-		param->map.screen_size[0], param->map.screen_size[1], "cub3d");
-	param->weight = 6;
-	param->angle = 90;
-	param->x_p = 480 - param->weight / 2;
-	param->y_p = 270 - param->weight / 2;
+	struct_list->map.screen_size[0] = -1;
+	struct_list->map.error = 0;
+	struct_list->map.color_floor = 0;
+	struct_list->map.color_ground = 0;
+	struct_list->map.path_north = NULL;
+	struct_list->map.path_south = NULL;
+	struct_list->map.path_west = NULL;
+	struct_list->map.path_east = NULL;
+	struct_list->map.path_sprite = NULL;
+	struct_list->map.path_map = argv[1];
+	struct_list->map.the_map = NULL;
+	ft_get_data(&struct_list->map);
+	struct_list->param->mlx_ptr = mlx_init();
+	struct_list->param->win_ptr = mlx_new_window(struct_list->param->mlx_ptr,\
+		struct_list->map.screen_size[0], \
+		struct_list->map.screen_size[1], "cub3d");
+	struct_list->param->weight = 6;
+	struct_list->param->angle = 90;
+	struct_list->param->x_p = 480 - struct_list->param->weight / 2;
+	struct_list->param->y_p = 270 - struct_list->param->weight / 2;
 }

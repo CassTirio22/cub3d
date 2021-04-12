@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2021/02/21 13:00:26 by ctirions         ###   ########.fr        #
+#    Updated: 2021/03/29 14:58:40 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ $(NAME):		${OBJS}
 				@ranlib ${NAME}
 				@echo "${GREEN}Library done !${RESET}"
 				@gcc -lmlx -framework OpenGL -framework AppKit $(NAME)
+				@mv a.out cub3d
 
 all:			${NAME}
 

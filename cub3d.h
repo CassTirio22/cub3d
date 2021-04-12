@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/02/25 14:26:29 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/07 15:06:27 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,31 @@ typedef struct 	s_map
 	t_list	*the_map;
 }				t_map;
 
-typedef struct	s_cub3d
+typedef struct	s_param
 {
-	t_map	map;
 	float	x_p;
 	float	y_p;
 	int		weight;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	int		angle;
-}				t_cub3d;
+}				t_param;
+
+typedef struct	s_data
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+typedef struct	s_struct_list
+{
+	t_data	img;
+	t_param param;
+	t_map	map;
+}				t_struct_list;
 
 /*
 **		UTILS
@@ -86,22 +101,22 @@ void	ft_argc_error(int argc);
 **		DRAW
 */
 
-float	ft_put_line(t_cub3d param, int color);
-void	ft_put_view(t_cub3d *param, int color);
-void	ft_put_player(t_cub3d param, int color);
-void	ft_square(int x, int y, int wall_or_not, t_cub3d param);
-void	ft_draw_map(t_cub3d param);
+float	ft_put_line(t_struct_list struct_list, int color);
+void	ft_put_view(t_struct_list *struct_list, int color);
+void	ft_put_player(t_struct_list struct_list, int color);
+void	ft_square(int x, int y, int wall_or_not, t_param param);
+void	ft_draw_map(t_struct_list struct_list);
 
 /*
 **		MOVE
 */
 
-void	ft_a(t_cub3d *param);
-void	ft_d(t_cub3d *param);
-void	ft_w(t_cub3d *param);
-void	ft_s(t_cub3d *param);
-void	ft_rotate_left(t_cub3d *param);
-void	ft_rotate_right(t_cub3d *param);
+void	ft_a(t_param *param);
+void	ft_d(t_param *param);
+void	ft_w(t_param *param);
+void	ft_s(t_param *param);
+void	ft_rotate_left(t_param *param);
+void	ft_rotate_right(t_param *param);
 
 /*
 **		GET_DATA
@@ -109,7 +124,7 @@ void	ft_rotate_right(t_cub3d *param);
 
 void	ft_get_r(t_map *map, char *line);
 void	ft_get_data(t_map *map);
-void	ft_set_param(t_cub3d *param, char **argv);
+void	ft_set_param(t_struct_list *struct_list, char **argv);
 void	ft_get_c(t_map *map, char *line);
 void	ft_get_f(t_map *map, char *line);
 void	ft_get_no(t_map *map, char *line);
@@ -122,7 +137,7 @@ void	ft_get_s(t_map *map, char *line);
 **		HOOKS
 */
 
-int		ft_mlx_close(t_cub3d *param);
-int		ft_key_hook(int key_code, t_cub3d *param);
+int		ft_mlx_close(t_param *param);
+int		ft_key_hook(int key_code, t_param *param);
 
 #endif
