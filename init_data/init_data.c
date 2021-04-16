@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/07 14:48:15 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/16 12:50:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,22 +107,30 @@ void	ft_set_param(t_struct_list *struct_list, char **argv)
 	g_purple = 0x00800080;
 	g_white = 0x00FFFFFF;
 	g_green = 0x00008000;
-	struct_list->map.screen_size[0] = -1;
-	struct_list->map.error = 0;
-	struct_list->map.color_floor = 0;
-	struct_list->map.color_ground = 0;
-	struct_list->map.path_north = NULL;
-	struct_list->map.path_south = NULL;
-	struct_list->map.path_west = NULL;
-	struct_list->map.path_east = NULL;
-	struct_list->map.path_sprite = NULL;
-	struct_list->map.path_map = argv[1];
-	struct_list->map.the_map = NULL;
-	ft_get_data(&struct_list->map);
+	struct_list->map = malloc(sizeof(t_map));
+	struct_list->param = malloc(sizeof(t_param));
+	struct_list->img = malloc(sizeof(t_data));
+	struct_list->map->screen_size[0] = -1;
+	struct_list->map->error = 0;
+	struct_list->map->color_floor = 0;
+	struct_list->map->color_ground = 0;
+	struct_list->map->path_north = NULL;
+	struct_list->map->path_south = NULL;
+	struct_list->map->path_west = NULL;
+	struct_list->map->path_east = NULL;
+	struct_list->map->path_sprite = NULL;
+	struct_list->map->path_map = argv[1];
+	struct_list->map->the_map = NULL;
+	ft_get_data(struct_list->map);
 	struct_list->param->mlx_ptr = mlx_init();
 	struct_list->param->win_ptr = mlx_new_window(struct_list->param->mlx_ptr,\
-		struct_list->map.screen_size[0], \
-		struct_list->map.screen_size[1], "cub3d");
+		struct_list->map->screen_size[0],\
+		struct_list->map->screen_size[1], "cub3d");
+	struct_list->img->img = mlx_new_image(struct_list->param->mlx_ptr,\
+		struct_list->map->screen_size[0], struct_list->map->screen_size[1]);
+	struct_list->img->addr = mlx_get_data_addr(struct_list->img->img, \
+		&struct_list->img->bits_per_pixel, &struct_list->img->line_length, \
+		&struct_list->img->endian);
 	struct_list->param->weight = 6;
 	struct_list->param->angle = 90;
 	struct_list->param->x_p = 480 - struct_list->param->weight / 2;

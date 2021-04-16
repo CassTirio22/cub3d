@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/07 15:06:27 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/16 13:04:44 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ typedef struct	s_param
 	float	x_p;
 	float	y_p;
 	int		weight;
+	int		angle;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		angle;
 }				t_param;
 
 typedef struct	s_data
@@ -82,9 +82,9 @@ typedef struct	s_data
 
 typedef struct	s_struct_list
 {
-	t_data	img;
-	t_param param;
-	t_map	map;
+	t_data	*img;
+	t_param *param;
+	t_map	*map;
 }				t_struct_list;
 
 /*
@@ -101,22 +101,23 @@ void	ft_argc_error(int argc);
 **		DRAW
 */
 
-float	ft_put_line(t_struct_list struct_list, int color);
+void	put_pixel(t_data *img, int x, int y, int color);
+void	ft_put_line(t_param param, t_map map, t_data *img, int color);
 void	ft_put_view(t_struct_list *struct_list, int color);
 void	ft_put_player(t_struct_list struct_list, int color);
-void	ft_square(int x, int y, int wall_or_not, t_param param);
+void	ft_square(int x, int y, int wall_or_not, t_data *img);
 void	ft_draw_map(t_struct_list struct_list);
 
 /*
 **		MOVE
 */
 
-void	ft_a(t_param *param);
-void	ft_d(t_param *param);
-void	ft_w(t_param *param);
-void	ft_s(t_param *param);
-void	ft_rotate_left(t_param *param);
-void	ft_rotate_right(t_param *param);
+void	ft_a(t_struct_list *struct_list);
+void	ft_d(t_struct_list *struct_list);
+void	ft_w(t_struct_list *struct_list);
+void	ft_s(t_struct_list *struct_list);
+void	ft_rotate_left(t_struct_list *struct_list);
+void	ft_rotate_right(t_struct_list *struct_list);
 
 /*
 **		GET_DATA
@@ -138,6 +139,6 @@ void	ft_get_s(t_map *map, char *line);
 */
 
 int		ft_mlx_close(t_param *param);
-int		ft_key_hook(int key_code, t_param *param);
+int		ft_key_hook(int key_code, t_struct_list *struct_list);
 
 #endif
