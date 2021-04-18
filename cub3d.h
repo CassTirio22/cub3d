@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/16 13:04:44 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/18 17:24:48 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,28 @@ typedef struct	s_param
 {
 	float	x_p;
 	float	y_p;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	camera_x;
+	double	camera_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		map_x;
+	int		map_y;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 	int		weight;
 	int		angle;
 	void	*mlx_ptr;

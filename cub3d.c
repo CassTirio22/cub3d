@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/16 15:21:45 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/18 17:26:32 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	put_pixel(t_data *img, int x, int y, int color)
 int	main(int argc, char **argv)
 {
 	t_struct_list	struct_list;
-	
+
 	ft_argc_error(argc);
 	ft_set_param(&struct_list, argv);
 	ft_put_player(struct_list, 0x00FFFFFF);

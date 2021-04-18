@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/16 12:50:29 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:45:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,10 @@ void	ft_set_param(t_struct_list *struct_list, char **argv)
 		&struct_list->img->endian);
 	struct_list->param->weight = 6;
 	struct_list->param->angle = 90;
+	struct_list->param->dir_x = -1;
+	struct_list->param->dir_y = 0;
+	struct_list->param->plane_x = 0;
+	struct_list->param->plane_y = 0.66;
 	struct_list->param->x_p = 480 - struct_list->param->weight / 2;
 	struct_list->param->y_p = 270 - struct_list->param->weight / 2;
 }

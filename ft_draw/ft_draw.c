@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/16 15:27:02 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/18 16:38:11 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	ft_put_player(t_struct_list struct_list, int color)
 	int		j;
 
 	i = -1;
+	//printf("angle : %d\n", struct_list.param->angle);
 	while (++i <= struct_list.param->weight)
 	{
 		j = -1;
@@ -75,7 +76,7 @@ void	ft_square(int x, int y, int wall_or_not, t_data *img)
 	int	i;
 	int	j;
 
-	if (!wall_or_not)
+	if (wall_or_not != 1)
 		return ;
 	i = -1;
 	while (++i < 108)
@@ -101,6 +102,7 @@ void	ft_draw_map(t_struct_list struct_list)
 		j = -1;
 		while (++j < struct_list.map->height)
 			ft_square(i, j, struct_list.map->map[j][i], struct_list.img);
+
 	}
 	mlx_put_image_to_window(struct_list.param->mlx_ptr,\
 		struct_list.param->win_ptr, struct_list.img->img, 0, 0);
