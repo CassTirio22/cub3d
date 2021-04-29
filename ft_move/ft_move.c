@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:04:17 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/16 15:25:41 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/27 15:04:10 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_a(t_struct_list *struct_list)
 	while (++i < struct_list->param->weight)
 	{
 		j = -1;
-		while (++j < struct_list->param->weight)
+		while (++j < struct_list->param->height)
 			if (ft_is_wall(struct_list->param->x_p - dy + i - struct_list->param->weight / 2,\
-				struct_list->param->y_p + dx + j - struct_list->param->weight / 2, struct_list->map->map))
+				struct_list->param->y_p + dx + j - struct_list->param->height / 2, struct_list->map))
 				return ;
 	}
 	struct_list->param->x_p -= dy;
@@ -47,9 +47,9 @@ void	ft_d(t_struct_list *struct_list)
 	while (++i < struct_list->param->weight)
 	{
 		j = -1;
-		while (++j < struct_list->param->weight)
+		while (++j < struct_list->param->height)
 			if (ft_is_wall(struct_list->param->x_p + dy + i - struct_list->param->weight / 2,\
-				struct_list->param->y_p - dx + j - struct_list->param->weight / 2, struct_list->map->map))
+				struct_list->param->y_p - dx + j - struct_list->param->height / 2, struct_list->map))
 				return ;
 	}
 	struct_list->param->x_p += dy;
@@ -69,9 +69,9 @@ void	ft_w(t_struct_list *struct_list)
 	while (++i < struct_list->param->weight)
 	{
 		j = -1;
-		while (++j < struct_list->param->weight)
+		while (++j < struct_list->param->height)
 			if (ft_is_wall(struct_list->param->x_p - dx + i - struct_list->param->weight / 2,\
-				struct_list->param->y_p - dy + j - struct_list->param->weight / 2, struct_list->map->map))
+				struct_list->param->y_p - dy + j - struct_list->param->height / 2, struct_list->map))
 				return ;
 	}
 	struct_list->param->x_p -= dx;
@@ -91,9 +91,9 @@ void	ft_s(t_struct_list *struct_list)
 	while (++i < struct_list->param->weight)
 	{
 		j = -1;
-		while (++j < struct_list->param->weight)
+		while (++j < struct_list->param->height)
 			if (ft_is_wall(struct_list->param->x_p + dx + i - struct_list->param->weight / 2,\
-				struct_list->param->y_p + dy + j - struct_list->param->weight / 2, struct_list->map->map))
+				struct_list->param->y_p + dy + j - struct_list->param->height / 2, struct_list->map))
 				return ;
 	}
 	struct_list->param->x_p += dx;

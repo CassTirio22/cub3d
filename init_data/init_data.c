@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/18 16:45:21 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/27 16:35:40 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,12 @@ void	ft_get_map(t_map *map)
 		j = ft_strlen(map->the_map->content);
 		if (j > map->weight)
 			map->weight = j;
-		if (!(map->map[k] = (int *)ft_calloc(sizeof(int), j)))
+		if (!(map->map[k] = (int *)ft_calloc(sizeof(int), j + 1)))
 			return ;
 		str = map->the_map->content;
 		while (++i < j)
-				map->map[k][i] = (int)str[i] - '0';
+				map->map[k][i + 1] = (int)str[i] - '0';
+		map->map[k][0] = j + 1;
 		map->the_map = map->the_map->next;
 	}
 }
@@ -122,6 +123,8 @@ void	ft_set_param(t_struct_list *struct_list, char **argv)
 	struct_list->map->path_map = argv[1];
 	struct_list->map->the_map = NULL;
 	ft_get_data(struct_list->map);
+	struct_list->map->wall_size[1] = struct_list->map->screen_size[1] / struct_list->map->height;
+	struct_list->map->wall_size[0] = struct_list->map->screen_size[0] / struct_list->map->weight;
 	struct_list->param->mlx_ptr = mlx_init();
 	struct_list->param->win_ptr = mlx_new_window(struct_list->param->mlx_ptr,\
 		struct_list->map->screen_size[0],\
@@ -131,12 +134,11 @@ void	ft_set_param(t_struct_list *struct_list, char **argv)
 	struct_list->img->addr = mlx_get_data_addr(struct_list->img->img, \
 		&struct_list->img->bits_per_pixel, &struct_list->img->line_length, \
 		&struct_list->img->endian);
-	struct_list->param->weight = 6;
-	struct_list->param->angle = 90;
+	struct_list->param->weight = struct_list->map->wall_size[0] / 10;
+	struct_list->param->height = struct_list->map->wall_size[1] / 10;
+	struct_list->param->angle = -1;
 	struct_list->param->dir_x = -1;
 	struct_list->param->dir_y = 0;
 	struct_list->param->plane_x = 0;
 	struct_list->param->plane_y = 0.66;
-	struct_list->param->x_p = 480 - struct_list->param->weight / 2;
-	struct_list->param->y_p = 270 - struct_list->param->weight / 2;
 }

@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/18 17:24:48 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/27 14:52:25 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct 	s_map
 	int		**map;
 	int		height;
 	int		weight;
+	int		wall_size[2];
 	t_list	*the_map;
 }				t_map;
 
@@ -88,6 +89,7 @@ typedef struct	s_param
 	int		draw_start;
 	int		draw_end;
 	int		weight;
+	int		height;
 	int		angle;
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -113,7 +115,7 @@ typedef struct	s_struct_list
 **		UTILS
 */
 
-int		ft_is_wall(int x, int y, int **map);
+int		ft_is_wall(int x, int y, t_map *map);
 int		ft_is_white_space(char c);
 int		ft_count(int nbr);
 int		create_trgb(int t, int r, int g, int b);
@@ -127,7 +129,7 @@ void	put_pixel(t_data *img, int x, int y, int color);
 void	ft_put_line(t_param param, t_map map, t_data *img, int color);
 void	ft_put_view(t_struct_list *struct_list, int color);
 void	ft_put_player(t_struct_list struct_list, int color);
-void	ft_square(int x, int y, int wall_or_not, t_data *img);
+void	ft_square(int x, int y, int wall_or_not, t_struct_list struct_list);
 void	ft_draw_map(t_struct_list struct_list);
 
 /*

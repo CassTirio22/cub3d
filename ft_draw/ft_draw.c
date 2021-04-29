@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/18 16:38:11 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/27 15:47:09 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	ft_put_line(t_param param, t_map map, t_data *img, int color)
 	i = 0;
 	dx = cos((M_PI / 180) * param.angle);
 	dy = sin((M_PI / 180) * param.angle);
-	while (++i < 1500 && !ft_is_wall(param.x_p - (i * dx),\
-		param.y_p - (i * dy), map.map))
+	while (++i < 2500 && !ft_is_wall(param.x_p - (i * dx),\
+		param.y_p - (i * dy), &map))
 		put_pixel(img, param.x_p - (i * dx), param.y_p - (i * dy), color);
 }
 
@@ -56,14 +56,13 @@ void	ft_put_player(t_struct_list struct_list, int color)
 	int		j;
 
 	i = -1;
-	//printf("angle : %d\n", struct_list.param->angle);
 	while (++i <= struct_list.param->weight)
 	{
 		j = -1;
-		while (++j <= struct_list.param->weight)
+		while (++j <= struct_list.param->height)
 			put_pixel(struct_list.img, \
 				struct_list.param->x_p + i - struct_list.param->weight / 2, \
-				struct_list.param->y_p + j - struct_list.param->weight / 2, color);
+				struct_list.param->y_p + j - struct_list.param->height / 2, color);
 	}
 	if (color)
 		color = 0x00FF69B4;
@@ -71,7 +70,7 @@ void	ft_put_player(t_struct_list struct_list, int color)
 	ft_put_view(&struct_list, color);
 }
 
-void	ft_square(int x, int y, int wall_or_not, t_data *img)
+void	ft_square(int x, int y, int wall_or_not, t_struct_list struct_list)
 {
 	int	i;
 	int	j;
@@ -79,11 +78,11 @@ void	ft_square(int x, int y, int wall_or_not, t_data *img)
 	if (wall_or_not != 1)
 		return ;
 	i = -1;
-	while (++i < 108)
+	while (++i < struct_list.map->wall_size[0])
 	{
 		j = -1;
-		while (++j < 108)
-			put_pixel(img, x * 108 + i, y * 108 + j, 0x001E90FF);
+		while (++j < struct_list.map->wall_size[1])
+			put_pixel(struct_list.img, x * struct_list.map->wall_size[0] + i, y * struct_list.map->wall_size[1] + j, 0x001E90FF);
 	}
 }
 
@@ -97,11 +96,11 @@ void	ft_draw_map(t_struct_list struct_list)
 	i = -1;
 	map_x = 10;
 	map_y = 10;
-	while (++i < struct_list.map->weight)
+	while (++i < struct_list.map->height)
 	{
-		j = -1;
-		while (++j < struct_list.map->height)
-			ft_square(i, j, struct_list.map->map[j][i], struct_list.img);
+		j = 0;
+		while (++j < struct_list.map->map[i][0])
+			ft_square(j - 1, i, struct_list.map->map[i][j], struct_list);
 
 	}
 	mlx_put_image_to_window(struct_list.param->mlx_ptr,\
