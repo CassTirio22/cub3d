@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:38:56 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/27 16:56:57 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/29 16:14:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	find_player(t_struct_list *struct_list, int i[2])
 	else if (struct_list->map->map[i[0]][i[1]] == 'E' - '0')
 		struct_list->param->angle = 0;
 	printf("%d|%d\n", i[0], i[1] - 1);
-	struct_list->param->x_p = (i[1] - 1) * struct_list->map->wall_size[0] + struct_list->map->wall_size[0] / 2;
-	struct_list->param->y_p = i[0] * struct_list->map->wall_size[1] + struct_list->map->wall_size[1] / 2;
+	struct_list->param->x_p = i[1] - 0.5;
+	struct_list->param->y_p = i[0] + 0.5;
 }
 
 void	error_map(t_struct_list *struct_list)
