@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:10:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/27 16:35:40 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/30 14:17:52 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,4 @@ void	ft_set_param(t_struct_list *struct_list, char **argv)
 	struct_list->param->weight = struct_list->map->wall_size[0] / 10;
 	struct_list->param->height = struct_list->map->wall_size[1] / 10;
 	struct_list->param->angle = -1;
-	struct_list->param->dir_x = -1;
-	struct_list->param->dir_y = 0;
-	struct_list->param->plane_x = 0;
-	struct_list->param->plane_y = 0.66;
 }

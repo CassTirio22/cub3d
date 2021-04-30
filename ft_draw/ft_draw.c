@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/27 15:47:09 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/04/30 14:23:51 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	ft_put_player(t_struct_list struct_list, int color)
 		j = -1;
 		while (++j <= struct_list.param->height)
 			put_pixel(struct_list.img, \
-				struct_list.param->x_p + i - struct_list.param->weight / 2, \
-				struct_list.param->y_p + j - struct_list.param->height / 2, color);
+				struct_list.map->wall_size[0] * struct_list.param->x_p + i - struct_list.param->weight / 2, \
+				struct_list.map->wall_size[1] * struct_list.param->y_p + j - struct_list.param->height / 2, color);
 	}
 	if (color)
 		color = 0x00FF69B4;
