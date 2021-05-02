@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:22:50 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/30 15:09:25 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/05/02 16:11:51 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,6 @@ int		ft_count(int nbr)
 int		create_trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
-}
-
-int		ft_is_wall(int x, int y, t_map *map)
-{
-	if (map->map[y][x + 1] == 1)
-		return (1);	
-	return (0);
 }
 
 void	ft_argc_error(int argc)

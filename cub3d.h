@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/02 14:40:33 by ctirions          #+#    #+#             */
-/*   Updated: 2021/04/30 14:12:15 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/05/02 16:12:07 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ typedef struct	s_struct_list
 **		UTILS
 */
 
-int		ft_is_wall(int x, int y, t_map *map);
 int		ft_is_white_space(char c);
 int		ft_count(int nbr);
 int		create_trgb(int t, int r, int g, int b);
