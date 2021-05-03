@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/05/02 17:35:28 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/05/03 14:50:54 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,46 @@ void	ft_put_line(t_param param, t_map map, t_data *img, int color)
 {
 	float	dx;
 	float	dy;
+	double	opp_x;
+	double	adj_y;
+	int		size;
+	int		a;
+	int		b;
 	int		i;
+	int		j;
 
 	i = 0;
+	a = -1;
+	b = -(param.x_p - (int)param.x_p);
+	opp_x = (1 - (param.x_p - (int)param.x_p)) * tan(param.angle);
+	adj_y = (param.y_p - (int)param.y_p) / tan(param.angle);
+	if ((param.angle > 90 && param.angle < 270) || (param.angle > -90 && param.angle < -270))
+	{
+		b = 1 - param.x_p - (int)param.x_p;
+		a = 1;
+	}
+	while (map.map[(int)(opp_x + i * a)][(int)(param.x_p + b + i * a)] != 1)
+		i++;
+	j = 0;
+	a = 1;
+	b = (1 - param.y_p - (int)param.y_p);
+	if ((param.angle > 180 && param.angle < 360) || (param.angle > -180 && param.angle < 0))
+	{
+		b = -(param.y_p - (int)param.y_p);
+		a = -1;
+	}
+	while (map.map[(int)(param.y_p + b + j * a)][(int)(adj_y + j * a)] != 1)
+		j++;
+	if (j > i)
+		size = j * map.wall_size[1];
+	else
+		size = i * map.wall_size[0];
 	dx = cos((M_PI / 180) * param.angle);
 	dy = sin((M_PI / 180) * param.angle);
-	while (++i < 2500 && map.map[(int)(param.x_p - (i * dx))][(int)(param.y_p - (i * dy))] == 1)
-		put_pixel(img, param.x_p - (i * dx), param.y_p - (i * dy), color);
+	i = -1;
+	while (++i < size)
+		put_pixel(img, map.wall_size[0] * param.x_p - (i * dx), \
+			map.wall_size[1] * param.y_p - (i * dy), color);
 }
 
 void	ft_put_view(t_struct_list *struct_list, int color)
@@ -55,7 +88,7 @@ void	ft_put_player(t_struct_list struct_list, int color)
 	int		j;
 
 	i = 0;
-	while (++i <= struct_list.map->wall_size[0] / 3 - 1)
+	while (++i <= struct_list.map->wall_size[0] / 3)
 	{
 		j = 0;
 		while (++j <= struct_list.map->wall_size[1] / 3 - 1)
@@ -66,7 +99,7 @@ void	ft_put_player(t_struct_list struct_list, int color)
 	if (color)
 		color = 0x00FF69B4;
 	ft_put_line(*struct_list.param, *struct_list.map, struct_list.img ,color);
-	ft_put_view(&struct_list, color);
+	//ft_put_view(&struct_list, color);
 }
 
 void	ft_square(int x, int y, int wall_or_not, t_struct_list struct_list)
@@ -76,11 +109,11 @@ void	ft_square(int x, int y, int wall_or_not, t_struct_list struct_list)
 
 	if (wall_or_not != 1)
 		return ;
-	i = -1;
-	while (++i < struct_list.map->wall_size[0])
+	i = 0;
+	while (++i < struct_list.map->wall_size[0] - 1)
 	{
-		j = -1;
-		while (++j < struct_list.map->wall_size[1])
+		j = 0;
+		while (++j < struct_list.map->wall_size[1] - 1)
 			put_pixel(struct_list.img, x * struct_list.map->wall_size[0] + i, y * struct_list.map->wall_size[1] + j, 0x001E90FF);
 	}
 }
