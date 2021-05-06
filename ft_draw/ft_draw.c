@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:08:13 by ctirions          #+#    #+#             */
-/*   Updated: 2021/05/03 14:50:54 by ctirions         ###   ########.fr       */
+/*   Updated: 2021/05/06 16:50:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,85 @@
 
 void	ft_put_line(t_param param, t_map map, t_data *img, int color)
 {
-	float	dx;
-	float	dy;
-	double	opp_x;
-	double	adj_y;
-	int		size;
-	int		a;
-	int		b;
-	int		i;
-	int		j;
+	double	side_x;
+	double	side_y;
+	double	dist_x;
+	double	dist_y;
+	double	dx;
+	double	dy;
+	double	size;
+	int	map_x;
+	int	map_y;
+	int	step[2];
+	int	hit;
+	int	side;
+	int	i;
 
-	i = 0;
-	a = -1;
-	b = -(param.x_p - (int)param.x_p);
-	opp_x = (1 - (param.x_p - (int)param.x_p)) * tan(param.angle);
-	adj_y = (param.y_p - (int)param.y_p) / tan(param.angle);
-	if ((param.angle > 90 && param.angle < 270) || (param.angle > -90 && param.angle < -270))
-	{
-		b = 1 - param.x_p - (int)param.x_p;
-		a = 1;
-	}
-	while (map.map[(int)(opp_x + i * a)][(int)(param.x_p + b + i * a)] != 1)
-		i++;
-	j = 0;
-	a = 1;
-	b = (1 - param.y_p - (int)param.y_p);
-	if ((param.angle > 180 && param.angle < 360) || (param.angle > -180 && param.angle < 0))
-	{
-		b = -(param.y_p - (int)param.y_p);
-		a = -1;
-	}
-	while (map.map[(int)(param.y_p + b + j * a)][(int)(adj_y + j * a)] != 1)
-		j++;
-	if (j > i)
-		size = j * map.wall_size[1];
-	else
-		size = i * map.wall_size[0];
+	hit = 0;
 	dx = cos((M_PI / 180) * param.angle);
 	dy = sin((M_PI / 180) * param.angle);
+	map_x = (int)param.x_p;
+	map_y = (int)param.y_p;
+	printf("%f | %f\n", dx, dy);
+	if (dy < 0.00001 && dy > -0.00001)
+		dist_x = 1;
+	else if (dx < 0.00001 && dx > -0.00001)
+		dist_x = 0;	
+	else
+		dist_x = fabs(1 / dx);
+	if (dx < 0.00001 && dx > -0.00001)
+		dist_y = 1;
+	else if (dy < 0.00001 && dy > -0.00001)
+		dist_y = 0;
+	else
+		dist_y = fabs(1 / dy);
+	if (dx < 0)
+	{
+		step[0] = 1;
+		side_x = (param.x_p - map_x) * dist_x;
+	}
+	else
+	{
+		step[0] = -1;
+		side_x = (map_x + 1 - param.x_p) * dist_x;
+	}
+	if (dy < 0)
+	{
+		step[1] = 1;
+		side_y = (param.y_p - map_y) * dist_y;
+	}
+	else
+	{
+		step[1] = -1;
+		side_y = (map_y + 1 - param.y_p) * dist_y;
+	}
+	printf("dist_x = %f | dist_y = %f\n", dist_x, dist_y);
+	printf("side_x = %f | side_y = %f\n", side_x, side_y);
+	while (hit != 1)
+	{
+		if (side_x < side_y && (dx > 0.00001 || dx < -0.00001))
+		{
+			printf("coucou\n");
+			side_x += dist_x;
+			map_x += step[0];
+			side = 0;
+		}
+		else
+		{
+			side_y += dist_y;
+			map_y += step[1];
+			side = 1;
+		}
+		hit = map.map[map_y][map_x + 1];
+	}
+	printf("----------------\n");
+	if (!side)
+		size = ((map_x - param.x_p + (1 - step[0]) / 2) / dx) * map.wall_size[0];
+	else
+		size = ((map_y - param.y_p + (1 - step[1]) / 2) / dy) * map.wall_size[1];
 	i = -1;
-	while (++i < size)
+	//printf("size = %f\n", fabs(size));
+	while (++i < fabs(size))
 		put_pixel(img, map.wall_size[0] * param.x_p - (i * dx), \
 			map.wall_size[1] * param.y_p - (i * dy), color);
 }
