@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 14:42:44 by ctirions          #+#    #+#             */
-/*   Updated: 2021/03/18 17:37:42 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/10 20:19:48 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,5 @@ int	get_next_line(int fd, char **line)
 			return (-1);
 	}
 	free(buffer);
-	return (ft_end(reader, line, &save[fd], fd));
+	return (ft_end(reader, line, save, fd));
 }

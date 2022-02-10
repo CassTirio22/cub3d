@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/10 20:27:47 by ctirions         ###   ########.fr       */
+/*   Created: 2022/02/10 19:40:06 by ctirions          #+#    #+#             */
+/*   Updated: 2022/02/10 20:29:01 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+int	ft_is_white_space(char c)
 {
-	t_cub	cub;
-
-	if (check_args(argc, argv) || init_var(&cub) || parse(argv, &cub))
+	if ((c >= 9 && c <= 13) || c == ' ')
 		return (1);
 	return (0);
 }

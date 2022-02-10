@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/10 14:42:56 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/10 20:00:44 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,11 @@ RESET		= $(shell tput -Txterm sgr0)
 SRCSDIR	=	srcs/
 OBJSDIR	=	objs/
 
-FILES	=	cub3d.c					\
-			hook.c					\
-			utils.c					\
-			draw/draw.c			\
-			move/move.c			\
-			move/move2.c			\
-			init_data/init_data.c	\
-			init_data/init_data2.c
+FILES	=	cub3d.c			\
+			free/free.c		\
+			init/init.c		\
+			parsing/parse.c	\
+			utils/utils.c
 
 SRCS	=	$(addprefix srcs/, $(FILES))
 OBJS	=	$(patsubst srcs%.c, objs%.o, $(SRCS))
@@ -47,7 +44,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@make full -C ./libft
 			@$(CC) $(MFLAGS) -o $(NAME) $(OBJS) libft/libft.a
-			@echo "\r[$(GREEN)✓$(RESET)] cub3d created                         "
+			@echo "\r[$(GREEN)✓$(RESET)] cub3d compiled                        "
 
 objs/%.o:	srcs/%.c			
 			@printf "\r[$(LIGHTPURPLE)✓$(RESET)] compilation of $<           \r"

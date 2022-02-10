@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 17:05:49 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/10 14:50:31 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/10 17:55:01 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ all:		${NAME}
 bonus:		${OBJS_BONUS}
 			@ar -rcs ${NAME} ${OBJS_BONUS}
 			@printf "                                                    \r"
-			@printf "[$(GREEN)✓$(RESET)] libft.a created\n"
+			@printf "[$(GREEN)✓$(RESET)] libft compiled\n"
 
 full:		all	bonus
 
