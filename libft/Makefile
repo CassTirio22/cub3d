@@ -6,9 +6,23 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 17:05:49 by ctirions          #+#    #+#              #
-#    Updated: 2021/02/14 13:36:42 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/10 14:50:31 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#			COLORS
+
+BLACK		= $(shell tput -Txterm setaf 0)
+RED			= $(shell tput -Txterm setaf 1)
+GREEN		= $(shell tput -Txterm setaf 2)
+YELLOW		= $(shell tput -Txterm setaf 3)
+LIGHTPURPLE	= $(shell tput -Txterm setaf 4)
+PURPLE		= $(shell tput -Txterm setaf 5)
+BLUE		= $(shell tput -Txterm setaf 6)
+WHITE		= $(shell tput -Txterm setaf 7)
+RESET		= $(shell tput -Txterm sgr0)
+
+#			SOURCES
 
 SRCS		= ft_atoi.c \
 			  ft_isprint.c \
@@ -44,7 +58,8 @@ SRCS		= ft_atoi.c \
 			  ft_memcmp.c \
 			  ft_putstr_fd.c \
 			  ft_strlen.c \
-			  ft_tolower.c
+			  ft_tolower.c \
+			  ft_ternarys.c
 
 SRCS_BONUS	= ft_lstnew.c \
 			  ft_lstadd_front.c \
@@ -56,27 +71,52 @@ SRCS_BONUS	= ft_lstnew.c \
 			  ft_lstiter.c \
 			  ft_lstmap.c
 
-OBJS		= ${SRCS:.c=.o}
+SRCS_GNL	= get_next_line.c \
+			  get_next_line_utils.c\
 
-OBJS_BONUS	= ${SRCS_BONUS:.c=.o}
+SRCS_PRINTF	= ft_convert_c.c \
+			  ft_convert_i_d.c \
+			  ft_convert_p.c \
+			  ft_convert_s.c \
+			  ft_convert_u.c \
+			  ft_convert_x.c \
+			  ft_execute.c \
+			  ft_get_element.c \
+			  ft_printf.c \
+			  ft_utils.c
+
+#			OBJECTS
+
+OBJS		= $(addprefix srcs/, ${SRCS:.c=.o})
+
+OBJS_BONUS	= $(addprefix srcs/, ${SRCS_BONUS:.c=.o})
+
+OBJS_GNL	= $(addprefix srcs/GNL/, ${SRCS_GNL:.c=.o})
+
+OBJS_PRINTF	= $(addprefix srcs/ft_printf/, ${SRCS_PRINTF:.c=.o})
+
+#			MAIN
 
 NAME		= libft.a
 
 .c.o:
-			@gcc -Wall -Wextra -Werror -c -I./ $< -o ${<:.c=.o}
+			@gcc -Wall -Wextra -Werror -c -I./includes $< -o ${<:.c=.o}
+			@printf "\r[$(YELLOW)✓$(RESET)] compilation of $<                     \r"
 
-$(NAME):	${OBJS}
-			@ar -rcs ${NAME} ${OBJS}
+$(NAME):	${OBJS} ${OBJS_PRINTF} ${OBJS_GNL}
+			@ar -rcs ${NAME} ${OBJS} ${OBJS_PRINTF} ${OBJS_GNL}
 
 all:		${NAME}
 
 bonus:		${OBJS_BONUS}
 			@ar -rcs ${NAME} ${OBJS_BONUS}
+			@printf "                                                    \r"
+			@printf "[$(GREEN)✓$(RESET)] libft.a created\n"
 
 full:		all	bonus
 
 clean:
-			@rm -f ${OBJS} ${OBJS_BONUS}
+			@rm -f ${OBJS} ${OBJS_BONUS} ${OBJS_GNL} ${OBJS_PRINTF}
 
 fclean:		clean
 			@rm -f ${NAME}

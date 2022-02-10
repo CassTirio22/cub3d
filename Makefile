@@ -6,9 +6,10 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2021/03/29 14:58:40 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/10 14:42:56 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 BLACK		= $(shell tput -Txterm setaf 0)
 RED			= $(shell tput -Txterm setaf 1)
@@ -20,52 +21,49 @@ BLUE		= $(shell tput -Txterm setaf 6)
 WHITE		= $(shell tput -Txterm setaf 7)
 RESET		= $(shell tput -Txterm sgr0)
 
+SRCSDIR	=	srcs/
+OBJSDIR	=	objs/
 
-SRCS		=	cub3d.c\
-				ft_hook.c\
-				ft_utils.c\
-				gnl/get_next_line.c\
-				gnl/get_next_line_utils.c\
-				ft_draw/ft_draw.c\
-				ft_move/ft_move.c\
-				ft_move/ft_move2.c\
-				init_data/init_data.c\
-				init_data/init_data2.c\
+FILES	=	cub3d.c					\
+			hook.c					\
+			utils.c					\
+			draw/draw.c			\
+			move/move.c			\
+			move/move2.c			\
+			init_data/init_data.c	\
+			init_data/init_data2.c
 
-OBJS		=	${SRCS:.c=.o}
+SRCS	=	$(addprefix srcs/, $(FILES))
+OBJS	=	$(patsubst srcs%.c, objs%.o, $(SRCS))
 
-NAME		=	cub3d.a
+CC		=	gcc -Wall -Wextra -Werror
+MFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
-CFLAGS		= 	-Wall -Wextra -Werror
+NAME	=	cub3d
+RM		=	rm -f
 
-LIBFT		=	./libft
+all:		$(NAME)
 
-.c.o:			
-				@gcc ${CFLAGS} -c -I ./ $< -o ${<:.c=.o}
-				@echo "${LIGHTPURPLE}Compilation : $< --> .o${RESET}"
+$(NAME):	$(OBJS)
+			@make full -C ./libft
+			@$(CC) $(MFLAGS) -o $(NAME) $(OBJS) libft/libft.a
+			@echo "\r[$(GREEN)✓$(RESET)] cub3d created                         "
 
-$(NAME):		${OBJS}
-				@make full -C $(LIBFT)
-				@cp libft/libft.a ./$(NAME)
-				@ar -rcs ${NAME} ${OBJS}
-				@ranlib ${NAME}
-				@echo "${GREEN}Library done !${RESET}"
-				@gcc -lmlx -framework OpenGL -framework AppKit $(NAME)
-				@mv a.out cub3d
-
-all:			${NAME}
+objs/%.o:	srcs/%.c			
+			@printf "\r[$(LIGHTPURPLE)✓$(RESET)] compilation of $<           \r"
+			@$(CC) -Imlx -I ./includes -c $^ -o $@
 
 clean:
-				@rm -f ${OBJS}
-				@make clean -C $(LIBFT)
-				@echo "${RED}Clean done !${RESET}"
+			@$(RM) $(OBJS)
+			@make clean -C $(LIBFT)
+			@echo "[$(RED)✓$(RESET)] clean done"
 
-fclean:			clean
-				@rm -f ${NAME}
-				@rm -f a.out
-				@make fclean -C $(LIBFT)
-				@echo "${RED}Fclean done !${RESET}"
+fclean:	
+			@$(RM) $(OBJS)
+			@$(RM) $(NAME)
+			@make fclean -C ./libft
+			@echo "[$(RED)✓$(RESET)] fclean done"
 
-re:				fclean all
+re:			fclean all
 
-.PHONY:			all clean fclean re
+.PHONY:		all clean fclean re cub3d
