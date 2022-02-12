@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/10 20:00:44 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/12 20:21:02 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,13 @@ RESET		= $(shell tput -Txterm sgr0)
 SRCSDIR	=	srcs/
 OBJSDIR	=	objs/
 
-FILES	=	cub3d.c			\
-			free/free.c		\
-			init/init.c		\
-			parsing/parse.c	\
-			utils/utils.c
+FILES	=	cub3d.c				\
+			free/free.c			\
+			init/init.c			\
+			parsing/parse.c		\
+			parsing/parse2.c	\
+			utils/utils.c		\
+			utils/utils2.c
 
 SRCS	=	$(addprefix srcs/, $(FILES))
 OBJS	=	$(patsubst srcs%.c, objs%.o, $(SRCS))

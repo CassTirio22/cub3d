@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 16:55:33 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 18:41:06 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ int	get_info_map(char **argv, t_cub *cub)
 		if (index < 8)
 		{
 			if (line[0])
-			{
-				get_line(line, cub, 0, index);
-				index++;
-			}
+				get_line(line, cub, 0, index++);
 		}
 		else
 			get_line(line, cub, 1, index);
@@ -59,7 +56,7 @@ int	get_info_map(char **argv, t_cub *cub)
 
 int	parse(char **argv, t_cub *cub)
 {
-	if (!get_info_map(argv, cub))
+	if (!get_info_map(argv, cub) || !verify_map_info(cub))
 		return (free_all(cub));
 	return (0);
 }

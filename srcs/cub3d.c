@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 16:55:53 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 20:34:08 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv) || init_var(&cub) || parse(argv, &cub))
 		return (1);
 	print_double_char(cub.map->info);
+	write(1, "\n\n", 2);
 	print_double_char(cub.map->map);
 	return (0);
 }

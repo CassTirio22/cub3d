@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/17 11:49:32 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 20:13:25 by ctirions         ###   ########.fr       */
+/*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
+/*   Updated: 2022/02/12 20:21:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+int	ft_strlen_cub3d(char *str)
 {
-	char	*pt;
+	int	i;
 
-	pt = (char *)b;
-	while (len-- > 0)
-		pt[len] = c;
-	return (b);
+	if (!str)
+		return (0);
+	i = -1;
+	while (str[++i])
+		if (str[i] == '\t')
+			i += 3;
+	return (i);
 }

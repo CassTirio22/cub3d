@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 16:53:08 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 20:01:51 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	init_var(t_cub *cub);
 **		-___PARSING___-
 */
 
+int		verify_map_info(t_cub *cub);
 int		parse(char **argv, t_cub *cub);
 int		check_args(int argc, char **argv);
 
@@ -79,10 +80,12 @@ int		free_all(t_cub *cub);
 /*
 **		-___UTILS___-
 */
+
 char	**lst_to_double_char(t_list *lst);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
 void	free_double_char(char **str);
 int		ft_is_white_space(char c);
+int		ft_strlen_cub3d(char *str);
 
 #endif

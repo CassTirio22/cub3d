@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 15:58:12 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 16:04:15 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 20:27:32 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ char	*ft_gnljoin(char const *s1, char const *s2)
 	i = -1;
 	size = ft_strlen_protect(s1) + ft_strlen_protect(s2) + 1;
 	dest = (char *)malloc(sizeof(char) * size);
-	while (++i < size)
-		dest[i] = 0;
 	if (!dest)
 	{
 		if (s1)
 			free((void *)s1);
 		return (NULL);
 	}
+	while (++i < size)
+		dest[i] = 0;
 	ft_memcpy(dest, s1, ft_strlen_protect(s1));
 	ft_memcpy(dest + ft_strlen_protect(s1), s2, ft_strlen_protect(s2));
 	free((void *)s1);
