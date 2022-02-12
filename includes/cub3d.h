@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/10 20:29:26 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 16:53:08 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_map
 	int		resolution[2];
 	char	**map;
 	char	**info;
+	t_list	*map_lst;
 }				t_map;
 
 typedef struct s_img
@@ -65,19 +66,23 @@ int	init_var(t_cub *cub);
 **		-___PARSING___-
 */
 
-int	parse(char **argv, t_cub *cub);
-int	check_args(int argc, char **argv);
+int		parse(char **argv, t_cub *cub);
+int		check_args(int argc, char **argv);
 
 /*
 **		-___UTILS___-
 */
 
-int	free_all(t_cub *cub);
+void	print_double_char(char **str);
+int		free_all(t_cub *cub);
 
 /*
 **		-___UTILS___-
 */
-
-int	ft_is_white_space(char c);
+char	**lst_to_double_char(t_list *lst);
+void	print_lst(t_list *lst);
+void	print_double_char(char **str);
+void	free_double_char(char **str);
+int		ft_is_white_space(char c);
 
 #endif

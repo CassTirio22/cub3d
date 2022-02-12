@@ -5,57 +5,100 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 14:42:44 by ctirions          #+#    #+#             */
-/*   Updated: 2021/03/18 17:13:26 by ctirions         ###   ########.fr       */
+/*   Created: 2022/02/12 15:58:12 by ctirions          #+#    #+#             */
+/*   Updated: 2022/02/12 16:04:15 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../includes/get_next_line.h"
 
-char	*ft_strjoin_gnl(const char *s1, const char *s2)
+size_t	ft_strlen_protect(const char *s)
 {
-	char	*res;
 	size_t	i;
 
-	i = ft_strlen(s1) + ft_strlen(s2);
-	res = (char *)ft_calloc(sizeof(char), i + 1);
-	if (!res)
+	if (!s)
+		return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	const char	*src2;
+	char		*dest2;
+
+	if (!src && !dest)
+		return (dest);
+	dest2 = (char *)dest;
+	src2 = (const char *)src;
+	while (n-- > 0)
+		dest2[n] = src2[n];
+	return ((void *)dest2);
+}
+
+char	*ft_gnljoin(char const *s1, char const *s2)
+{
+	char	*dest;
+	size_t	size;
+	size_t	i;
+
+	i = -1;
+	size = ft_strlen_protect(s1) + ft_strlen_protect(s2) + 1;
+	dest = (char *)malloc(sizeof(char) * size);
+	while (++i < size)
+		dest[i] = 0;
+	if (!dest)
 	{
 		if (s1)
 			free((void *)s1);
 		return (NULL);
 	}
-	ft_memcpy(res, s1, ft_strlen(s1));
-	ft_memcpy(res + ft_strlen(s1), s2, ft_strlen(s2));
+	ft_memcpy(dest, s1, ft_strlen_protect(s1));
+	ft_memcpy(dest + ft_strlen_protect(s1), s2, ft_strlen_protect(s2));
 	free((void *)s1);
-	return (res);
+	return (dest);
 }
 
-int	ft_isreturn(char *str)
+char	*ft_strdup_gnl(char *s1)
 {
-	int	i;
+	char	*dest;
+	int		size;
+	int		i;
 
+	if (!s1)
+		return (NULL);
+	size = ft_strlen_protect(s1) + 1;
 	i = -1;
-	if (!str)
-		return (0);
-	while (str[++i])
-		if (str[i] == '\n')
-			return (1);
-	return (0);
+	dest = (char *)malloc(sizeof(char) * (size));
+	while (++i < size)
+		dest[i] = 0;
+	if (!dest)
+		return (NULL);
+	i = -1;
+	while (s1[++i])
+		dest[i] = s1[i];
+	return (dest);
 }
 
-char	*ft_strdup_gnl(char *save)
+char	*ft_strchr_dup_remix(const char *s, int c)
 {
-	size_t	i;
-	char	*res;
+	char	*dest;
+	int		i;
 
-	if (!save)
-		return (NULL);
-	res = (char *)ft_calloc(sizeof(char), ft_strlen(save) + 1);
-	if (!res)
+	if (!s)
 		return (NULL);
 	i = -1;
-	while (save[++i])
-		res[i] = save[i];
-	return (res);
+	while (s[++i])
+	{
+		if (s[i] == (char)c)
+		{
+			dest = ft_strdup_gnl((char *)(s + i + 1));
+			free((void *)s);
+			return (dest);
+		}
+	}
+	free((void *)s);
+	return (NULL);
 }

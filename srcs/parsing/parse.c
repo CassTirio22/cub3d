@@ -6,54 +6,60 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/10 20:28:54 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 16:55:33 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	parse(char **argv, t_cub *cub)
+int	get_line(char *line, t_cub *cub, int boolean, int index)
 {
-	char	*line;
-	int		fd;
-	int		i;
-	int		j;
-
-	j = 0;
-	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
-		return (free_all(cub));
-	while (get_next_line(fd, &line))		/*---Make a fonction for get info---*/
+	if (!boolean)
 	{
-		i = 0;
-		while (ft_is_white_space(line[i]))
-			i++;
-		if (ft_isdigit(line[i]))
+		cub->map->info[index] = ft_strdup(line);
+		if (!cub->map->info[index])
 		{
-			close(fd);
-			free(line);
-			return (0);
-		}
-		if (line[0])
-			cub->map->info[j++] = ft_strdup(line);		/*---To protect---*/
-		free(line);
+			free_double_char(cub->map->info);
+			return (1);
+		}	
 	}
-	close(fd);
+	else
+		ft_lstadd_back(&cub->map->map_lst, ft_lstnew((char *)line));
 	return (0);
 }
 
-/*----get map-----*/
-
-int	check_args(int argc, char **argv)
+int	get_info_map(char **argv, t_cub *cub)
 {
-	int	size;
+	char	*line;
+	int		fd;
+	int		index;
 
-	if (argc != 2)
-		return (1);
-	size = ft_strlen(argv[1]);
-	if (size < 5)
-		return (1);
-	if (ft_strncmp(argv[1] + size - 4, ".cub", 4))
-		return (1);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		return (0);
+	index = 0;
+	while (get_next_line(fd, &line))
+	{
+		if (index < 8)
+		{
+			if (line[0])
+			{
+				get_line(line, cub, 0, index);
+				index++;
+			}
+		}
+		else
+			get_line(line, cub, 1, index);
+	}
+	get_line(line, cub, 1, index);
+	cub->map->map = lst_to_double_char(cub->map->map_lst);
+	close(fd);
+	return (1);
+}
+
+int	parse(char **argv, t_cub *cub)
+{
+	if (!get_info_map(argv, cub))
+		return (free_all(cub));
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 12:42:15 by ctirions          #+#    #+#             */
-/*   Updated: 2021/03/18 14:53:52 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/12 16:54:46 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!*lst)
 	{
 		*lst = new;
+		(*lst)->next = NULL;
 		return ;
 	}
 	lst_2 = ft_lstlast(*lst);

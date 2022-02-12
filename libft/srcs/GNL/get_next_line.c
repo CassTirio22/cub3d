@@ -5,107 +5,100 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 14:42:44 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/10 20:19:48 by ctirions         ###   ########.fr       */
+/*   Created: 2022/02/12 15:58:23 by ctirions          #+#    #+#             */
+/*   Updated: 2022/02/12 16:01:18 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-int	ft_end(int reader, char **line, char *save[FOPEN_MAX], int fd)
-{
-	*line = ft_linecpy(save[fd]);
-	if (!(*line))
-		return (-1);
-	save[fd] = ft_savecpy(save[fd]);
-	if (reader && !save[fd])
-	{
-		free(*line);
-		return (-1);
-	}
-	if (!reader)
-		return (0);
-	return (1);
-}
+#include "../../includes/get_next_line.h"
 
 char	*ft_check_error(int fd, char **line)
 {
-	char	*buffer;
+	char	*buff;
 
-	if (fd < 0 || !line || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
+	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1 || !line)
 		return (NULL);
-	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (!buffer)
+	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buff)
 		return (NULL);
-	return (buffer);
+	return (buff);
 }
 
-char	*ft_savecpy(char *save)
+int	ft_backslash_checker(char *str)
 {
-	char	*res;
-	int		i;
+	int	i;
 
-	if (!save)
-		return (NULL);
+	if (!str)
+		return (0);
 	i = -1;
-	while (save[++i])
-	{
-		if (save[i] == '\n')
-		{
-			res = ft_strdup_gnl((char *)(save + i + 1));
-			free((void *)save);
-			return (res);
-		}
-	}
-	free((void *)save);
-	return (NULL);
+	while (str[++i])
+		if (str[i] == '\n')
+			return (1);
+	return (0);
 }
 
-char	*ft_linecpy(char *save)
+char	*ft_get_line(char *str)
 {
-	char	*res;
-	int		i;
+	char	*dest;
+	size_t	size;
+	size_t	i;
 
-	i = 0;
-	if (!save)
+	if (!str)
 		return (NULL);
-	while (save[i] && save[i] != '\n')
-		i++;
-	res = (char *)ft_calloc(sizeof(char), i + 1);
-	if (!res)
+	size = 0;
+	i = -1;
+	while (str[size] && str[size] != '\n')
+		size++;
+	dest = (char *)malloc(sizeof(char) * (size + 1));
+	while (++i < size + 1)
+		dest[i] = 0;
+	if (!dest)
 		return (NULL);
-	i = 0;
-	while (save[i] && save[i] != '\n')
+	size = 0;
+	while (str[size] && str[size] != '\n')
 	{
-		res[i] = save[i];
-		i++;
+		dest[size] = str[size];
+		size++;
 	}
-	return (res);
+	return (dest);
+}
+
+int	ft_return(char **buff, int i, char **line, char **str_save)
+{
+	free(*buff);
+	*line = ft_get_line(*str_save);
+	if (!line)
+		return (-1);
+	*str_save = ft_strchr_dup_remix(*str_save, '\n');
+	if (!*str_save && i != 0)
+		return (-1);
+	if (i)
+		return (1);
+	return (0);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	char			*buffer;
-	long long int	reader;
-	static char		*save[FOPEN_MAX];
+	static char	*str_save;
+	char		*buff;
+	int			i;
 
-	reader = 1;
-	buffer = ft_check_error(fd, line);
-	if (!buffer)
+	buff = ft_check_error(fd, line);
+	if (!buff)
 		return (-1);
-	while (!ft_isreturn(save[fd]) && reader != 0)
+	i = 1;
+	while (!ft_backslash_checker(str_save) && i)
 	{
-		reader = read(fd, buffer, BUFFER_SIZE);
-		if (reader == -1)
+		i = (int)read(fd, buff, BUFFER_SIZE);
+		if (i < 0)
 		{
-			free(buffer);
+			free(buff);
 			return (-1);
 		}
-		buffer[reader] = 0;
-		save[fd] = ft_strjoin_gnl(save[fd], buffer);
-		if (!save[fd])
+		buff[i] = 0;
+		str_save = ft_gnljoin(str_save, buff);
+		if (!str_save)
 			return (-1);
 	}
-	free(buffer);
-	return (ft_end(reader, line, save, fd));
+	return (ft_return(&buff, i, line, &str_save));
 }
