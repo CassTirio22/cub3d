@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:40:06 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 16:59:57 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:14:39 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@ void	print_double_char(char **str)
 		ft_putstr_fd(str[i], 1);
 		write(1, "\n", 1);
 	}
-}
-
-void	free_double_char(char **str)
-{
-	int	i;
-
-	if (!str)
-		return ;
-	i = -1;
-	while (str[++i])
-		free(str[i]);
-	free(str[i]);
-	free(str);
 }
 
 void	print_lst(t_list *lst)
@@ -78,4 +65,16 @@ char	**lst_to_double_char(t_list *lst)
 	}
 	ret[size] = NULL;
 	return (ret);
+}
+
+int	double_char_len(char **str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

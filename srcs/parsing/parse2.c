@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:14:04 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 20:49:38 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:32:12 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	transform_map_line(char **line, int max_len)
 
 /*---ft_gnljoin to protect---*/
 
-int	verify_map(t_map *map)
+int	transform_map(t_map *map)
 {
 	int	max_len;
 	int	i;
@@ -107,7 +107,7 @@ int	verify_map_info(t_cub *cub)
 	while (++i < 8)
 		if (info[i] != 1)
 			return (0);
-	if (!verify_map(cub->map))
+	if (!transform_map(cub->map))
 		return (0);
 	return (1);
 }
