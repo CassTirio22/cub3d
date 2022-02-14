@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/14 17:19:40 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:20:34 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	closed_map(char **map)
 	int	i;
 	int	j;
 
-	max_size = double_char_len(map);
+	max_size = double_char_len(map) - 1;
 	i = -1;
 	while (map[++i])
 	{
