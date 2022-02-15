@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 17:54:25 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:58:54 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,32 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	draw_player(int x, int y, t_cub *cub)
+{
+	int	i;
+	int	j;
+	int	wall_size;
+
+	wall_size = cub->var->wall_size;
+	i = -1;
+	while (++i < wall_size / 4)
+	{
+		j = -1;
+		while (++j < wall_size / 4)
+			draw_pixel(cub->img, (y + 0.375) * wall_size + i, (x + 0.375) * wall_size + j, 0xEC57B8);
+	}
+}
+
 void	draw_wall(int x, int y, t_cub *cub, int color)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (++i < cub->var->wall_size)
+	while (++i < cub->var->wall_size - 1)
 	{
 		j = -1;
-		while (++j < cub->var->wall_size)
+		while (++j < cub->var->wall_size - 1)
 			draw_pixel(cub->img, i + y * cub->var->wall_size, \
 			j + x * cub->var->wall_size, color);
 	}
@@ -55,5 +71,6 @@ void	draw_map(t_cub *cub)
 				draw_wall(i, j, cub, 0xD5D5D5);
 		}
 	}
+	draw_player(cub->p1->pos[0], cub->p1->pos[1], cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }

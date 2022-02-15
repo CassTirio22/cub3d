@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 17:54:02 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:58:09 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int	parse(char **argv, t_cub *cub)
 	if (!closed_map(cub->map->map))
 		return (free_all(cub));
 	init_map_info(cub->map, cub->var);
+	init_player(cub);
 	init_mlx(cub);
 	return (0);
 }

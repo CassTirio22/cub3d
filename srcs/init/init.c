@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 17:18:40 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:57:49 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,28 @@ void	init_map_info(t_map *map, t_var *var)
 	if (var->wall_size > var->resolution[1] / double_char_len(map->map))
 		var->wall_size = var->resolution[1] / double_char_len(map->map);
 	printf("size : %d\n", var->wall_size);
+}
+
+int	init_player(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (cub->map->map[++i])
+	{
+		j = -1;
+		while (cub->map->map[i][++j])
+		{
+			if (ft_isalpha(cub->map->map[i][j]))
+			{
+				printf("coucou\n");
+				cub->p1->pos[0] = i;
+				cub->p1->pos[1] = j;
+			}
+		}
+	}
+	return (0);
 }
 
 int	init_mlx(t_cub *cub)

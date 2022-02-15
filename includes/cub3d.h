@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 17:43:47 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:59:27 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@
 
 typedef struct s_player
 {
+	int		pos[2];
+
 }				t_player;
 
 typedef	struct s_var
@@ -76,6 +78,7 @@ typedef struct s_cub
 */
 
 void	init_map_info(t_map *map, t_var *var);
+int		init_player(t_cub *cub);
 int		init_mlx(t_cub *cub);
 int		init_var(t_cub *cub);
 
