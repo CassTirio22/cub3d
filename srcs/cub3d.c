@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/14 16:49:19 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/15 17:51:15 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv) || init_var(&cub) || parse(argv, &cub))
 		return (1);
-	//print_double_char(cub.map->info);
-	//write(1, "\n\n", 2);
+	draw_map(&cub);
 	print_double_char(cub.map->map);
 	printf("\nmap size = %d\n", double_char_len(cub.map->map));
 	printf("line len = %zu\n", ft_strlen(cub.map->map[0]));
+	mlx_hook(cub.win_ptr, 2, 1L << 0, ft_key, &cub);
+	mlx_hook(cub.win_ptr, 17, 1L << 17, ft_close, &cub);
+	mlx_loop(cub.mlx_ptr);
 	return (0);
 }

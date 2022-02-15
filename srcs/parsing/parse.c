@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/14 18:20:34 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/15 17:54:02 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,35 +56,33 @@ int	get_info_map(char **argv, t_cub *cub)
 
 int	arround_zero(char **map, int i, int j)
 {
-	static int	nb_player;
-	int			max_len;
-
-	max_len = ft_strlen(map[i]);
-	if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
-		nb_player++;
-	if (nb_player && nb_player != 1)
-		return (0);
 	if (!j)
 		return (0);
-	if (j == max_len)
+	if (j == (int)ft_strlen(map[i]))
 		return (0);
-	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' && map[i][j - 1] != 'N' && map[i][j - 1] != 'S' && map[i][j - 1] != 'W' && map[i][j - 1] != 'E')
+	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' && map[i][j - 1] != 'N' \
+	&& map[i][j - 1] != 'S' && map[i][j - 1] != 'W' && map[i][j - 1] != 'E')
 		return (0);
-	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' && map[i][j + 1] != 'N' && map[i][j + 1] != 'S' && map[i][j + 1] != 'W' && map[i][j + 1] != 'E')
+	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' && map[i][j + 1] != 'N' \
+	&& map[i][j + 1] != 'S' && map[i][j + 1] != 'W' && map[i][j + 1] != 'E')
 		return (0);
-	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' && map[i - 1][j] != 'N' && map[i - 1][j] != 'S' && map[i - 1][j] != 'W' && map[i - 1][j] != 'E')
+	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' && map[i - 1][j] != 'N' \
+	&& map[i - 1][j] != 'S' && map[i - 1][j] != 'W' && map[i - 1][j] != 'E')
 		return (0);
-	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' && map[i + 1][j] != 'N' && map[i + 1][j] != 'S' && map[i + 1][j] != 'W' && map[i + 1][j] != 'E')
+	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' && map[i + 1][j] != 'N' \
+	&& map[i + 1][j] != 'S' && map[i + 1][j] != 'W' && map[i + 1][j] != 'E')
 		return (0);
 	return (1);
 }
 
 int	closed_map(char **map)
 {
+	int	nb_player;
 	int	max_size;
 	int	i;
 	int	j;
 
+	nb_player = 0;
 	max_size = double_char_len(map) - 1;
 	i = -1;
 	while (map[++i])
@@ -97,12 +95,21 @@ int	closed_map(char **map)
 				if (map[i][j] != '1' && map[i][j] != '2')
 					return (0);
 			}
-			else
-				if (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
-					if (!arround_zero(map, i, j))
-						return (0);
+			else if (map[i][j] == '0')
+			{
+				if (!arround_zero(map, i, j))
+					return (0);
+			}
+			else if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E')
+			{
+				if (!arround_zero(map, i, j))
+					return (0);
+				nb_player++;
+			}
 		}
 	}
+	if (nb_player != 1)
+		return (0);
 	return (1);
 }
 
@@ -111,8 +118,8 @@ int	parse(char **argv, t_cub *cub)
 	if (!get_info_map(argv, cub) || !verify_map_info(cub))
 		return (free_all(cub));
 	if (!closed_map(cub->map->map))
-		printf("OUVERT\n");
-	else
-		printf("FERME\n");
+		return (free_all(cub));
+	init_map_info(cub->map, cub->var);
+	init_mlx(cub);
 	return (0);
 }

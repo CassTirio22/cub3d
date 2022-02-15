@@ -6,7 +6,7 @@
 #    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/12 20:21:02 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/15 16:57:35 by ctirions         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ OBJSDIR	=	objs/
 
 FILES	=	cub3d.c				\
 			free/free.c			\
+			draw/draw.c			\
+			hook/hook.c			\
 			init/init.c			\
 			parsing/parse.c		\
 			parsing/parse2.c	\
