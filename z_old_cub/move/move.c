@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 18:04:17 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/10 14:12:13 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 18:50:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	ft_d(t_struct_list *struct_list)
 	{
 		j = -1;
 		while (++j < 2)
-			if (struct_list->map->map[(int)(struct_list->param->y_p - dx + i / 3 - 1 / 6)]\
-				[(int)(struct_list->param->x_p + dy + j / 3 - 1 / 6 + 1)] == 1)
+			if (struct_list->map->map[(int)(struct_list->param->y_p - dx + i / 3 - 1 / 6)][(int)(struct_list->param->x_p + dy + j / 3 - 1 / 6 + 1)] == 1)
 				return ;
 	}
 	struct_list->param->x_p += dy;

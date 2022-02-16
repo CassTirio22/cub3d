@@ -6,11 +6,18 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 20:21:21 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:39:44 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	is_wall(float x, float y, char **map)
+{
+	if (map[(int)y][(int)x] == '1')
+		return (1);
+	return (0);
+}
 
 int	ft_strlen_cub3d(char *str)
 {

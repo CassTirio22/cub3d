@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 15:39:12 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:37:18 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	draw_player(double x, double y, t_cub *cub)
 	{
 		j = -1;
 		while (++j < wall_size / 4)
-			draw_pixel(cub->img, (y + 0.375) * wall_size + i, (x + 0.375) * wall_size + j, 0xEC57B8);
+			draw_pixel(cub->img, x * wall_size + i, y * wall_size + j, 0xEC57B8);
 	}
 }
 

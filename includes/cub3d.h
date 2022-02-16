@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 15:29:43 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:13:48 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 # define KEY_S 1
 # define KEY_A 0
 # define KEY_D 2
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 # define SPEED 0.1
 
 /*
@@ -38,6 +40,7 @@
 typedef struct s_player
 {
 	double		pos[2];
+	int			angle;
 
 }				t_player;
 
@@ -109,6 +112,13 @@ void	draw_map(t_cub *cub);
 
 int		ft_key(int key, t_cub *cub);
 int		ft_close(t_cub *cub);
+int		ft_up(t_cub *cub);
+int		ft_down(t_cub *cub);
+int		ft_left(t_cub *cub);
+int		ft_right(t_cub *cub);
+int		rot_left(t_cub *cub);
+int		rot_right(t_cub *cub);
+
 
 /*
 **		-___FREE___-
@@ -127,5 +137,6 @@ void	print_double_char(char **str);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
+int		is_wall(float x, float y, char **map);
 
 #endif

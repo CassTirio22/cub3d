@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 15:50:29 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:33:39 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ void	init_map_info(t_map *map, t_var *var)
 	var->wall_size = var->resolution[0] / ft_strlen(map->map[0]);
 	if (var->wall_size > var->resolution[1] / double_char_len(map->map))
 		var->wall_size = var->resolution[1] / double_char_len(map->map);
-	printf("size : %d\n", var->wall_size);
 }
 
 int	init_player(t_cub *cub)
@@ -88,8 +87,16 @@ int	init_player(t_cub *cub)
 		{
 			if (ft_isalpha(cub->map->map[i][j]))
 			{
-				cub->p1->pos[0] = i;
-				cub->p1->pos[1] = j;
+				cub->p1->pos[0] = j + 0.5;
+				cub->p1->pos[1] = i + 0.5;
+				if (cub->map->map[i][j] == 'E')
+					cub->p1->angle = 0;
+				if (cub->map->map[i][j] == 'N')
+					cub->p1->angle = 90;
+				if (cub->map->map[i][j] == 'W')
+					cub->p1->angle = 180;
+				if (cub->map->map[i][j] == 'S')
+					cub->p1->angle = 270;
 			}
 		}
 	}
