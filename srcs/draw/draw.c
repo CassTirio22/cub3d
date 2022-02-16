@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 18:58:54 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:39:12 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	draw_player(int x, int y, t_cub *cub)
+void	draw_player(double x, double y, t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -50,6 +50,19 @@ void	draw_wall(int x, int y, t_cub *cub, int color)
 			j + x * cub->var->wall_size, color);
 	}
 }
+void	draw_all(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < cub->var->resolution[0])
+	{
+		j = -1;
+		while (++j < cub->var->resolution[1])
+			draw_pixel(cub->img, i, j, 0x000000);
+	}
+}
 
 void	draw_map(t_cub *cub)
 {
@@ -57,7 +70,7 @@ void	draw_map(t_cub *cub)
 	int	j;
 
 	i = -1;
-	printf("size : %d\n", cub->var->wall_size);
+	draw_all(cub);
 	while (cub->map->map[++i])
 	{
 		j = -1;

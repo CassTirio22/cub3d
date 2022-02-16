@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 18:57:49 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:50:29 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	init_player(t_cub *cub)
 		{
 			if (ft_isalpha(cub->map->map[i][j]))
 			{
-				printf("coucou\n");
 				cub->p1->pos[0] = i;
 				cub->p1->pos[1] = j;
 			}

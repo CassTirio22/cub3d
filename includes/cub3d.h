@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 18:59:27 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:29:43 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # include <fcntl.h>
 
 # define KEY_ESC 53
+# define KEY_W 13
+# define KEY_S 1
+# define KEY_A 0
+# define KEY_D 2
+# define SPEED 0.1
 
 /*
 **		-___STRUCT___-
@@ -32,7 +37,7 @@
 
 typedef struct s_player
 {
-	int		pos[2];
+	double		pos[2];
 
 }				t_player;
 

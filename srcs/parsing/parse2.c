@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:14:04 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/15 17:55:22 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:12:34 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	transform_map_line(char **line, int max_len)
 {
-	char	*save_b;
-	char	*save_a;
 	int		i;
 
 	i = -1;
@@ -23,16 +21,11 @@ int	transform_map_line(char **line, int max_len)
 	{
 		if ((*line)[i] == ' ')
 			(*line)[i] = '2';
-		if ((*line)[i] == '\t')
-		{
-			save_a = ft_strdup(*line + i + 1);
-			save_b = ft_substr(*line, 0, i);
-			free(*line);
-			save_b = ft_gnljoin(save_b, "2222");
-			*line = ft_gnljoin(save_b, save_a);		/*---To protect---*/
-			free(save_a);
-			i = -1;
-		}
+		else if ((*line)[i] == '1' || (*line)[i] == '0' || (*line)[i] == 'N' \
+		|| (*line)[i] == 'S' || (*line)[i] == 'W' || (*line)[i] == 'E')
+			;
+		else
+			return (0);
 	}
 	while (++i <= max_len)
 	{
