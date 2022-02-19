@@ -6,15 +6,15 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 19:39:44 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 14:57:01 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	is_wall(float x, float y, char **map)
+int	is_wall(int x, int y, t_cub *cub)
 {
-	if (map[(int)y][(int)x] == '1')
+	if (cub->map->map[y][x] == '1')
 		return (1);
 	return (0);
 }

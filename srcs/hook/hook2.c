@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:26:14 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 18:31:58 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 15:27:46 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	ft_key(int key, t_cub *cub)
 	if (key == KEY_ESC)
 		ft_close(cub);
 	else if (key == KEY_W)
-		ft_up(cub);
+		ft_up(cub, 0);
 	else if (key == KEY_S)
-		ft_down(cub);
+		ft_down(cub, 0);
 	else if (key == KEY_A)
-		ft_left(cub);
+		ft_left(cub, 0);
 	else if (key == KEY_D)
-		ft_right(cub);
+		ft_right(cub, 0);
 	else if (key == KEY_LEFT)
 		rot_left(cub);
 	else if (key == KEY_RIGHT)

@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 19:37:18 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:45:52 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,39 @@ void	draw_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
+void	draw_view(t_cub *cub, t_player *p1)
+{
+	double	dx;
+	double	dy;
+	int		i;
+
+	i = -1;
+	dx = 0;
+	dy = 0;
+	while (++i < 20)
+	{
+		dx += cos((double)p1->angle * (M_PI / 180));
+		dy += sin((double)p1->angle * (M_PI / 180));
+		draw_pixel(cub->img, cub->var->wall_size * p1->pos[0] + dx, cub->var->wall_size * p1->pos[1] - dy, 0xFFCD33);
+	}
+}
+
 void	draw_player(double x, double y, t_cub *cub)
 {
 	int	i;
 	int	j;
 	int	wall_size;
-
+	int	player_size;
 	wall_size = cub->var->wall_size;
+	player_size = wall_size / 4;
 	i = -1;
-	while (++i < wall_size / 4)
+	while (++i < player_size)
 	{
 		j = -1;
-		while (++j < wall_size / 4)
-			draw_pixel(cub->img, x * wall_size + i, y * wall_size + j, 0xEC57B8);
+		while (++j < player_size)
+			draw_pixel(cub->img, x * wall_size + i - player_size / 2, y * wall_size + j - player_size / 2, 0xEC57B8);
 	}
+	draw_view(cub, cub->p1);
 }
 
 void	draw_wall(int x, int y, t_cub *cub, int color)

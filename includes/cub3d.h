@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 19:13:48 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:46:03 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		check_args(int argc, char **argv);
 **		-___DRAW___-
 */
 
+void	draw_view(t_cub *cub, t_player *p1);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_wall(int x, int y, t_cub *cub, int color);
 void	draw_map(t_cub *cub);
@@ -112,10 +113,10 @@ void	draw_map(t_cub *cub);
 
 int		ft_key(int key, t_cub *cub);
 int		ft_close(t_cub *cub);
-int		ft_up(t_cub *cub);
-int		ft_down(t_cub *cub);
-int		ft_left(t_cub *cub);
-int		ft_right(t_cub *cub);
+int		ft_up(t_cub *cub, int b2o);
+int		ft_down(t_cub *cub, int b2o);
+int		ft_left(t_cub *cub, int b2o);
+int		ft_right(t_cub *cub, int b2o);
 int		rot_left(t_cub *cub);
 int		rot_right(t_cub *cub);
 
@@ -137,6 +138,6 @@ void	print_double_char(char **str);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
-int		is_wall(float x, float y, char **map);
+int		is_wall(int x, int y, t_cub *cub);
 
 #endif

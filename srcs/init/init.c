@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 19:33:39 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 17:10:47 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	init_player(t_cub *cub)
 			{
 				cub->p1->pos[0] = j + 0.5;
 				cub->p1->pos[1] = i + 0.5;
+				printf("%f\n", cub->p1->pos[1]);
 				if (cub->map->map[i][j] == 'E')
 					cub->p1->angle = 0;
 				if (cub->map->map[i][j] == 'N')
