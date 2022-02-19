@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:26:14 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/19 15:27:46 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:03:44 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,19 @@ int	ft_close(t_cub *cub)
 int	rot_left(t_cub *cub)
 {
 	cub->p1->angle += 10;
-	cub->p1->angle %= 360;	
+	cub->p1->angle %= 360;
 	return (0);
 }
 
 int	rot_right(t_cub *cub)
 {
 	cub->p1->angle -= 10;
-	cub->p1->angle %= 360;	
+	cub->p1->angle %= 360;
 	return (0);
 }
 
 int	ft_key(int key, t_cub *cub)
 {
-	//printf("key : %d\n", key);
 	if (key == KEY_ESC)
 		ft_close(cub);
 	else if (key == KEY_W)
@@ -53,4 +52,3 @@ int	ft_key(int key, t_cub *cub)
 	draw_map(cub);
 	return (0);
 }
-

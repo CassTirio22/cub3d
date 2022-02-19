@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/19 17:46:03 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/19 18:09:38 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_player
 
 }				t_player;
 
-typedef	struct s_var
+typedef struct s_var
 {
 	int		resolution[2];
 	int		wall_size;
@@ -102,10 +102,11 @@ int		check_args(int argc, char **argv);
 **		-___DRAW___-
 */
 
-void	draw_view(t_cub *cub, t_player *p1);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_wall(int x, int y, t_cub *cub, int color);
 void	draw_map(t_cub *cub);
+void	draw_view(t_cub *cub, t_player *p1);
+void	draw_player(double x, double y, t_cub *cub);
 
 /*
 **		-___HOOK___-
@@ -119,7 +120,6 @@ int		ft_left(t_cub *cub, int b2o);
 int		ft_right(t_cub *cub, int b2o);
 int		rot_left(t_cub *cub);
 int		rot_right(t_cub *cub);
-
 
 /*
 **		-___FREE___-

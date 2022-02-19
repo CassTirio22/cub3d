@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+         #
+#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/16 18:30:08 by ctirions         ###   ########.fr        #
+#    Updated: 2022/02/19 18:08:52 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,9 @@ SRCSDIR	=	srcs/
 OBJSDIR	=	objs/
 
 FILES	=	cub3d.c				\
-			free/free.c			\
 			draw/draw.c			\
+			draw/draw2.c		\
+			free/free.c			\
 			hook/hook.c			\
 			hook/hook2.c		\
 			init/init.c			\
