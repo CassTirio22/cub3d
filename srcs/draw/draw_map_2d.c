@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/02/20 18:51:15 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/20 20:19:15 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,29 @@ void	draw_all(t_cub *cub)
 		j = -1;
 		while (++j < cub->var->resolution[1])
 			draw_pixel(cub->img, i, j, 0x000000);
+	}
+}
+
+void	draw_outlines(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	while (++j < 10)
+	{
+		i = -1;
+		while (++i < 30 * cub->var->wall_size)
+			draw_pixel(cub->img, i, j, 0xCF722B);
+		i = -1;
+		while (++i < 30 * cub->var->wall_size)
+			draw_pixel(cub->img, j, i, 0xCF722B);
+		i = -1;
+		while (++i < 30 * cub->var->wall_size)
+			draw_pixel(cub->img, j + 30 * cub->var->wall_size, i, 0xCF722B);
+		i = -1;
+		while (++i < 31 * cub->var->wall_size)
+			draw_pixel(cub->img, i, j + 30 * cub->var->wall_size, 0xCF722B);
 	}
 }
 
@@ -50,6 +73,7 @@ void	draw_map(t_cub *cub)
 	draw_all(cub);
 	pos[0] = cub->p1->pos[0] - 0.5;
 	pos[1] = cub->p1->pos[1] - 0.5;
+	printf("d : %d\nf : %f\n", (int)pos[1], pos[1]);
 	i = 0;
 	while (++i < 31)
 	{
@@ -59,13 +83,14 @@ void	draw_map(t_cub *cub)
 			if (pos[1] - 15 + j < 0 || pos[0] - 15 + i < 0 || pos[0] - 15 + i >= (int)ft_strlen(cub->map->map[0]) || pos[1] - 15 + j >= double_char_len(cub->map->map))
 				;
 			else if (cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)] == '1')
-				draw_wall(pos[1] - 15 + j, pos[0] - 15 + i, cub, 0x787878);
+				draw_wall((int)pos[1] - pos[1] + j, (int)pos[0] - pos[0] + i, cub, 0x787878);
 			else if (cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)] == '0' || ft_isalpha(cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)]))
-				draw_wall(pos[1] - 15 + j, pos[0] - 15 + i, cub, 0xFFFFFF);
+				draw_wall((int)pos[1] - pos[1] + j, (int)pos[0] - pos[0] + i, cub, 0xFFFFFF);
 			else if (cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)] == '2')
-				draw_wall(pos[1] - 15 + j, pos[0] - 15 + i, cub, 0xD5D5D5);
+				draw_wall((int)pos[1] - pos[1] + j, (int)pos[0] - pos[0] + i, cub, 0xD5D5D5);
 		}
 	}
+	draw_outlines(cub);
 	draw_player(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }

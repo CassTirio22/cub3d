@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player_2d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 18:35:45 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/20 20:26:51 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	draw_view(t_cub *cub, t_player *p1)
 	double	dy;
 	int		i;
 	int		j;
+	int		player_view;
 
+	player_view = cub->var->wall_size / 2;
 	i = -30;
 	while (++i <= 30)
 	{
@@ -29,8 +31,8 @@ void	draw_view(t_cub *cub, t_player *p1)
 		{
 			dx += cos(((double)p1->angle + i) * (M_PI / 180));
 			dy += sin(((double)p1->angle + i) * (M_PI / 180));
-			draw_pixel(cub->img, cub->var->wall_size * p1->pos[0] + dx, \
-			cub->var->wall_size * p1->pos[1] - dy, 0xFFEB3B);
+			draw_pixel(cub->img, cub->var->wall_size * 15 + player_view + dx, \
+			cub->var->wall_size * 15 + player_view - dy, 0xFFEB3B);
 		}
 	}
 }
