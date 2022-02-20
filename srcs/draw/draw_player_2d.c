@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 20:26:51 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/20 22:43:04 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	draw_view(t_cub *cub, t_player *p1)
 		{
 			dx += cos(((double)p1->angle + i) * (M_PI / 180));
 			dy += sin(((double)p1->angle + i) * (M_PI / 180));
-			draw_pixel(cub->img, cub->var->wall_size * 15 + player_view + dx, \
-			cub->var->wall_size * 15 + player_view - dy, 0xFFEB3B);
+			draw_pixel(cub->img, cub->var->wall_size * 5 + player_view + dx, \
+			cub->var->wall_size * 5 + player_view - dy, 0xFFEB3B);
 		}
 	}
 }
@@ -51,8 +51,8 @@ void	draw_player(t_cub *cub)
 	{
 		j = -1;
 		while (++j < player_size)
-			draw_pixel(cub->img, 15 * wall_size + i + player_size / 2, \
-			15 * wall_size + j + player_size / 2, 0xEC57B8);
+			draw_pixel(cub->img, 5 * wall_size + i + player_size / 2, \
+			5 * wall_size + j + player_size / 2, 0xEC57B8);
 	}
 	draw_view(cub, cub->p1);
 }

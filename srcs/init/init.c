@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 17:02:29 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/20 22:59:47 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void	init_map_info(t_map *map, t_var *var)
 			free_double_char(tmp);
 		}
 	}
-	var->wall_size = var->resolution[0] / ft_strlen(map->map[0]);
-	if (var->wall_size > var->resolution[1] / double_char_len(map->map))
-		var->wall_size = var->resolution[1] / double_char_len(map->map);
+	var->wall_size = 2 * var->resolution[0] / ft_strlen(map->map[0]);
+	if (var->wall_size > 2 * var->resolution[1] / double_char_len(map->map))
+		var->wall_size = 2 * var->resolution[1] / double_char_len(map->map);
 }
 
 int	init_player(t_cub *cub)
