@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse2.c                                           :+:      :+:    :+:   */
+/*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:14:04 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 15:12:34 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/20 15:54:32 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ int	transform_map_line(char **line, int max_len)
 	return (1);
 }
 
-/*---ft_gnljoin to protect---*/
-
 int	transform_map(t_map *map)
 {
 	int	max_len;
@@ -55,52 +53,23 @@ int	transform_map(t_map *map)
 	return (1);
 }
 
-char	**init_check_info_map(int info[8])
+int	arround_zero(char **map, int i, int j)
 {
-	int		i;
-	char	**ret;
-
-	i = -1;
-	while (++i < 8)
-		info[i] = 0;
-	ret = (char **)malloc(sizeof(char *) * 8);
-	if (!ret)
-		return (NULL);
-	ret[0] = "R ";
-	ret[1] = "F ";
-	ret[2] = "C ";
-	ret[3] = "S ";
-	ret[4] = "NO ";
-	ret[5] = "SO ";
-	ret[6] = "WE ";
-	ret[7] = "EA ";
-	return (ret);
-}
-
-int	verify_map_info(t_cub *cub)
-{
-	char	**check;
-	int		info[8];
-	int		i;
-	int		j;
-
-	check = init_check_info_map(info);
-	if (!check)
+	if (!j)
 		return (0);
-	i = -1;
-	while (cub->map->info[++i])
-	{
-		j = -1;
-		while (++j < 8)
-			if (!ft_strncmp(cub->map->info[i], check[j], ft_strlen(check[j])))
-				info[j]++;
-	}
-	free(check);
-	i = -1;
-	while (++i < 8)
-		if (info[i] != 1)
-			return (0);
-	if (!transform_map(cub->map))
+	if (j == (int)ft_strlen(map[i]))
+		return (0);
+	if (map[i][j - 1] != '0' && map[i][j - 1] != '1' && map[i][j - 1] != 'N' \
+	&& map[i][j - 1] != 'S' && map[i][j - 1] != 'W' && map[i][j - 1] != 'E')
+		return (0);
+	if (map[i][j + 1] != '0' && map[i][j + 1] != '1' && map[i][j + 1] != 'N' \
+	&& map[i][j + 1] != 'S' && map[i][j + 1] != 'W' && map[i][j + 1] != 'E')
+		return (0);
+	if (map[i - 1][j] != '0' && map[i - 1][j] != '1' && map[i - 1][j] != 'N' \
+	&& map[i - 1][j] != 'S' && map[i - 1][j] != 'W' && map[i - 1][j] != 'E')
+		return (0);
+	if (map[i + 1][j] != '0' && map[i + 1][j] != '1' && map[i + 1][j] != 'N' \
+	&& map[i + 1][j] != 'S' && map[i + 1][j] != 'W' && map[i + 1][j] != 'E')
 		return (0);
 	return (1);
 }

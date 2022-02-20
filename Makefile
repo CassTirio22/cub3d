@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
+#    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/19 18:08:52 by zminhas          ###   ########.fr        #
+#    Updated: 2022/02/20 15:59:45 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,16 +24,19 @@ RESET		= $(shell tput -Txterm sgr0)
 SRCSDIR	=	srcs/
 OBJSDIR	=	objs/
 
-FILES	=	cub3d.c				\
-			draw/draw.c			\
-			draw/draw2.c		\
-			free/free.c			\
-			hook/hook.c			\
-			hook/hook2.c		\
-			init/init.c			\
-			parsing/parse.c		\
-			parsing/parse2.c	\
-			utils/utils.c		\
+FILES	=	cub3d.c						\
+			draw/draw.c					\
+			draw/draw_map_2d.c			\
+			draw/draw_player_2d.c		\
+			free/free.c					\
+			hook/hook.c					\
+			hook/move.c					\
+			hook/rotate.c				\
+			init/init.c					\
+			parsing/parse.c				\
+			parsing/parse_map.c			\
+			parsing/parse_map_utils.c	\
+			utils/utils.c				\
 			utils/utils2.c
 
 SRCS	=	$(addprefix srcs/, $(FILES))

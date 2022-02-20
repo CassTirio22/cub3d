@@ -3,115 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 15:32:54 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/19 18:03:13 by zminhas          ###   ########.fr       */
+/*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
+/*   Updated: 2022/02/20 15:43:04 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_up(t_cub *cub, int b2o)
+int	ft_key(int key, t_cub *cub)
 {
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall((int)(cub->p1->pos[0] + dx - 0.125), \
-	(int)(cub->p1->pos[1] - dy - 0.125), cub))
-		return (0);
-	if (is_wall((int)(cub->p1->pos[0] + dx + 0.125), \
-	(int)(cub->p1->pos[1] - dy + 0.125), cub))
-		return (0);
-	if (is_wall((int)(cub->p1->pos[0] + dx - 0.125), \
-	(int)(cub->p1->pos[1] - dy + 0.125), cub))
-		return (0);
-	if (is_wall((int)(cub->p1->pos[0] + dx + 0.125), \
-	(int)(cub->p1->pos[1] - dy - 0.125), cub))
-		return (0);
-	cub->p1->pos[0] += dx;
-	cub->p1->pos[1] -= dy;
-	if (b2o <= 8)
-		ft_up(cub, ++b2o);
+	if (key == KEY_ESC)
+		ft_close(cub);
+	else if (key == KEY_W)
+		ft_up(cub, 0);
+	else if (key == KEY_S)
+		ft_down(cub, 0);
+	else if (key == KEY_A)
+		ft_left(cub, 0);
+	else if (key == KEY_D)
+		ft_right(cub, 0);
+	else if (key == KEY_LEFT)
+		rot_left(cub);
+	else if (key == KEY_RIGHT)
+		rot_right(cub);
+	draw_map(cub);
 	return (0);
 }
 
-int	ft_down(t_cub *cub, int b2o)
+int	ft_close(t_cub *cub)
 {
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall(cub->p1->pos[0] - dx - 0.125, \
-	cub->p1->pos[1] + dy - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dx + 0.125, \
-	cub->p1->pos[1] + dy + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dx - 0.125, \
-	cub->p1->pos[1] + dy + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dx + 0.125, \
-	cub->p1->pos[1] + dy - 0.125, cub))
-		return (0);
-	cub->p1->pos[0] -= dx;
-	cub->p1->pos[1] += dy;
-	if (b2o <= 8)
-		ft_down(cub, ++b2o);
-	return (0);
-}
-
-int	ft_left(t_cub *cub, int b2o)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall(cub->p1->pos[0] - dy - 0.125, \
-	cub->p1->pos[1] - dx - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dy + 0.125, \
-	cub->p1->pos[1] - dx + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dy - 0.125, \
-	cub->p1->pos[1] - dx + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dy + 0.125, \
-	cub->p1->pos[1] - dx - 0.125, cub))
-		return (0);
-	cub->p1->pos[0] -= dy;
-	cub->p1->pos[1] -= dx;
-	if (b2o <= 8)
-		ft_left(cub, ++b2o);
-	return (0);
-}
-
-int	ft_right(t_cub *cub, int b2o)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall(cub->p1->pos[0] + dy - 0.125, \
-	cub->p1->pos[1] + dx - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] + dy + 0.125, \
-	cub->p1->pos[1] + dx + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] + dy + 0.125, \
-	cub->p1->pos[1] + dx - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] + dy - 0.125, \
-	cub->p1->pos[1] + dx + 0.125, cub))
-		return (0);
-	cub->p1->pos[0] += dy;
-	cub->p1->pos[1] += dx;
-	if (b2o <= 8)
-		ft_right(cub, ++b2o);
+	free_all(cub);
+	exit (0);
 	return (0);
 }

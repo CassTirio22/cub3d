@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/19 17:10:47 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/20 15:54:40 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,26 @@ int	init_mlx(t_cub *cub)
 	cub->img->addr = mlx_get_data_addr(cub->img->img, \
 	&cub->img->bits_per_pixel, &cub->img->line_length, &cub->img->endian);
 	return (0);
+}
+
+char	**init_check_info_map(int info[8])
+{
+	int		i;
+	char	**ret;
+
+	i = -1;
+	while (++i < 8)
+		info[i] = 0;
+	ret = (char **)malloc(sizeof(char *) * 8);
+	if (!ret)
+		return (NULL);
+	ret[0] = "R ";
+	ret[1] = "F ";
+	ret[2] = "C ";
+	ret[3] = "S ";
+	ret[4] = "NO ";
+	ret[5] = "SO ";
+	ret[6] = "WE ";
+	ret[7] = "EA ";
+	return (ret);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/19 18:09:38 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/20 16:00:39 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ typedef struct s_cub
 */
 
 void	init_map_info(t_map *map, t_var *var);
+char	**init_check_info_map(int info[8]);
 int		init_player(t_cub *cub);
 int		init_mlx(t_cub *cub);
 int		init_var(t_cub *cub);
@@ -94,9 +95,14 @@ int		init_var(t_cub *cub);
 **		-___PARSING___-
 */
 
+int		closed_map(char **map);
+int		get_info_map(char **argv, t_cub *cub);
 int		verify_map_info(t_cub *cub);
 int		parse(char **argv, t_cub *cub);
+int		get_line(char *line, t_cub *cub, int boolean, int index);
 int		check_args(int argc, char **argv);
+int		arround_zero(char **map, int i, int j);
+int		transform_map(t_map *map);
 
 /*
 **		-___DRAW___-
