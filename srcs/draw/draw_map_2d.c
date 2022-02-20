@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/02/20 15:43:48 by aliens           ###   ########.fr       */
+/*   Updated: 2022/02/20 18:51:15 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void	draw_wall(int x, int y, t_cub *cub, int color)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < cub->var->wall_size - 1)
-	{
-		j = -1;
-		while (++j < cub->var->wall_size - 1)
-			draw_pixel(cub->img, i + y * cub->var->wall_size, \
-			j + x * cub->var->wall_size, color);
-	}
-}
 
 void	draw_all(t_cub *cub)
 {
@@ -41,7 +26,51 @@ void	draw_all(t_cub *cub)
 	}
 }
 
+void	draw_wall(double x, double y, t_cub *cub, int color)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < cub->var->wall_size - 1)
+	{
+		j = -1;
+		while (++j < cub->var->wall_size - 1)
+			draw_pixel(cub->img, i + y * cub->var->wall_size, \
+			j + x * cub->var->wall_size, color);
+	}
+}
+
 void	draw_map(t_cub *cub)
+{
+	double	pos[2];
+	double	i;
+	double	j;
+
+	draw_all(cub);
+	pos[0] = cub->p1->pos[0] - 0.5;
+	pos[1] = cub->p1->pos[1] - 0.5;
+	i = 0;
+	while (++i < 31)
+	{
+		j = 0;
+		while (++j < 31)
+		{
+			if (pos[1] - 15 + j < 0 || pos[0] - 15 + i < 0 || pos[0] - 15 + i >= (int)ft_strlen(cub->map->map[0]) || pos[1] - 15 + j >= double_char_len(cub->map->map))
+				;
+			else if (cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)] == '1')
+				draw_wall(pos[1] - 15 + j, pos[0] - 15 + i, cub, 0x787878);
+			else if (cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)] == '0' || ft_isalpha(cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)]))
+				draw_wall(pos[1] - 15 + j, pos[0] - 15 + i, cub, 0xFFFFFF);
+			else if (cub->map->map[(int)(pos[1] - 15 + j)][(int)(pos[0] - 15 + i)] == '2')
+				draw_wall(pos[1] - 15 + j, pos[0] - 15 + i, cub, 0xD5D5D5);
+		}
+	}
+	draw_player(cub);
+	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
+}
+
+/*void	draw_map(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -63,4 +92,4 @@ void	draw_map(t_cub *cub)
 	}
 	draw_player(cub->p1->pos[0], cub->p1->pos[1], cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
-}
+}*/

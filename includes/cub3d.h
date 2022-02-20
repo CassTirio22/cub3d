@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 16:00:39 by aliens           ###   ########.fr       */
+/*   Updated: 2022/02/20 18:51:31 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,10 @@ int		transform_map(t_map *map);
 */
 
 void	draw_pixel(t_img *img, int x, int y, int color);
-void	draw_wall(int x, int y, t_cub *cub, int color);
+void	draw_wall(double x, double y, t_cub *cub, int color);
 void	draw_map(t_cub *cub);
 void	draw_view(t_cub *cub, t_player *p1);
-void	draw_player(double x, double y, t_cub *cub);
+void	draw_player(t_cub *cub);
 
 /*
 **		-___HOOK___-
