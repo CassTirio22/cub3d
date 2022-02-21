@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/02/20 23:23:03 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/21 02:13:36 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	draw_wall(double x, double y, t_cub *cub, int color)
 	int	j;
 
 	i = -1;
-	while (++i < cub->var->wall_size - 1)
+	while (++i < cub->var->wall_size)
 	{
 		j = -1;
-		while (++j < cub->var->wall_size - 1)
+		while (++j < cub->var->wall_size)
 			draw_pixel(cub->img, i + y * cub->var->wall_size, \
 			j + x * cub->var->wall_size, color);
 	}

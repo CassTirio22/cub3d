@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/16 15:23:44 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/21 02:01:54 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	main(int argc, char **argv)
 	print_double_char(cub.map->map);
 	printf("\nmap size = %d\n", double_char_len(cub.map->map));
 	printf("line len = %zu\n", ft_strlen(cub.map->map[0]));
-	mlx_hook(cub.win_ptr, 2, 1L << 0, ft_key, &cub);
-	mlx_hook(cub.win_ptr, 17, 1L << 17, ft_close, &cub);
+	mlx_hook(cub.win_ptr, 2, 1L << 0, key_press, &cub);
+	mlx_hook(cub.win_ptr, 3, 1L << 1, key_release, &cub);
+	mlx_hook(cub.win_ptr, 17, 1L << 17, close_win, &cub);
+	mlx_loop_hook(cub.mlx_ptr, make_moves, &cub);
 	mlx_loop(cub.mlx_ptr);
 	return (0);
 }

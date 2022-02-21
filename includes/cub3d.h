@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 18:51:31 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/02/21 02:09:05 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct s_player
 
 typedef struct s_var
 {
+	int		up;
+	int		down;
+	int		left;
+	int		right;
+	int		rot_left;
+	int		rot_right;
 	int		resolution[2];
 	int		wall_size;
 	char	*so;
@@ -118,12 +124,14 @@ void	draw_player(t_cub *cub);
 **		-___HOOK___-
 */
 
-int		ft_key(int key, t_cub *cub);
-int		ft_close(t_cub *cub);
-int		ft_up(t_cub *cub, int b2o);
-int		ft_down(t_cub *cub, int b2o);
-int		ft_left(t_cub *cub, int b2o);
-int		ft_right(t_cub *cub, int b2o);
+int		make_moves(t_cub *cub);
+int		key_press(int key, t_cub *cub);
+int		key_release(int key, t_cub *cub);
+int		close_win(t_cub *cub);
+int		up(t_cub *cub, int b2o);
+int		down(t_cub *cub, int b2o);
+int		left(t_cub *cub, int b2o);
+int		right(t_cub *cub, int b2o);
 int		rot_left(t_cub *cub);
 int		rot_right(t_cub *cub);
 

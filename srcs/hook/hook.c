@@ -3,36 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/02/20 15:43:04 by aliens           ###   ########.fr       */
+/*   Updated: 2022/02/21 02:07:37 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	ft_key(int key, t_cub *cub)
+int	key_press(int key, t_cub *cub)
 {
 	if (key == KEY_ESC)
-		ft_close(cub);
+		close_win(cub);
 	else if (key == KEY_W)
-		ft_up(cub, 0);
+		cub->var->up = 1;
 	else if (key == KEY_S)
-		ft_down(cub, 0);
+		cub->var->down = 1;
 	else if (key == KEY_A)
-		ft_left(cub, 0);
+		cub->var->left = 1;
 	else if (key == KEY_D)
-		ft_right(cub, 0);
+		cub->var->right = 1;
 	else if (key == KEY_LEFT)
-		rot_left(cub);
+		cub->var->rot_left = 1;
 	else if (key == KEY_RIGHT)
-		rot_right(cub);
-	draw_map(cub);
+		cub->var->rot_right = 1;
 	return (0);
 }
 
-int	ft_close(t_cub *cub)
+int	key_release(int key, t_cub *cub)
+{
+	if (key == KEY_ESC)
+		close_win(cub);
+	else if (key == KEY_W)
+		cub->var->up = 0;
+	else if (key == KEY_S)
+		cub->var->down = 0;
+	else if (key == KEY_A)
+		cub->var->left = 0;
+	else if (key == KEY_D)
+		cub->var->right = 0;
+	else if (key == KEY_LEFT)
+		cub->var->rot_left = 0;
+	else if (key == KEY_RIGHT)
+		cub->var->rot_right = 0;
+	return (0);
+}
+
+int	close_win(t_cub *cub)
 {
 	free_all(cub);
 	exit (0);
