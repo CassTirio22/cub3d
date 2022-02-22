@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/02/21 02:13:36 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/22 16:38:56 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ void	draw_outlines(t_cub *cub)
 	int	j;
 
 	j = -1;
-	while (++j < 25)
+	while (++j < cub->var->wall_size)
 	{
 		i = -1;
-		while (++i < 11 * cub->var->wall_size)
+		while (++i < 21 * cub->var->wall_size)
 			draw_pixel(cub->img, i, j, 0xCF722B);
 		i = -1;
 		while (++i < 11 * cub->var->wall_size)
 			draw_pixel(cub->img, j, i, 0xCF722B);
 		i = -1;
-		while (++i < 11 * cub->var->wall_size)
+		while (++i < 21 * cub->var->wall_size)
 			draw_pixel(cub->img, i, j + cub->var->wall_size * 10, 0xCF722B);
 		i = -1;
 		while (++i < 11 * cub->var->wall_size)
-			draw_pixel(cub->img, j - 3 + cub->var->wall_size * 10, i, 0xCF722B);
+			draw_pixel(cub->img, j + cub->var->wall_size * 20, i, 0xCF722B);
 	}
 }
 
@@ -74,7 +74,7 @@ void	draw_map(t_cub *cub)
 	pos[0] = cub->p1->pos[0] - 0.5;
 	pos[1] = cub->p1->pos[1] - 0.5;
 	i = 0;
-	while (++i < 11)
+	while (++i < 21)
 	{
 		j = 0;
 		while (++j < 11)
