@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player_2d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 22:43:04 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:18:04 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,33 @@ void	draw_view(t_cub *cub, t_player *p1)
 	int		player_view;
 
 	player_view = cub->var->wall_size / 2;
-	i = -30;
-	while (++i <= 30)
+	i = -31;
+	while (++i < 30)
 	{
 		j = -1;
 		dx = 0;
 		dy = 0;
-		while (++j < cub->var->wall_size)
+		while (420)
 		{
-			dx += cos(((double)p1->angle + i) * (M_PI / 180));
-			dy += sin(((double)p1->angle + i) * (M_PI / 180));
-			draw_pixel(cub->img, cub->var->wall_size * 5 + player_view + dx, \
-			cub->var->wall_size * 5 + player_view - dy, 0xFFEB3B);
+			if (++j < cub->var->wall_size * 5 && !is_wall(cub->p1->pos[0] + dx / cub->var->wall_size, cub->p1->pos[1] - dy / cub->var->wall_size, cub))
+			{
+				dx += cos(((double)p1->angle + i) * (M_PI / 180));
+				dy += sin(((double)p1->angle + i) * (M_PI / 180));
+				draw_pixel(cub->img, cub->var->wall_size * 5 + player_view + dx, \
+				cub->var->wall_size * 5 + player_view - dy, 0xFFEB3B);
+
+			}
+			else if (!is_wall(cub->p1->pos[0] + dx / cub->var->wall_size, cub->p1->pos[1] - dy / cub->var->wall_size, cub))
+			{
+				dx += cos(((double)p1->angle + i) * (M_PI / 180));
+				dy += sin(((double)p1->angle + i) * (M_PI / 180));
+			}
+			else
+			{
+				cub->var->dist_to_wall[i + 30] = sqrt(pow(dx / cub->var->wall_size, 2) + pow(dy / cub->var->wall_size, 2));
+				printf("%f\n", cub->var->dist_to_wall[i + 30]);
+				break ;
+			}
 		}
 	}
 }
