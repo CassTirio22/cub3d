@@ -6,126 +6,52 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:32:54 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/21 02:08:48 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:05:31 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	up(t_cub *cub, int b2o)
+void	move(float dx, float dy, t_cub *cub, int recurse)
 {
-	float	dx;
-	float	dy;
+	int		add_x;
+	int		add_y;
+	float	calc_x;
+	float	calc_y;
 
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall((int)(cub->p1->pos[0] + dx - 0.125), \
-	(int)(cub->p1->pos[1] - dy - 0.125), cub))
-		return (0);
-	if (is_wall((int)(cub->p1->pos[0] + dx + 0.125), \
-	(int)(cub->p1->pos[1] - dy + 0.125), cub))
-		return (0);
-	if (is_wall((int)(cub->p1->pos[0] + dx - 0.125), \
-	(int)(cub->p1->pos[1] - dy + 0.125), cub))
-		return (0);
-	if (is_wall((int)(cub->p1->pos[0] + dx + 0.125), \
-	(int)(cub->p1->pos[1] - dy - 0.125), cub))
-		return (0);
-	cub->p1->pos[0] += dx;
-	cub->p1->pos[1] -= dy;
-	if (b2o <= 8)
-		up(cub, ++b2o);
-	return (0);
-}
-
-int	down(t_cub *cub, int b2o)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall(cub->p1->pos[0] - dx - 0.125, \
-	cub->p1->pos[1] + dy - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dx + 0.125, \
-	cub->p1->pos[1] + dy + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dx - 0.125, \
-	cub->p1->pos[1] + dy + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dx + 0.125, \
-	cub->p1->pos[1] + dy - 0.125, cub))
-		return (0);
-	cub->p1->pos[0] -= dx;
-	cub->p1->pos[1] += dy;
-	if (b2o <= 8)
-		down(cub, ++b2o);
-	return (0);
-}
-
-int	left(t_cub *cub, int b2o)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall(cub->p1->pos[0] - dy - 0.125, \
-	cub->p1->pos[1] - dx - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dy + 0.125, \
-	cub->p1->pos[1] - dx + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dy - 0.125, \
-	cub->p1->pos[1] - dx + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] - dy + 0.125, \
-	cub->p1->pos[1] - dx - 0.125, cub))
-		return (0);
-	cub->p1->pos[0] -= dy;
-	cub->p1->pos[1] -= dx;
-	if (b2o <= 8)
-		left(cub, ++b2o);
-	return (0);
-}
-
-int	right(t_cub *cub, int b2o)
-{
-	float	dx;
-	float	dy;
-
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 64;
-	if (is_wall(cub->p1->pos[0] + dy - 0.125, \
-	cub->p1->pos[1] + dx - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] + dy + 0.125, \
-	cub->p1->pos[1] + dx + 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] + dy + 0.125, \
-	cub->p1->pos[1] + dx - 0.125, cub))
-		return (0);
-	if (is_wall(cub->p1->pos[0] + dy - 0.125, \
-	cub->p1->pos[1] + dx + 0.125, cub))
-		return (0);
-	cub->p1->pos[0] += dy;
-	cub->p1->pos[1] += dx;
-	if (b2o <= 8)
-		right(cub, ++b2o);
-	return (0);
+	add_x = 0;
+	add_y = 0;
+	calc_x = cub->p1->pos[0] + dx;
+	calc_y = cub->p1->pos[1] + dy;
+	if (!is_wall(calc_x, cub->p1->pos[1], cub))
+		add_x = 1;
+	if (!is_wall(cub->p1->pos[0], calc_y, cub))
+		add_y = 1;
+	if (is_wall(calc_x, calc_y, cub) && add_x && add_y)
+		return ;
+	if (add_x)
+		cub->p1->pos[0] += dx;
+	if (add_y)
+		cub->p1->pos[1] += dy;
+	if (recurse <= 8)
+		move(dx, dy, cub, ++recurse);
 }
 
 int	make_moves(t_cub *cub)
 {
+	float	dx;
+	float	dy;
+
+	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 128;
+	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 128;
 	if (cub->var->up == 1)
-		up(cub, 0);
+		move(dx, -dy, cub, 0);
 	if (cub->var->down == 1)
-		down(cub, 0);
+		move(-dx, dy, cub, 0);
 	if (cub->var->left == 1)
-		left(cub, 0);
+		move(-dy, -dx, cub, 0);
 	if (cub->var->right == 1)
-		right(cub, 0);
+		move(dy, dx, cub, 0);
 	if (cub->var->rot_left == 1)
 		rot_left(cub);
 	if (cub->var->rot_right == 1)

@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/21 02:09:05 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/22 17:05:57 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,10 +128,6 @@ int		make_moves(t_cub *cub);
 int		key_press(int key, t_cub *cub);
 int		key_release(int key, t_cub *cub);
 int		close_win(t_cub *cub);
-int		up(t_cub *cub, int b2o);
-int		down(t_cub *cub, int b2o);
-int		left(t_cub *cub, int b2o);
-int		right(t_cub *cub, int b2o);
 int		rot_left(t_cub *cub);
 int		rot_right(t_cub *cub);
 
