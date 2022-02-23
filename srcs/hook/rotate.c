@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotation.c                                         :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:26:14 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/20 15:57:37 by aliens           ###   ########.fr       */
+/*   Updated: 2022/02/23 14:54:14 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	rot_left(t_cub *cub)
 {
-	cub->p1->angle += 10;
+	cub->p1->angle += 5;
 	cub->p1->angle %= 360;
 	return (0);
 }
 
 int	rot_right(t_cub *cub)
 {
-	cub->p1->angle -= 10;
+	cub->p1->angle -= 5;
 	cub->p1->angle %= 360;
 	return (0);
 }
