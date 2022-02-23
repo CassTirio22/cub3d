@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/02/23 15:07:20 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:06:26 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,27 +93,3 @@ void	draw_map(t_cub *cub)
 	draw_outlines(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }
-
-/*void	draw_map(t_cub *cub)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	draw_all(cub);
-	while (cub->map->map[++i])
-	{
-		j = -1;
-		while (cub->map->map[i][++j])
-		{
-			if (cub->map->map[i][j] == '1')
-				draw_wall(i, j, cub, 0x787878);
-			if (cub->map->map[i][j] == '0' || ft_isalpha(cub->map->map[i][j]))
-				draw_wall(i, j, cub, 0xFFFFFF);
-			if (cub->map->map[i][j] == '2')
-				draw_wall(i, j, cub, 0xD5D5D5);
-		}
-	}
-	draw_player(cub->p1->pos[0], cub->p1->pos[1], cub);
-	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
-}*/

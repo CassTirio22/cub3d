@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:26:14 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/23 14:54:14 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/23 19:57:38 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int	rot_left(t_cub *cub)
 {
-	cub->p1->angle += 5;
+	cub->p1->angle += 3;
 	cub->p1->angle %= 360;
 	return (0);
 }
 
 int	rot_right(t_cub *cub)
 {
-	cub->p1->angle -= 5;
+	cub->p1->angle -= 3;
 	cub->p1->angle %= 360;
 	return (0);
 }

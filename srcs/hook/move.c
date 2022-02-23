@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:32:54 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/22 17:05:31 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/23 19:26:10 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	make_moves(t_cub *cub)
 	float	dx;
 	float	dy;
 
-	dx = cos((M_PI / 180) * cub->p1->angle) * 1 / 128;
-	dy = sin((M_PI / 180) * cub->p1->angle) * 1 / 128;
+	dx = cos(cub->p1->angle * M_PI / 180) * 1 / 128;
+	dy = sin(cub->p1->angle * M_PI / 180) * 1 / 128;
 	if (cub->var->up == 1)
 		move(dx, -dy, cub, 0);
 	if (cub->var->down == 1)
