@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/19 14:57:01 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:51:16 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,18 @@ int	ft_strlen_cub3d(char *str)
 		if (str[i] == '\t')
 			i += 3;
 	return (i);
+}
+
+double	div_protect_in_dist_to_wall(double a, double b)
+{
+	int	rest;
+
+	rest = 100 * (b - (int)b) + (int)b;
+	if (!rest)
+	{
+		printf("coucou\n");
+		return (a);
+
+	}
+	return (a / b);
 }

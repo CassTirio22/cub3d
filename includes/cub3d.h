@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/23 19:11:39 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/02/24 17:25:22 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,7 @@ void	free_double_char(char **str);
 char	**lst_to_double_char(t_list *lst);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
+double	div_protect_in_dist_to_wall(double a, double b);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
