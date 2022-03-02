@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/24 17:51:16 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/02 15:28:55 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,6 @@ double	div_protect_in_dist_to_wall(double a, double b)
 
 	rest = 100 * (b - (int)b) + (int)b;
 	if (!rest)
-	{
-		printf("coucou\n");
 		return (a);
-
-	}
 	return (a / b);
 }
