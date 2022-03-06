@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/24 17:25:22 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/06 13:10:09 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct s_var
 	int		rot_right;
 	int		resolution[2];
 	int		wall_size;
-	float	dist_to_wall[60];
+	double	dist_wall;
+	double	line_height;
 	char	*so;
 	char	*no;
 	char	*ea;

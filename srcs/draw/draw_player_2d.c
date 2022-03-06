@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/06 12:12:10 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/06 13:54:06 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,36 @@ double	dist_y_to_wall(t_cub *cub, t_player *p1)
 	return (final_len);
 }
 
+int	line_height(int i, t_cub *cub, double dist_wall)
+{
+	int		ret;
+	int		angle;
+	int		j;
+	int		k;
+	int		calc;
+	double	perp_wall_dist;
+
+	angle = abs(i);
+	if (!i)
+		perp_wall_dist = dist_wall;
+	else
+		perp_wall_dist = dist_wall / cos(i * (M_PI / 180));
+	ret = (int)(cub->var->resolution[1] / perp_wall_dist);
+	if (ret > cub->var->resolution[1])
+		ret = cub->var->resolution[1];
+	k = -1;
+	calc = cub->var->resolution[0] / 60;
+	while (++k < calc)
+	{
+		j = -1;
+		while (++j < ret)
+			draw_pixel(cub->img, cub->var->resolution[0] / 2 - (i * calc + k), -j + cub->var->resolution[1] / 2 + ret / 2, 0x7D4BC1);
+	}
+	return (ret);
+}
+
 void	draw_view(t_cub *cub, t_player *p1)
 {
-	double	dist_wall;
 	double	dx;
 	double	dy;
 	int		i;
@@ -94,15 +121,16 @@ void	draw_view(t_cub *cub, t_player *p1)
 		dx = 0;
 		dy = 0;
 		p1->angle += i;
-		dist_wall = dist_x_to_wall(cub, p1);
+		cub->var->dist_wall = dist_x_to_wall(cub, p1);
 		color = 0xD20926;
-		if (dist_wall > dist_y_to_wall(cub, p1))
+		if (cub->var->dist_wall > dist_y_to_wall(cub, p1))
 		{
 			color = 0xFFF033;
-			dist_wall = dist_y_to_wall(cub, p1);
+			cub->var->dist_wall = dist_y_to_wall(cub, p1);
 		}
 		p1->angle -= i;
-		while (++j < cub->var->wall_size * dist_wall && j < 5 * cub->var->wall_size)
+		cub->var->line_height = line_height(i, cub, cub->var->dist_wall);
+		while (++j < cub->var->wall_size * cub->var->dist_wall && j < 5 * cub->var->wall_size)
 		{
 			dx += cos((p1->angle + i) * (M_PI / 180));
 			dy += sin((p1->angle + i) * (M_PI / 180));
@@ -126,6 +154,7 @@ void	draw_player(t_cub *cub)
 	wall_size = cub->var->wall_size;
 	player_size = wall_size / 2;
 	i = -1;
+	draw_view(cub, cub->p1);
 	while (++i < player_size)
 	{
 		j = -1;
@@ -133,5 +162,4 @@ void	draw_player(t_cub *cub)
 			draw_pixel(cub->img, 5 * wall_size + i + player_size / 2, \
 			5 * wall_size + j + player_size / 2, 0xEC57B8);
 	}
-	draw_view(cub, cub->p1);
 }

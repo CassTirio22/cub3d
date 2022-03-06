@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/03/02 15:19:33 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/03/06 13:55:16 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	draw_map(t_cub *cub)
 	pos[0] = cub->p1->pos[0] - 0.5;
 	pos[1] = cub->p1->pos[1] - 0.5;
 	i = 0;
+	draw_player(cub);
 	while (++i < 11)
 	{
 		j = 0;
@@ -89,7 +90,6 @@ void	draw_map(t_cub *cub)
 				draw_wall((int)pos[1] - pos[1] + j, (int)pos[0] - pos[0] + i, cub, 0xD5D5D5);
 		}
 	}
-	draw_player(cub);
 	draw_outlines(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }
