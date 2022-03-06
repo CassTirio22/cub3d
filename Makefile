@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/02/20 15:59:45 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/06 14:53:31 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ FILES	=	cub3d.c						\
 			parsing/parse.c				\
 			parsing/parse_map.c			\
 			parsing/parse_map_utils.c	\
+			raycasting/dist_to_wall.c	\
 			utils/utils.c				\
 			utils/utils2.c
 

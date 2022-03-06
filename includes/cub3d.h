@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/06 13:10:09 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/06 15:03:22 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define SPEED 0.1
+# define FOV 60
 
 /*
 **		-___STRUCT___-
@@ -54,7 +55,7 @@ typedef struct s_var
 	int		rot_right;
 	int		resolution[2];
 	int		wall_size;
-	double	dist_wall;
+	double	**dist_wall;
 	double	line_height;
 	char	*so;
 	char	*no;
@@ -111,6 +112,13 @@ int		get_line(char *line, t_cub *cub, int boolean, int index);
 int		check_args(int argc, char **argv);
 int		arround_zero(char **map, int i, int j);
 int		transform_map(t_map *map);
+
+/*
+**		-___RAYCASTING___-
+*/
+
+double	dist_x_to_wall(t_cub *cub, t_player *p1);
+double	dist_y_to_wall(t_cub *cub, t_player *p1);
 
 /*
 **		-___DRAW___-
