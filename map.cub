@@ -1,4 +1,4 @@
-R 1280 1080
+R 1920 1080
 NO ./path_of_north_wall
 SO ./path_of_south_wall
 WE ./path_of_west_wall

@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/06 15:03:22 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/06 15:52:56 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define SPEED 0.1
-# define FOV 60
 
 /*
 **		-___STRUCT___-
@@ -55,7 +54,10 @@ typedef struct s_var
 	int		rot_right;
 	int		resolution[2];
 	int		wall_size;
-	double	**dist_wall;
+	double	dx;
+	double	dy;
+	double	dist_wall;
+	double	perp_wall_dist;
 	double	line_height;
 	char	*so;
 	char	*no;
@@ -127,7 +129,7 @@ double	dist_y_to_wall(t_cub *cub, t_player *p1);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_wall(double x, double y, t_cub *cub, int color);
 void	draw_map(t_cub *cub);
-void	draw_view(t_cub *cub, t_player *p1);
+void	draw_view(t_cub *cub, t_player *p1, t_var *var);
 void	draw_player(t_cub *cub);
 
 /*
