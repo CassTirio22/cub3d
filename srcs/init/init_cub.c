@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 17:26:42 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 17:42:56 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	init_map_info(t_map *map, t_var *var)
 			free_double_char(tmp);
 		}
 	}
-	printf("%d, %d\n", var->c, var->f);
 	var->wall_size = var->resolution[0] / ft_strlen(map->map[0]);
 	if (var->wall_size > var->resolution[1] / double_char_len(map->map))
 		var->wall_size = var->resolution[1] / double_char_len(map->map);
