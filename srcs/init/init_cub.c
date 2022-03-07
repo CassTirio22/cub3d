@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 14:54:21 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 17:26:42 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,20 @@ void	init_map_info(t_map *map, t_var *var)
 			var->resolution[1] = ft_atoi(tmp[2]);
 			free_double_char(tmp);
 		}
+		if (!ft_strncmp(map->info[i], "F", 1))
+		{
+			tmp = ft_split(map->info[i] + 2, ',');
+			var->f = do_rgb(ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
+			free_double_char(tmp);
+		}
+		if (!ft_strncmp(map->info[i], "C", 1))
+		{
+			tmp = ft_split(map->info[i] + 2, ',');
+			var->c = do_rgb(ft_atoi(tmp[0]), ft_atoi(tmp[1]), ft_atoi(tmp[2]));
+			free_double_char(tmp);
+		}
 	}
+	printf("%d, %d\n", var->c, var->f);
 	var->wall_size = var->resolution[0] / ft_strlen(map->map[0]);
 	if (var->wall_size > var->resolution[1] / double_char_len(map->map))
 		var->wall_size = var->resolution[1] / double_char_len(map->map);

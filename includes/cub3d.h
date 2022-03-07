@@ -6,11 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/03/07 14:54:48 by ctirions         ###   ########.fr       */
-=======
-/*   Updated: 2022/03/07 14:59:22 by aliens           ###   ########.fr       */
->>>>>>> 18dd8bda9f76a63366a23778706d92d6f2e21504
+/*   Updated: 2022/03/07 17:28:29 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +53,8 @@ typedef struct s_var
 	int		rot_left;
 	int		rot_right;
 	int		resolution[2];
+	int		f;
+	int		c;
 	int		wall_size;
 	double	dx;
 	double	dy;
@@ -159,6 +157,7 @@ void	free_double_char(char **str);
 **		-___UTILS___-
 */
 
+int		do_rgb(int r, int g, int b);
 char	**lst_to_double_char(t_list *lst);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);

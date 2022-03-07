@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:43:21 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/07 15:12:36 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:32:49 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	draw_all(t_cub *cub)
+void	reset(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -51,12 +51,32 @@ void	draw_line_height(int i, t_cub *cub, double dist_wall, int color)
 	}
 }
 
+void	draw_fc(t_cub *cub, t_var *var)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < var->resolution[0])
+	{
+		j = -1;
+		while (++j < var->resolution[1])
+		{
+			if (j > var->resolution[1] / 2)
+				draw_pixel(cub->img, i, j, var->f);
+			else
+				draw_pixel(cub->img, i, j, var->c);
+		}
+	}
+}
+
 void	draw_game(t_cub *cub)
 {
 	int	i;
 	int	color;
 
-	draw_all(cub);
+	reset(cub);
+	draw_fc(cub, cub->var);
 	color = 0;
 	i = -31;
 	while (++i < 31)
