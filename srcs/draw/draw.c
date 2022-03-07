@@ -31,7 +31,7 @@ void	draw_line_height(int i, t_cub *cub, double dist_wall, int color)
 	int		h;
 	int		j;
 	int		k;
-	int		calc;
+	double	calc;
 
 	if (!i)
 		cub->var->perp_wall_dist = dist_wall;
@@ -41,12 +41,13 @@ void	draw_line_height(int i, t_cub *cub, double dist_wall, int color)
 	if (h > cub->var->resolution[1])
 		h = cub->var->resolution[1];
 	k = -1;
-	calc = cub->var->resolution[0] / 60;
+	calc = (double)cub->var->resolution[0] / 60;
+	i += 30;
 	while (++k < calc)
 	{
 		j = -1;
 		while (++j < h)
-			draw_pixel(cub->img, cub->var->resolution[0] / 2 - (i * calc + k), \
+			draw_pixel(cub->img, -(i * calc + k), \
 			-j + cub->var->resolution[1] / 2 + h / 2, color);
 	}
 }
@@ -79,7 +80,7 @@ void	draw_game(t_cub *cub)
 	draw_fc(cub, cub->var);
 	color = 0;
 	i = -31;
-	while (++i < 31)
+	while (++i < 30)
 	{
 		cub->p1->angle += i;
 		cub->var->dx = cos((cub->p1->angle) * (M_PI / 180));
