@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:47:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/07 13:59:21 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:17:52 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ double	dist_x_to_wall(t_cub *cub, t_player *p1)
 	dy = -sin(p1->angle * (M_PI / 180));
 	final_len = 0;
 	if (dx < 0)
-		side_dist = div_protect_in_dist_to_wall((p1->pos[0] - (int)p1->pos[0]), dx);
+		side_dist = div_protect((p1->pos[0] - (int)p1->pos[0]), dx);
 	else
-		side_dist = div_protect_in_dist_to_wall((1 - (p1->pos[0] - (int)p1->pos[0])), dx);
+		side_dist = div_protect((1 - (p1->pos[0] - (int)p1->pos[0])), dx);
 	side_dist = fabs(side_dist) + 0.00000001;
 	if (p1->pos[0] + side_dist * dx < 0 || p1->pos[0] + side_dist * dx > ft_strlen(cub->map->map[0]) || p1->pos[1] + side_dist * dy < 0 || p1->pos[1] + side_dist * dy > double_char_len(cub->map->map))
 		return (ft_strlen(cub->map->map[0]));
 	if (is_wall(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 		return (side_dist);
-	delta_dist = fabs(div_protect_in_dist_to_wall(1, dx));
+	delta_dist = fabs(div_protect(1, dx));
 	while (!final_len)
 	{
 		side_dist += delta_dist;
@@ -56,15 +56,15 @@ double	dist_y_to_wall(t_cub *cub, t_player *p1)
 	dy = -sin(p1->angle * (M_PI / 180));
 	final_len = 0;
 	if (dy < 0)
-		side_dist = div_protect_in_dist_to_wall((p1->pos[1] - (int)p1->pos[1]), dy);
+		side_dist = div_protect((p1->pos[1] - (int)p1->pos[1]), dy);
 	else
-		side_dist = div_protect_in_dist_to_wall((1 - (p1->pos[1] - (int)p1->pos[1])), dy);
+		side_dist = div_protect((1 - (p1->pos[1] - (int)p1->pos[1])), dy);
 	side_dist = fabs(side_dist) + 0.00000001;
 	if (p1->pos[0] + side_dist * dx < 0 || p1->pos[0] + side_dist * dx > ft_strlen(cub->map->map[0]) || p1->pos[1] + side_dist * dy < 0 || p1->pos[1] + side_dist * dy > double_char_len(cub->map->map))
 		return (double_char_len(cub->map->map));
 	if (is_wall(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 		return (side_dist);
-	delta_dist = fabs(div_protect_in_dist_to_wall(1, dy));
+	delta_dist = fabs(div_protect(1, dy));
 	while (!final_len)
 	{
 		side_dist += delta_dist;
