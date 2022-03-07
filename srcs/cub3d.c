@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/06 15:54:47 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 14:31:28 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 
 	if (check_args(argc, argv) || init_var(&cub) || parse(argv, &cub))
 		return (1);
+	draw_game(&cub);
 	draw_map(&cub);
 	print_double_char(cub.map->map);
 	printf("\nmap size = %d\n", double_char_len(cub.map->map));

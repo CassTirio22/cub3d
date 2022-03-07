@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:32:54 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/23 19:26:10 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:55:05 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ int	make_moves(t_cub *cub)
 		rot_left(cub);
 	if (cub->var->rot_right == 1)
 		rot_right(cub);
-	draw_map(cub);
+	draw_game(cub);
 	return (0);
 }

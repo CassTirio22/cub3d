@@ -6,7 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2022/03/07 14:54:48 by ctirions         ###   ########.fr       */
+=======
 /*   Updated: 2022/03/07 14:59:22 by aliens           ###   ########.fr       */
+>>>>>>> 18dd8bda9f76a63366a23778706d92d6f2e21504
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +128,8 @@ double	dist_to_wall(t_cub *cub, t_player *p1, int *color);
 /*
 **		-___DRAW___-
 */
-
+void	draw_line_height(int i, t_cub *cub, double dist_wall, int color);
+void	draw_game(t_cub *cub);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_wall(double x, double y, t_cub *cub, int color);
 void	draw_map(t_cub *cub);

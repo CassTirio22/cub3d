@@ -6,25 +6,11 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/03/07 13:04:55 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:36:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void	draw_all(t_cub *cub)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (++i < cub->var->resolution[0])
-	{
-		j = -1;
-		while (++j < cub->var->resolution[1])
-			draw_pixel(cub->img, i, j, 0x000000);
-	}
-}
 
 void	draw_outlines(t_cub *cub)
 {
@@ -87,7 +73,6 @@ void	draw_map(t_cub *cub)
 	double	pos[2];
 	double	inc[2];
 
-	draw_all(cub);
 	pos[0] = cub->p1->pos[0] - 0.5;
 	pos[1] = cub->p1->pos[1] - 0.5;
 	inc[0] = 0;
