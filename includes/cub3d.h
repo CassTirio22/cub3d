@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/07 14:54:48 by ctirions         ###   ########.fr       */
+=======
+/*   Updated: 2022/03/07 14:59:22 by aliens           ###   ########.fr       */
+>>>>>>> 18dd8bda9f76a63366a23778706d92d6f2e21504
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +152,7 @@ int		rot_right(t_cub *cub);
 */
 
 int		free_all(t_cub *cub);
+int		init_protect(t_cub *cub);
 void	free_double_char(char **str);
 
 /*

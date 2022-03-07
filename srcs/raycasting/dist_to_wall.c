@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   dist_to_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:47:14 by aliens            #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/03/07 14:43:27 by ctirions         ###   ########.fr       */
+=======
+/*   Updated: 2022/03/07 14:39:40 by aliens           ###   ########.fr       */
+>>>>>>> 18dd8bda9f76a63366a23778706d92d6f2e21504
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int		len_protect(double x, double y, t_cub *cub)
+{
+	if (x < 0 || x > ft_strlen(cub->map->map[0]) || \
+	y < 0 || y > double_char_len(cub->map->map))
+		return (0);
+	return (1);
+}
 
 double	dist_x_to_wall(t_cub *cub, t_player *p1)
 {
@@ -28,7 +40,7 @@ double	dist_x_to_wall(t_cub *cub, t_player *p1)
 	else
 		side_dist = div_protect((1 - (p1->pos[0] - (int)p1->pos[0])), dx);
 	side_dist = fabs(side_dist) + 0.00000001;
-	if (p1->pos[0] + side_dist * dx < 0 || p1->pos[0] + side_dist * dx > ft_strlen(cub->map->map[0]) || p1->pos[1] + side_dist * dy < 0 || p1->pos[1] + side_dist * dy > double_char_len(cub->map->map))
+	if (!len_protect(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 		return (ft_strlen(cub->map->map[0]));
 	if (is_wall(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 		return (side_dist);
@@ -36,7 +48,7 @@ double	dist_x_to_wall(t_cub *cub, t_player *p1)
 	while (!final_len)
 	{
 		side_dist += delta_dist;
-		if (p1->pos[0] + side_dist * dx < 0 || p1->pos[0] + side_dist * dx > ft_strlen(cub->map->map[0]) || p1->pos[1] + side_dist * dy < 0 || p1->pos[1] + side_dist * dy > double_char_len(cub->map->map))
+		if (!len_protect(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 			return (ft_strlen(cub->map->map[0]));
 		if (is_wall(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 			final_len = side_dist;
@@ -60,7 +72,7 @@ double	dist_y_to_wall(t_cub *cub, t_player *p1)
 	else
 		side_dist = div_protect((1 - (p1->pos[1] - (int)p1->pos[1])), dy);
 	side_dist = fabs(side_dist) + 0.00000001;
-	if (p1->pos[0] + side_dist * dx < 0 || p1->pos[0] + side_dist * dx > ft_strlen(cub->map->map[0]) || p1->pos[1] + side_dist * dy < 0 || p1->pos[1] + side_dist * dy > double_char_len(cub->map->map))
+	if (!len_protect(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 		return (double_char_len(cub->map->map));
 	if (is_wall(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 		return (side_dist);
@@ -68,7 +80,7 @@ double	dist_y_to_wall(t_cub *cub, t_player *p1)
 	while (!final_len)
 	{
 		side_dist += delta_dist;
-		if (p1->pos[0] + side_dist * dx < 0 || p1->pos[0] + side_dist * dx > ft_strlen(cub->map->map[0]) || p1->pos[1] + side_dist * dy < 0 || p1->pos[1] + side_dist * dy > double_char_len(cub->map->map))
+		if (!len_protect(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 			return (double_char_len(cub->map->map));
 		if (is_wall(p1->pos[0] + side_dist * dx, p1->pos[1] + side_dist * dy, cub))
 			final_len = side_dist;

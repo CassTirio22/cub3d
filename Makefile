@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/03/06 15:54:21 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/07 14:54:05 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ FILES	=	cub3d.c						\
 			hook/hook.c					\
 			hook/move.c					\
 			hook/rotate.c				\
-			init/init.c					\
+			init/init_var.c				\
+			init/init_cub.c				\
 			parsing/parse.c				\
 			parsing/parse_map.c			\
 			parsing/parse_map_utils.c	\
