@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 14:17:59 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:21:51 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	do_rgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
+}
 
 int	is_wall(int x, int y, t_cub *cub)
 {

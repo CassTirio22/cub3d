@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 15:34:38 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:28:29 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_var
 	int		rot_left;
 	int		rot_right;
 	int		resolution[2];
+	int		f;
+	int		c;
 	int		wall_size;
 	double	dx;
 	double	dy;
@@ -155,6 +157,7 @@ void	free_double_char(char **str);
 **		-___UTILS___-
 */
 
+int		do_rgb(int r, int g, int b);
 char	**lst_to_double_char(t_list *lst);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
