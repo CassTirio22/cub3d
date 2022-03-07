@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 14:17:37 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/03/07 14:54:48 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ double	dist_to_wall(t_cub *cub, t_player *p1, int *color);
 /*
 **		-___DRAW___-
 */
-
+void	draw_line_height(int i, t_cub *cub, double dist_wall, int color);
+void	draw_game(t_cub *cub);
 void	draw_pixel(t_img *img, int x, int y, int color);
 void	draw_wall(double x, double y, t_cub *cub, int color);
 void	draw_map(t_cub *cub);
