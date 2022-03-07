@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_player_2d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/06 16:13:14 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 13:47:47 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,17 @@ void	draw_view(t_cub *cub, t_player *p1, t_var *var)
 	while (++i < 31)
 	{
 		j = -1;
-		var->dx = 0;
-		var->dy = 0;
+		var->dx = cos((p1->angle + i) * (M_PI / 180));
+		var->dy = sin((p1->angle + i) * (M_PI / 180));
 		p1->angle += i;
-		var->dist_wall = dist_x_to_wall(cub, p1);
-		color = 0xD20926;
-		if (var->dist_wall > dist_y_to_wall(cub, p1))
-		{
-			color = 0xFFF033;
-			var->dist_wall = dist_y_to_wall(cub, p1);
-		}
+		var->dist_wall = dist_to_wall(cub, p1, &color);
 		p1->angle -= i;
 		while (++j < var->wall_size * var->dist_wall && j < 5 * var->wall_size)
 		{
-			var->dx += cos((p1->angle + i) * (M_PI / 180));
-			var->dy += sin((p1->angle + i) * (M_PI / 180));
-			if (color == 0xFFF033 && var->dy < 0)
-				color = 0x0C4392;
-			else if (color == 0xD20926 && var->dx < 0)
-				color = 0x0BC103;
 			draw_pixel(cub->img, var->wall_size * 10 + player_view + var->dx, \
 			var->wall_size * 10 + player_view - var->dy, color);
+			var->dx += cos((p1->angle + i) * (M_PI / 180));
+			var->dy += sin((p1->angle + i) * (M_PI / 180));
 		}
 		line_height(i, cub, var->dist_wall, color);
 	}

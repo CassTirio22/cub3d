@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dist_to_wall.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:47:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/06 15:47:43 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 13:59:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,26 @@ double	dist_y_to_wall(t_cub *cub, t_player *p1)
 			final_len = side_dist;
 	}
 	return (final_len);
+}
+
+double	dist_to_wall(t_cub *cub, t_player *p1, int *color)
+{
+	double	dist_x;
+	double	dist_y;
+
+	dist_x = dist_x_to_wall(cub, p1);
+	dist_y = dist_y_to_wall(cub, p1);
+	if (dist_x > dist_y)
+	{
+		if (color)
+			*color = 0xFFF033;
+		if (color && cub->var->dy < 0)
+			*color = 0x0C4392;
+		return (dist_y);
+	}
+	if (color)
+		*color = 0xD20926;
+	if (color && cub->var->dx < 0)
+		*color = 0x0BC103;
+	return (dist_x);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map_2d.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/03/06 16:05:32 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 13:04:55 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void	draw_wall(double x, double y, t_cub *cub, int color)
 	int	j;
 
 	i = -1;
-	while (++i < cub->var->wall_size - 1)
+	while (++i < cub->var->wall_size)
 	{
 		j = -1;
-		while (++j < cub->var->wall_size - 1)
+		while (++j < cub->var->wall_size)
 			draw_pixel(cub->img, i + y * cub->var->wall_size, \
 			j + x * cub->var->wall_size, color);
 	}
@@ -91,13 +91,13 @@ void	draw_map(t_cub *cub)
 	pos[0] = cub->p1->pos[0] - 0.5;
 	pos[1] = cub->p1->pos[1] - 0.5;
 	inc[0] = 0;
-	draw_player(cub);
 	while (++inc[0] <= 20)
 	{
 		inc[1] = 0;
 		while (++inc[1] <= 20)
 			draw_minimap(cub, pos, cub->map->map, inc);
 	}
+	draw_player(cub);
 	draw_outlines(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }

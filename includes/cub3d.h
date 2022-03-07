@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/06 15:52:56 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/07 14:07:01 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,7 @@ int		transform_map(t_map *map);
 **		-___RAYCASTING___-
 */
 
-double	dist_x_to_wall(t_cub *cub, t_player *p1);
-double	dist_y_to_wall(t_cub *cub, t_player *p1);
+double	dist_to_wall(t_cub *cub, t_player *p1, int *color);
 
 /*
 **		-___DRAW___-
@@ -157,7 +156,7 @@ void	free_double_char(char **str);
 char	**lst_to_double_char(t_list *lst);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
-double	div_protect_in_dist_to_wall(double a, double b);
+double	div_protect(double a, double b);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
