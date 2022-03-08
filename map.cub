@@ -1,11 +1,11 @@
-R 500 500
+R 1000 1000
 NO ./bricks_wall.xpm
 SO ./path_of_south_wall
 WE ./path_of_west_wall
 EA ./path_of_east_wall
 S ./path_of_sprite
 
-F 201, 185, 125
+F 165, 158, 152
 C 114, 170, 219
 
                                        111111111111111111111 11111111111111               

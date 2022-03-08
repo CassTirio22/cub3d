@@ -94,14 +94,14 @@ double	dist_to_wall(t_cub *cub, t_player *p1, int *color)
 	if (dist_x > dist_y)
 	{
 		if (color)
-			*color = PURPLE;
+			*color = NORTH_WALL;
 		if (color && cub->var->dy < 0)
-			*color = WHITE;
+			*color = SOUTH_WALL;
 		return (dist_y);
 	}
 	if (color)
-		*color = PINK;
+		*color = EAST_WALL;
 	if (color && cub->var->dx < 0)
-		*color = BORDEAU;
+		*color = WEST_WALL;
 	return (dist_x);
 }

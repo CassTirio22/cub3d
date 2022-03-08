@@ -26,17 +26,14 @@ void	reset(t_cub *cub)
 	}
 }
 
-int	get_line_height(int i, t_cub *cub, double dist_wall)
+int	get_line_height(float i, t_cub *cub, double dist_wall)
 {
 	int		h;
 
-	if (!i)
-		cub->var->perp_wall_dist = dist_wall;
-	else
-		cub->var->perp_wall_dist = dist_wall / cos(i * (M_PI / 180));
+	cub->var->perp_wall_dist = dist_wall * cos((i - FOV / 2) * (M_PI / 180));
 	h = (int)(cub->var->resolution[1] / cub->var->perp_wall_dist);
 	if (h > cub->var->resolution[1])
-		h = cub->var->resolution[1] - 1;
+		h = cub->var->resolution[1];
 	return (h);
 }
 
@@ -61,12 +58,12 @@ void	draw_fc(t_cub *cub, t_var *var)
 
 void	draw_game(t_cub *cub)
 {
-	int	i;
-	int	j;
-	int	angle;
-	int	color;
-	int	line_height;
-	int	offset;
+	float	angle;
+	float	i;
+	int		j;
+	int		color;
+	int		line_height;
+	int		offset;
 
 	i = cub->var->resolution[0];
 	while (--i)
@@ -76,8 +73,10 @@ void	draw_game(t_cub *cub)
 		cub->var->dx = cos((cub->p1->angle) * (M_PI / 180));
 		cub->var->dy = sin((cub->p1->angle) * (M_PI / 180));
 		cub->var->dist_wall = dist_to_wall(cub, cub->p1, &color);
+		//cub->var->dist_wall *= cos(angle * (M_PI / 180));
 		cub->p1->angle -= angle - FOV / 2;
 		line_height = get_line_height(angle, cub, cub->var->dist_wall);
+		// printf("%d\n", line_height);
 		offset = (cub->var->resolution[1] - line_height) / 2;
 		j = -1;
 		while (++j < offset)

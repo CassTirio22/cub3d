@@ -33,12 +33,12 @@
 # define KEY_RIGHT 124
 # define SPEED 0.1
 # define FOV 60
-# define BORDEAU 0x991a06
-# define PINK 0xdb567e
-# define BLUE 0x7cb5d9
-# define GROUND 0xbfa06d
-# define WHITE 0xbf9191
-# define PURPLE 0x552a85
+# define WEST_WALL 0x991a06
+# define EAST_WALL 0xBF8D4F
+# define SOUTH_WALL 0x433E7E
+# define NORTH_WALL 0x552a85
+# define CELLING 0x7cb5d9
+# define FLOOR 0x9F7D5C
 
 /*
 **		-___STRUCT___-
