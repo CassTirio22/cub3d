@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:47:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/07 15:28:30 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/08 14:31:56 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,14 @@ double	dist_to_wall(t_cub *cub, t_player *p1, int *color)
 	if (dist_x > dist_y)
 	{
 		if (color)
-			*color = 0xFFF033;
+			*color = PURPLE;
 		if (color && cub->var->dy < 0)
-			*color = 0x0C4392;
+			*color = WHITE;
 		return (dist_y);
 	}
 	if (color)
-		*color = 0xD20926;
+		*color = PINK;
 	if (color && cub->var->dx < 0)
-		*color = 0x0BC103;
+		*color = BORDEAU;
 	return (dist_x);
 }

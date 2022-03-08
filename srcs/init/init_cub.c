@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 17:42:56 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/08 16:28:21 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int	init_mlx(t_cub *cub)
 	cub->var->resolution[0], cub->var->resolution[1]);
 	cub->img->addr = mlx_get_data_addr(cub->img->img, \
 	&cub->img->bits_per_pixel, &cub->img->line_length, &cub->img->endian);
+	//init_textures(cub->textures_test, cub);
 	return (0);
 }
 

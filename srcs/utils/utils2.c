@@ -6,11 +6,20 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 17:21:51 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/08 16:15:53 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	get_pixel(t_img *image, int x, int y, int *color)
+{
+	char	*dst;
+
+	dst = image->addr + (y * image->line_length \
+	+ x * (image->bits_per_pixel / 8));
+	*color = *(unsigned int *)dst;
+}
 
 int	do_rgb(int r, int g, int b)
 {

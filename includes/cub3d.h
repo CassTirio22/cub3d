@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 17:28:29 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/08 16:57:04 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,13 @@
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define SPEED 0.1
+# define FOV 60
+# define BORDEAU 0x991a06
+# define PINK 0xdb567e
+# define BLUE 0x7cb5d9
+# define GROUND 0xbfa06d
+# define WHITE 0xbf9191
+# define PURPLE 0x552a85
 
 /*
 **		-___STRUCT___-
@@ -39,8 +46,8 @@
 
 typedef struct s_player
 {
-	double		pos[2];
-	int			angle;
+	double	pos[2];
+	double	angle;
 
 }				t_player;
 
@@ -82,6 +89,8 @@ typedef struct s_img
 	int		endian;
 	int		line_length;
 	int		bits_per_pixel;
+	int		img_w;
+	int		img_h;
 }				t_img;
 
 typedef struct s_cub
@@ -91,6 +100,7 @@ typedef struct s_cub
 	t_player	*p1;
 	t_map		*map;
 	t_img		*img;
+	t_img		*textures_test;
 	t_var		*var;
 }				t_cub;
 
@@ -99,6 +109,7 @@ typedef struct s_cub
 */
 
 void	init_map_info(t_map *map, t_var *var);
+void	init_textures(t_img *tex, t_cub *cub);
 char	**init_check_info_map(int info[8]);
 int		init_player(t_cub *cub);
 int		init_mlx(t_cub *cub);

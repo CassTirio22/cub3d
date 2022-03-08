@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 17:49:40 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/08 15:00:21 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ int	init_protect(t_cub *cub)
 		free(cub->map->info);
 	if (cub->var)
 		free(cub->var);
+	if (cub->textures_test)
+		free(cub->textures_test);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/03/07 14:54:05 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/08 15:12:34 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ FILES	=	cub3d.c						\
 			hook/rotate.c				\
 			init/init_var.c				\
 			init/init_cub.c				\
+			init/init_textures.c		\
 			parsing/parse.c				\
 			parsing/parse_map.c			\
 			parsing/parse_map_utils.c	\
@@ -44,7 +45,7 @@ FILES	=	cub3d.c						\
 SRCS	=	$(addprefix srcs/, $(FILES))
 OBJS	=	$(patsubst srcs%.c, objs%.o, $(SRCS))
 
-CC		=	gcc -Wall -Wextra -Werror
+CC		=	gcc -Wall -Wextra -Werror -g
 MFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
 NAME	=	cub3d

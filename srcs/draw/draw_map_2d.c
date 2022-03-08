@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/03/07 17:32:31 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/08 15:10:00 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,4 @@ void	draw_map(t_cub *cub)
 	}
 	draw_player(cub);
 	draw_outlines(cub);
-	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }
