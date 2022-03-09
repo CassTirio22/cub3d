@@ -52,10 +52,10 @@ void	draw_wall(double x, double y, t_cub *cub, int color)
 
 void	draw_minimap(t_cub *cub, double pos[2], char **map, double i[2])
 {
-	if (pos[1] - 10 + i[1] < 0 || pos[0] - 20 + i[0] < 0 || \
-	pos[0] - 20 + i[0] >= (int)ft_strlen(map[0]) || \
+	if (pos[1] - 10 + i[1] < 0 || pos[0] - 10 + i[0] < 0 || \
+	pos[0] - 10 + i[0] >= (int)ft_strlen(map[0]) || \
 	pos[1] - 10 + i[1] >= double_char_len(map))
-		;
+		draw_wall((int)pos[1] - pos[1] + i[1], (int)pos[0] - pos[0] + i[0], cub, 0xD5D5D5);
 	else if (map[(int)(pos[1] - 10 + i[1])][(int)(pos[0] - 10 + i[0])] == '1')
 		draw_wall((int)pos[1] - pos[1] + i[1], \
 		(int)pos[0] - pos[0] + i[0], cub, 0x787878);
