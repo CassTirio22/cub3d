@@ -32,8 +32,6 @@ int	get_line_height(float i, t_cub *cub, double dist_wall)
 
 	cub->var->perp_wall_dist = dist_wall * cos((i - FOV / 2) * (M_PI / 180));
 	h = (int)(cub->var->resolution[1] / cub->var->perp_wall_dist);
-	if (h > cub->var->resolution[1])
-		h = cub->var->resolution[1];
 	return (h);
 }
 
@@ -65,6 +63,7 @@ void	draw_game(t_cub *cub)
 	float	line_height;
 	float	calc_x;
 	int		color;
+	t_img	*tex;
 
 	i = -1;
 	calc_x = 0;
@@ -81,21 +80,25 @@ void	draw_game(t_cub *cub)
 		// printf("%d\n", line_height);
 		offset = (cub->var->resolution[1] - line_height) / 2;
 		if (color == EAST_WALL || color == WEST_WALL)
-			calc_x = cub->var->dist_wall * cub->var->dy + cub->p1->pos[1];
+			calc_x = cub->var->dist_wall * (cub->var->dy * -1) + cub->p1->pos[1];
 		else
 			calc_x = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];	
-		//printf("%x\n", color);
+		tex = get_side(color, cub);
+		j = 0;
+		while (j < offset && j < cub->var->resolution[1])
+			draw_pixel(cub->img, -i, j++, cub->var->c);
 		j = -1;
-		while (++j < offset)
-			draw_pixel(cub->img, -i, j, cub->var->c);
-		while (++j < offset + line_height)
+		if (offset < 0)
+			j = -offset;
+		while (++j < line_height && j + offset < cub->var->resolution[1])
 		{
 			//printf("calc : %f\n",  (j - offset) * (cub->textures_test->img_h / line_height));
-			get_pixel(cub->textures_test, (calc_x - (int)calc_x) * (cub->textures_test->img_h), (j - offset) * (cub->textures_test->img_h / line_height), &color);
-			draw_pixel(cub->img, -i, j, color);
+			get_pixel(tex, (calc_x - (int)calc_x) * (tex->img_h), j * (tex->img_h / line_height), &color);
+			draw_pixel(cub->img, -i, j + offset, color);
 		}
-		while (++j < cub->var->resolution[1])
-			draw_pixel(cub->img, -i, j, cub->var->f);
+		j--;
+		while (++j + offset < cub->var->resolution[1])
+			draw_pixel(cub->img, -i, j + offset, cub->var->f);
 	}
 	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);

@@ -12,6 +12,17 @@
 
 #include "../../includes/cub3d.h"
 
+t_img	*get_side(int color, t_cub *cub)
+{
+	if (color == WEST_WALL)
+		return (cub->tex->we);
+	if (color == EAST_WALL)
+		return (cub->tex->ea);
+	if (color == NORTH_WALL)
+		return (cub->tex->no);
+	return (cub->tex->so);
+}
+
 void	get_pixel(t_img *image, int x, int y, int *color)
 {
 	char	*dst;

@@ -1,8 +1,8 @@
 R 1000 1000
-NO ./bricks_wall.xpm
-SO ./path_of_south_wall
-WE ./path_of_west_wall
-EA ./path_of_east_wall
+NO ./north_wall.xpm
+SO ./south_wall.xpm
+WE ./west_wall.xpm
+EA ./east_wall.xpm
 S ./path_of_sprite
 
 F 165, 158, 152

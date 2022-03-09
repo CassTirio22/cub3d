@@ -93,6 +93,15 @@ typedef struct s_img
 	int		img_h;
 }				t_img;
 
+typedef struct s_tex
+{
+	t_img	*no;
+	t_img	*so;
+	t_img	*ea;
+	t_img	*we;
+}				t_tex;
+
+
 typedef struct s_cub
 {
 	void		*mlx_ptr;
@@ -100,7 +109,7 @@ typedef struct s_cub
 	t_player	*p1;
 	t_map		*map;
 	t_img		*img;
-	t_img		*textures_test;
+	t_tex		*tex;
 	t_var		*var;
 }				t_cub;
 
@@ -109,7 +118,7 @@ typedef struct s_cub
 */
 
 void	init_map_info(t_map *map, t_var *var);
-void	init_textures(t_img *tex, t_cub *cub);
+void	init_textures(t_tex *tex, t_cub *cub);
 char	**init_check_info_map(int info[8]);
 int		init_player(t_cub *cub);
 int		init_mlx(t_cub *cub);
@@ -168,11 +177,12 @@ void	free_double_char(char **str);
 **		-___UTILS___-
 */
 
+char	**lst_to_double_char(t_list *lst);
+t_img	*get_side(int color, t_cub *cub);
 double	div_protect(double a, double b);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
 void	get_pixel(t_img *image, int x, int y, int *color);
-char	**lst_to_double_char(t_list *lst);
 int		do_rgb(int r, int g, int b);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);

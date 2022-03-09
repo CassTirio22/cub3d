@@ -48,8 +48,8 @@ int	init_protect(t_cub *cub)
 		free(cub->map->info);
 	if (cub->var)
 		free(cub->var);
-	if (cub->textures_test)
-		free(cub->textures_test);
+	// if (cub->textures_test)
+	// 	free(cub->textures_test);
 	return (1);
 }
 

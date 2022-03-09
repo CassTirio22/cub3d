@@ -93,7 +93,7 @@ int	init_mlx(t_cub *cub)
 	cub->var->resolution[0], cub->var->resolution[1]);
 	cub->img->addr = mlx_get_data_addr(cub->img->img, \
 	&cub->img->bits_per_pixel, &cub->img->line_length, &cub->img->endian);
-	init_textures(cub->textures_test, cub);
+	init_textures(cub->tex, cub);
 	return (0);
 }
 
