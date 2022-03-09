@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:43:21 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/08 17:33:34 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/09 17:20:11 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,17 @@ void	draw_fc(t_cub *cub, t_var *var)
 
 void	draw_game(t_cub *cub)
 {
-	float	angle;
 	float	i;
-	int		j;
+	float	j;
+	float	angle;
+	float	offset;
+	float	line_height;
+	float	calc_x;
 	int		color;
-	int		line_height;
-	int		offset;
 
-	i = cub->var->resolution[0];
-	while (--i)
+	i = -1;
+	calc_x = 0;
+	while (++i < cub->var->resolution[0])
 	{
 		angle = i / (cub->var->resolution[0] / FOV);
 		cub->p1->angle += angle - FOV / 2;
@@ -78,11 +80,20 @@ void	draw_game(t_cub *cub)
 		line_height = get_line_height(angle, cub, cub->var->dist_wall);
 		// printf("%d\n", line_height);
 		offset = (cub->var->resolution[1] - line_height) / 2;
+		if (color == EAST_WALL || color == WEST_WALL)
+			calc_x = cub->var->dist_wall * cub->var->dy + cub->p1->pos[1];
+		else
+			calc_x = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];	
+		//printf("%x\n", color);
 		j = -1;
 		while (++j < offset)
 			draw_pixel(cub->img, -i, j, cub->var->c);
 		while (++j < offset + line_height)
+		{
+			//printf("calc : %f\n",  (j - offset) * (cub->textures_test->img_h / line_height));
+			get_pixel(cub->textures_test, (calc_x - (int)calc_x) * (cub->textures_test->img_h), (j - offset) * (cub->textures_test->img_h / line_height), &color);
 			draw_pixel(cub->img, -i, j, color);
+		}
 		while (++j < cub->var->resolution[1])
 			draw_pixel(cub->img, -i, j, cub->var->f);
 	}

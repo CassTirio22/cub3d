@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/08 16:57:04 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/09 15:27:55 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,11 +168,12 @@ void	free_double_char(char **str);
 **		-___UTILS___-
 */
 
-int		do_rgb(int r, int g, int b);
-char	**lst_to_double_char(t_list *lst);
+double	div_protect(double a, double b);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
-double	div_protect(double a, double b);
+void	get_pixel(t_img *image, int x, int y, int *color);
+char	**lst_to_double_char(t_list *lst);
+int		do_rgb(int r, int g, int b);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
