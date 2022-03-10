@@ -6,11 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:53:18 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/07 17:32:38 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:24:31 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 void	draw_view(t_cub *cub, t_player *p1, t_var *var)
 {

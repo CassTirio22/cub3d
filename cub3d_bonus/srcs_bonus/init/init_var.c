@@ -6,11 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 16:53:06 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:24:46 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 int	init_var(t_cub *cub)
 {
@@ -25,6 +25,7 @@ int	init_var(t_cub *cub)
 	cub->tex->so = (t_img *)malloc(sizeof(t_img));
 	cub->tex->ea = (t_img *)malloc(sizeof(t_img));
 	cub->tex->we = (t_img *)malloc(sizeof(t_img));
+	cub->tex->door = (t_img *)malloc(sizeof(t_img));
 	cub->map = (t_map *)malloc(sizeof(t_map));
 	cub->var = (t_var *)malloc(sizeof(t_var));
 	if (cub->map)

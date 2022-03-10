@@ -6,11 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:43:21 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 16:58:38 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:24:34 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 void	reset(t_cub *cub)
 {
@@ -35,15 +35,34 @@ int	get_line_height(float i, t_cub *cub, double dist_wall)
 	return (h);
 }
 
+void	draw_fc(t_cub *cub, t_var *var)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < var->resolution[0])
+	{
+		j = -1;
+		while (++j < var->resolution[1])
+		{
+			if (j > var->resolution[1] / 2)
+				draw_pixel(cub->img, i, j, var->f);
+			else
+				draw_pixel(cub->img, i, j, var->c);
+		}
+	}
+}
+
 void	draw_game(t_cub *cub)
 {
-	float	line_height;
-	float	offset;
-	float	angle;
-	float	calc_x;
-	int		color;
 	float	i;
 	float	j;
+	float	angle;
+	float	offset;
+	float	line_height;
+	float	calc_x;
+	int		color;
 	t_img	*tex;
 
 	i = -1;
@@ -78,6 +97,7 @@ void	draw_game(t_cub *cub)
 		while (++j + offset < cub->var->resolution[1])
 			draw_pixel(cub->img, -i, j + offset, cub->var->f);
 	}
+	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }
 

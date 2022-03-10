@@ -6,11 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 16:58:58 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:21:08 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
 int	check_args(int argc, char **argv)
 {
@@ -33,9 +33,11 @@ int	main(int argc, char **argv)
 	if (check_args(argc, argv) || init_var(&cub) || parse(argv, &cub))
 		return (1);
 	draw_game(&cub);
+	draw_map(&cub);
 	mlx_hook(cub.win_ptr, 2, 1L << 0, key_press, &cub);
 	mlx_hook(cub.win_ptr, 3, 1L << 1, key_release, &cub);
 	mlx_hook(cub.win_ptr, 17, 1L << 17, close_win, &cub);
+	mlx_hook(cub.win_ptr, 6, 1L << 6, mouse_pos, &cub);
 	mlx_loop_hook(cub.mlx_ptr, make_moves, &cub);
 	mlx_loop(cub.mlx_ptr);
 	return (0);

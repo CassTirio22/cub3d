@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 15:48:41 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 16:38:46 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ typedef struct s_tex
 	t_img	*we;
 	t_img	*door;
 }				t_tex;
-
 
 typedef struct s_cub
 {

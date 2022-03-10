@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/03/10 17:33:23 by aliens           ###   ########.fr        #
+#    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
+#    Updated: 2022/03/10 17:29:55 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ OBJSDIR	=	objs/
 
 FILES	=	cub3d.c						\
 			draw/draw.c					\
+			draw/draw_map_2d.c			\
+			draw/draw_player_2d.c		\
 			free/free.c					\
 			hook/hook.c					\
 			hook/move.c					\
@@ -39,8 +41,8 @@ FILES	=	cub3d.c						\
 			utils/utils.c				\
 			utils/utils2.c
 
-SRCS	=	$(addprefix srcs/, $(FILES))
-OBJS	=	$(patsubst srcs%.c, objs%.o, $(SRCS))
+SRCS	=	$(addprefix srcs_bonus/, $(FILES))
+OBJS	=	$(patsubst srcs_bonus%.c, objs_bonus%.o, $(SRCS))
 
 CC		=	gcc -Wall -Wextra -Werror -g
 MFLAGS	=	-lmlx -framework OpenGL -framework AppKit
@@ -51,26 +53,23 @@ RM		=	rm -f
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			@make full -C ./libft
-			@$(CC) $(MFLAGS) -o $(NAME) $(OBJS) libft/libft.a
+			@make full -C ../libft
+			@$(CC) $(MFLAGS) -o $(NAME) $(OBJS) ../libft/libft.a
 			@echo "\r[$(GREEN)✓$(RESET)] cub3d compiled                        "
 
-bonus:		
-			@make -C ./cub3d_bonus
-
-objs/%.o:	srcs/%.c			
+objs_bonus/%.o:	srcs_bonus/%.c			
 			@printf "\r[$(LIGHTPURPLE)✓$(RESET)] compilation of $<           \r"
-			@$(CC) -Imlx -I ./includes -c $^ -o $@
+			@$(CC) -Imlx -I ../includes -c $^ -o $@
 
 clean:
 			@$(RM) $(OBJS)
-			@make clean -C $(LIBFT)
+			@make clean -C ../libft
 			@echo "[$(RED)✓$(RESET)] clean done"
 
 fclean:	
 			@$(RM) $(OBJS)
 			@$(RM) $(NAME)
-			@make fclean -C ./libft
+			@make fclean -C ../libft
 			@echo "[$(RED)✓$(RESET)] fclean done"
 
 re:			fclean all

@@ -6,11 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:00:58 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 16:51:27 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 17:30:46 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 void	init_textures(t_tex *tex, t_cub *cub)
 {
@@ -34,4 +34,9 @@ void	init_textures(t_tex *tex, t_cub *cub)
 	if (tex->we->img)
 		tex->we->addr = mlx_get_data_addr(tex->we->img, &tex->we->bits_per_pixel, \
 		&tex->we->line_length, &tex->we->endian);
+	tex->door->img = mlx_xpm_file_to_image(cub->mlx_ptr, "../textures/door.xpm", &tex->door->img_w, \
+	&tex->door->img_h);
+	if (tex->door->img)
+		tex->door->addr = mlx_get_data_addr(tex->door->img, &tex->door->bits_per_pixel, \
+		&tex->door->line_length, &tex->door->endian);
 }
