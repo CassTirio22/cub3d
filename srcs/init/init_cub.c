@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/09 16:26:07 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 15:39:01 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,23 @@ int	init_mlx(t_cub *cub)
 	return (0);
 }
 
-char	**init_check_info_map(int info[8])
+char	**init_check_info_map(int info[7])
 {
 	int		i;
 	char	**ret;
 
 	i = -1;
-	while (++i < 8)
+	while (++i < 7)
 		info[i] = 0;
-	ret = (char **)malloc(sizeof(char *) * 8);
+	ret = (char **)malloc(sizeof(char *) * 7);
 	if (!ret)
 		return (NULL);
 	ret[0] = "R ";
 	ret[1] = "F ";
 	ret[2] = "C ";
-	ret[3] = "S ";
-	ret[4] = "NO ";
-	ret[5] = "SO ";
-	ret[6] = "WE ";
-	ret[7] = "EA ";
+	ret[3] = "NO ";
+	ret[4] = "SO ";
+	ret[5] = "WE ";
+	ret[6] = "EA ";
 	return (ret);
 }

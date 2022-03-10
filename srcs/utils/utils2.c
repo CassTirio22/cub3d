@@ -6,11 +6,33 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/09 16:26:28 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 16:08:52 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+int	get_color(t_cub *cub, double dist)
+{
+	double	tmp;
+	double	dx;
+	double	dy;
+
+	dx = cos(cub->p1->angle * (M_PI / 180));
+	dy = -sin(cub->p1->angle * (M_PI / 180));
+	tmp = fabs(dist);
+	if (cub->map->map[(int)(cub->p1->pos[1] + dy * tmp)][(int)(cub->p1->pos[0] + dx * tmp)] == '3')
+		return (DOOR);
+	if (dist < 0)
+	{
+		if (cub->var->dy < 0)
+			return (SOUTH_WALL);
+		return (NORTH_WALL);
+	}
+	if (cub->var->dx < 0)
+		return (WEST_WALL);
+	return (EAST_WALL);
+}
 
 t_img	*get_side(int color, t_cub *cub)
 {
@@ -20,6 +42,8 @@ t_img	*get_side(int color, t_cub *cub)
 		return (cub->tex->ea);
 	if (color == NORTH_WALL)
 		return (cub->tex->no);
+	if (color == DOOR)
+		return (cub->tex->door);
 	return (cub->tex->so);
 }
 
@@ -61,7 +85,7 @@ int	is_wall_around(double x, double y, t_cub *cub)
 
 int	is_wall(int x, int y, t_cub *cub)
 {
-	if (cub->map->map[y][x] == '1')
+	if (cub->map->map[y][x] == '1' || cub->map->map[y][x] == '3')
 		return (1);
 	return (0);
 }

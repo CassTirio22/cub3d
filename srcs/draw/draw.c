@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:43:21 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/09 17:20:11 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 16:06:20 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,13 @@ void	draw_game(t_cub *cub)
 		cub->var->dx = cos((cub->p1->angle) * (M_PI / 180));
 		cub->var->dy = sin((cub->p1->angle) * (M_PI / 180));
 		cub->var->dist_wall = dist_to_wall(cub, cub->p1, &color);
-		//cub->var->dist_wall *= cos(angle * (M_PI / 180));
 		cub->p1->angle -= angle - FOV / 2;
 		line_height = get_line_height(angle, cub, cub->var->dist_wall);
-		// printf("%d\n", line_height);
 		offset = (cub->var->resolution[1] - line_height) / 2;
-		if (color == EAST_WALL || color == WEST_WALL)
-			calc_x = cub->var->dist_wall * (cub->var->dy * -1) + cub->p1->pos[1];
+		if (!cub->var->touch)
+			calc_x = cub->var->dist_wall * -cub->var->dy + cub->p1->pos[1];
 		else
-			calc_x = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];	
+			calc_x = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];
 		tex = get_side(color, cub);
 		j = 0;
 		while (j < offset && j < cub->var->resolution[1])
@@ -92,7 +90,6 @@ void	draw_game(t_cub *cub)
 			j = -offset;
 		while (++j < line_height && j + offset < cub->var->resolution[1])
 		{
-			//printf("calc : %f\n",  (j - offset) * (cub->textures_test->img_h / line_height));
 			get_pixel(tex, (calc_x - (int)calc_x) * (tex->img_h), j * (tex->img_h / line_height), &color);
 			draw_pixel(cub->img, -i, j + offset, color);
 		}
@@ -102,7 +99,6 @@ void	draw_game(t_cub *cub)
 	}
 	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
-	//mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->textures_test->img, 0, 0);
 }
 
 void	draw_pixel(t_img *img, int x, int y, int color)

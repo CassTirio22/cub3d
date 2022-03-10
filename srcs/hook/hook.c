@@ -6,11 +6,22 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/07 17:53:22 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 15:58:20 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	open_door(t_cub *cub)
+{
+	double	dx;
+	double	dy;
+
+	dx = cos(cub->p1->angle * (M_PI / 180));
+	dy = -sin(cub->p1->angle * (M_PI / 180));
+	if (cub->map->map[(int)(cub->p1->pos[1] + dy)][(int)(cub->p1->pos[0] + dx)] == '3')
+		cub->map->map[(int)(cub->p1->pos[1] + dy)][(int)(cub->p1->pos[0] + dx)] = '0';
+}
 
 int	mouse_pos(int x, int y, t_cub *cub)
 {
@@ -35,6 +46,8 @@ int	key_press(int key, t_cub *cub)
 		cub->var->rot_left = 1;
 	else if (key == KEY_RIGHT)
 		cub->var->rot_right = 1;
+	else if (key == KEY_E)
+		open_door(cub);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/09 15:27:55 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 15:48:41 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define KEY_S 1
 # define KEY_A 0
 # define KEY_D 2
+# define KEY_E 14
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define SPEED 0.1
@@ -39,6 +40,7 @@
 # define NORTH_WALL 0x552a85
 # define CELLING 0x7cb5d9
 # define FLOOR 0x9F7D5C
+# define DOOR 3
 
 /*
 **		-___STRUCT___-
@@ -54,6 +56,7 @@ typedef struct s_player
 typedef struct s_var
 {
 	int		mouse_pos[2];
+	int		touch;
 	int		up;
 	int		down;
 	int		left;
@@ -73,7 +76,6 @@ typedef struct s_var
 	char	*no;
 	char	*ea;
 	char	*we;
-	char	*s;
 }				t_var;
 
 typedef struct s_map
@@ -100,6 +102,7 @@ typedef struct s_tex
 	t_img	*so;
 	t_img	*ea;
 	t_img	*we;
+	t_img	*door;
 }				t_tex;
 
 
@@ -181,6 +184,7 @@ void	free_double_char(char **str);
 */
 
 char	**lst_to_double_char(t_list *lst);
+int		get_color(t_cub *cub, double dist);
 t_img	*get_side(int color, t_cub *cub);
 double	div_protect(double a, double b);
 void	print_lst(t_list *lst);

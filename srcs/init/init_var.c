@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/08 15:00:02 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 15:08:33 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,16 @@ int	init_var(t_cub *cub)
 	cub->tex->so = (t_img *)malloc(sizeof(t_img));
 	cub->tex->ea = (t_img *)malloc(sizeof(t_img));
 	cub->tex->we = (t_img *)malloc(sizeof(t_img));
+	cub->tex->door = (t_img *)malloc(sizeof(t_img));
 	cub->map = (t_map *)malloc(sizeof(t_map));
 	cub->var = (t_var *)malloc(sizeof(t_var));
 	if (cub->map)
 	{
 		cub->map->map_lst = NULL;
-		cub->map->info = (char **)malloc(sizeof(char *) * (8 + 1));
+		cub->map->info = (char **)malloc(sizeof(char *) * 8);
 	}
 	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex)
 		return (init_protect(cub));
-	cub->map->info[8] = NULL;
+	cub->map->info[7] = NULL;
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 15:47:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/08 14:31:56 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 15:52:35 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,20 +88,21 @@ double	dist_to_wall(t_cub *cub, t_player *p1, int *color)
 {
 	double	dist_x;
 	double	dist_y;
+	double	dist;
 
 	dist_x = dist_x_to_wall(cub, p1, p1->pos);
 	dist_y = dist_y_to_wall(cub, p1, p1->pos);
 	if (dist_x > dist_y)
 	{
-		if (color)
-			*color = NORTH_WALL;
-		if (color && cub->var->dy < 0)
-			*color = SOUTH_WALL;
-		return (dist_y);
+		cub->var->touch = 1;
+		dist = -dist_y;
+	}
+	else
+	{
+		cub->var->touch = 0;
+		dist = dist_x;
 	}
 	if (color)
-		*color = EAST_WALL;
-	if (color && cub->var->dx < 0)
-		*color = WEST_WALL;
-	return (dist_x);
+		*color = get_color(cub, dist);
+	return (fabs(dist));
 }
