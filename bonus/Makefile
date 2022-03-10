@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/03/10 17:29:55 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/10 17:57:05 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ OBJS	=	$(patsubst srcs_bonus%.c, objs_bonus%.o, $(SRCS))
 CC		=	gcc -Wall -Wextra -Werror -g
 MFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
-NAME	=	cub3d
+NAME	=	cub3d_bonus
 RM		=	rm -f
 
 all:		$(NAME)
@@ -55,7 +55,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@make full -C ../libft
 			@$(CC) $(MFLAGS) -o $(NAME) $(OBJS) ../libft/libft.a
-			@echo "\r[$(GREEN)✓$(RESET)] cub3d compiled                        "
+			@echo "\r[$(GREEN)✓$(RESET)] cub3d_bonus compiled                        "
 
 objs_bonus/%.o:	srcs_bonus/%.c			
 			@printf "\r[$(LIGHTPURPLE)✓$(RESET)] compilation of $<           \r"
@@ -74,4 +74,4 @@ fclean:
 
 re:			fclean all
 
-.PHONY:		all clean fclean re cub3d
+.PHONY:		all clean fclean re

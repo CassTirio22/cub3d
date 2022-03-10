@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/03/10 17:33:23 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/10 17:57:46 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,7 +56,8 @@ $(NAME):	$(OBJS)
 			@echo "\r[$(GREEN)✓$(RESET)] cub3d compiled                        "
 
 bonus:		
-			@make -C ./cub3d_bonus
+			@make -C ./bonus
+			@mv -f bonus/cub3d_bonus ./
 
 objs/%.o:	srcs/%.c			
 			@printf "\r[$(LIGHTPURPLE)✓$(RESET)] compilation of $<           \r"
@@ -65,14 +66,16 @@ objs/%.o:	srcs/%.c
 clean:
 			@$(RM) $(OBJS)
 			@make clean -C $(LIBFT)
+			@make clean -C ./bonus
 			@echo "[$(RED)✓$(RESET)] clean done"
 
 fclean:	
 			@$(RM) $(OBJS)
 			@$(RM) $(NAME)
 			@make fclean -C ./libft
+			@make fclean -C ./bonus
 			@echo "[$(RED)✓$(RESET)] fclean done"
 
 re:			fclean all
 
-.PHONY:		all clean fclean re cub3d
+.PHONY:		all clean fclean re cub3d bonus
