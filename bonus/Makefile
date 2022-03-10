@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/03/10 17:57:05 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/10 18:04:59 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ clean:
 
 fclean:	
 			@$(RM) $(OBJS)
-			@$(RM) $(NAME)
+			@$(RM) ../$(NAME)
 			@make fclean -C ../libft
 			@echo "[$(RED)✓$(RESET)] fclean done"
 
