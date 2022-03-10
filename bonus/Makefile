@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/03/10 18:04:59 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/10 19:35:52 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ FILES	=	cub3d.c						\
 			parsing/parse_map_utils.c	\
 			raycasting/dist_to_wall.c	\
 			utils/utils.c				\
-			utils/utils2.c
+			utils/utils2.c				\
+			utils/utils3.c
 
 SRCS	=	$(addprefix srcs_bonus/, $(FILES))
 OBJS	=	$(patsubst srcs_bonus%.c, objs_bonus%.o, $(SRCS))

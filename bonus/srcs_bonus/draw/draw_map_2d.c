@@ -6,11 +6,19 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/19 18:04:09 by zminhas           #+#    #+#             */
-/*   Updated: 2022/03/10 17:19:57 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 18:41:02 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
+
+void	draw_pixel(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 void	draw_outlines(t_cub *cub)
 {
@@ -55,7 +63,8 @@ void	draw_minimap(t_cub *cub, double pos[2], char **map, double i[2])
 	if (pos[1] - 10 + i[1] < 0 || pos[0] - 10 + i[0] < 0 || \
 	pos[0] - 10 + i[0] >= (int)ft_strlen(map[0]) || \
 	pos[1] - 10 + i[1] >= double_char_len(map))
-		draw_wall((int)pos[1] - pos[1] + i[1], (int)pos[0] - pos[0] + i[0], cub, 0xD5D5D5);
+		draw_wall((int)pos[1] - pos[1] + i[1], \
+		(int)pos[0] - pos[0] + i[0], cub, 0xD5D5D5);
 	else if (map[(int)(pos[1] - 10 + i[1])][(int)(pos[0] - 10 + i[0])] == '1')
 		draw_wall((int)pos[1] - pos[1] + i[1], \
 		(int)pos[0] - pos[0] + i[0], cub, 0x787878);

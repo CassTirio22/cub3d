@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 15:01:15 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 19:03:48 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,40 +66,45 @@ int	verify_map_info(t_cub *cub)
 	return (1);
 }
 
+int	check_char_map(char **map, int *nb_player, int max_size, int inc[2])
+{
+	if (!inc[0] || inc[0] == max_size)
+	{
+		if (map[inc[0]][inc[1]] != '1' && map[inc[0]][inc[1]] != '2')
+			return (1);
+	}
+	else if (map[inc[0]][inc[1]] == '0')
+	{
+		if (!arround_zero(map, inc[0], inc[1]))
+			return (1);
+	}
+	else if (map[inc[0]][inc[1]] == 'N' || map[inc[0]][inc[1]] == 'S' \
+	|| map[inc[0]][inc[1]] == 'W' || map[inc[0]][inc[1]] == 'E')
+	{
+		if (!arround_zero(map, inc[0], inc[1]))
+			return (1);
+		(*nb_player)++;
+	}
+	return (0);
+}
+
 int	closed_map(char **map)
 {
 	int	nb_player;
 	int	max_size;
-	int	i;
-	int	j;
+	int	inc[2];
 
 	nb_player = 0;
 	max_size = double_char_len(map) - 1;
-	i = -1;
-	while (map[++i])
+	inc[0] = -1;
+	while (map[++inc[0]])
 	{
-		j = -1;
-		while (map[i][++j])
-		{
-			if (!i || i == max_size)
-			{
-				if (map[i][j] != '1' && map[i][j] != '2')
-					return (0);
-			}
-			else if (map[i][j] == '0')
-			{
-				if (!arround_zero(map, i, j))
-					return (0);
-			}
-			else if (map[i][j] == 'N' || map[i][j] == 'S' \
-			|| map[i][j] == 'W' || map[i][j] == 'E')
-			{
-				if (!arround_zero(map, i, j))
-					return (0);
-				nb_player++;
-			}
-		}
+		inc[1] = -1;
+		while (map[inc[0]][++inc[1]])
+			if (check_char_map(map, &nb_player, max_size, inc))
+				return (0);
 	}
+	printf("nb = %d", nb_player);
 	if (nb_player != 1)
 		return (0);
 	return (1);

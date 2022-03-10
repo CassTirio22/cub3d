@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:43:21 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 16:58:38 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/10 18:32:30 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,48 +35,56 @@ int	get_line_height(float i, t_cub *cub, double dist_wall)
 	return (h);
 }
 
+void	draw_line_height(t_cub *cub, int color, float calc[3])
+{
+	float	j;
+	float	offset;
+	float	line_height;
+	t_img	*tex;
+
+	tex = get_side(color, cub);
+	line_height = get_line_height(calc[2], cub, cub->var->dist_wall);
+	offset = (cub->var->resolution[1] - line_height) / 2;
+	j = 0;
+	while (j < offset && j < cub->var->resolution[1])
+		draw_pixel(cub->img, -calc[1], j++, cub->var->c);
+	j = -1;
+	if (offset < 0)
+		j = -offset;
+	while (++j < line_height && j + offset < cub->var->resolution[1])
+	{
+		get_pixel(tex, (calc[0] - (int)calc[0]) * (tex->img_h), \
+		j * (tex->img_h / line_height), &color);
+		draw_pixel(cub->img, -calc[1], j + offset, color);
+	}
+	j--;
+	while (++j + offset < cub->var->resolution[1])
+		draw_pixel(cub->img, -calc[1], j + offset, cub->var->f);
+}
+
 void	draw_game(t_cub *cub)
 {
-	float	line_height;
-	float	offset;
-	float	angle;
 	float	calc_x;
 	int		color;
 	float	i;
-	float	j;
-	t_img	*tex;
+	float	calc[3];
 
 	i = -1;
 	calc_x = 0;
 	while (++i < cub->var->resolution[0])
 	{
-		angle = i / (cub->var->resolution[0] / FOV);
-		cub->p1->angle += angle - FOV / 2;
+		calc[2] = i / (cub->var->resolution[0] / FOV);
+		cub->p1->angle += calc[2] - FOV / 2;
 		cub->var->dx = cos((cub->p1->angle) * (M_PI / 180));
 		cub->var->dy = sin((cub->p1->angle) * (M_PI / 180));
 		cub->var->dist_wall = dist_to_wall(cub, cub->p1, &color);
-		cub->p1->angle -= angle - FOV / 2;
-		line_height = get_line_height(angle, cub, cub->var->dist_wall);
-		offset = (cub->var->resolution[1] - line_height) / 2;
+		cub->p1->angle -= calc[2] - FOV / 2;
 		if (!cub->var->touch)
-			calc_x = cub->var->dist_wall * -cub->var->dy + cub->p1->pos[1];
+			calc[0] = cub->var->dist_wall * -cub->var->dy + cub->p1->pos[1];
 		else
-			calc_x = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];
-		tex = get_side(color, cub);
-		j = 0;
-		while (j < offset && j < cub->var->resolution[1])
-			draw_pixel(cub->img, -i, j++, cub->var->c);
-		j = -1;
-		if (offset < 0)
-			j = -offset;
-		while (++j < line_height && j + offset < cub->var->resolution[1])
-		{
-			get_pixel(tex, (calc_x - (int)calc_x) * (tex->img_h), j * (tex->img_h / line_height), &color);
-			draw_pixel(cub->img, -i, j + offset, color);
-		}
-		j--;
-		while (++j + offset < cub->var->resolution[1])
-			draw_pixel(cub->img, -i, j + offset, cub->var->f);
+			calc[0] = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];
+		calc[1] = i;
+		draw_line_height(cub, color, calc);
 	}
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }
