@@ -14,7 +14,7 @@
 
 int	rot_left(t_cub *cub)
 {
-	cub->p1->angle += 3;
+	cub->p1->angle += 2;
 	if (cub->p1->angle > 360)
 		cub->p1->angle -= 360;
 	return (0);
@@ -22,8 +22,14 @@ int	rot_left(t_cub *cub)
 
 int	rot_right(t_cub *cub)
 {
-	cub->p1->angle -= 3;
+	cub->p1->angle -= 2;
 	if (cub->p1->angle < 0)
 		cub->p1->angle += 360;
+	return (0);
+}
+
+int	rotate(t_cub *cub)
+{
+	cub->p1->angle = ((double)-cub->var->mouse_pos[0] / (cub->var->resolution[0] / 2)) * 360;
 	return (0);
 }

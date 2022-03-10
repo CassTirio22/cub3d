@@ -37,6 +37,28 @@ int	do_rgb(int r, int g, int b)
 	return (r << 16 | g << 8 | b);
 }
 
+int	is_wall_around(double x, double y, t_cub *cub)
+{
+	double	i;
+	double	j;
+	double	dx;
+	double	dy;
+
+	i = -1;
+	while (++i < 10)
+	{
+		j = -1;
+		while (++j < 360)
+		{
+			dx = cos(j * (M_PI / 180)) / 100;
+			dy = sin(j * (M_PI / 180)) / 100;
+			if (is_wall((int)(x + dx * i), (int)(y + dy * i), cub))
+				return (1);
+		}
+	}
+	return (0);
+}
+
 int	is_wall(int x, int y, t_cub *cub)
 {
 	if (cub->map->map[y][x] == '1')

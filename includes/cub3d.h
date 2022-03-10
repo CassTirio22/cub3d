@@ -53,6 +53,7 @@ typedef struct s_player
 
 typedef struct s_var
 {
+	int		mouse_pos[2];
 	int		up;
 	int		down;
 	int		left;
@@ -161,9 +162,11 @@ void	draw_player(t_cub *cub);
 int		make_moves(t_cub *cub);
 int		key_press(int key, t_cub *cub);
 int		key_release(int key, t_cub *cub);
+int		mouse_pos(int x, int y, t_cub *cub);
 int		close_win(t_cub *cub);
 int		rot_left(t_cub *cub);
 int		rot_right(t_cub *cub);
+int		rotate(t_cub *cub);
 
 /*
 **		-___FREE___-
@@ -188,5 +191,6 @@ int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
 int		is_wall(int x, int y, t_cub *cub);
+int		is_wall_around(double x, double y, t_cub *cub);
 
 #endif

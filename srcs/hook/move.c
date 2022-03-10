@@ -23,11 +23,11 @@ void	move(float dx, float dy, t_cub *cub, int recurse)
 	add_y = 0;
 	calc_x = cub->p1->pos[0] + dx;
 	calc_y = cub->p1->pos[1] + dy;
-	if (!is_wall(calc_x, cub->p1->pos[1], cub))
+	if (!is_wall_around(calc_x, cub->p1->pos[1], cub))
 		add_x = 1;
-	if (!is_wall(cub->p1->pos[0], calc_y, cub))
+	if (!is_wall_around(cub->p1->pos[0], calc_y, cub))
 		add_y = 1;
-	if (is_wall(calc_x, calc_y, cub) && add_x && add_y)
+	if (is_wall_around(calc_x, calc_y, cub) && add_x && add_y)
 		return ;
 	if (add_x)
 		cub->p1->pos[0] += dx;
@@ -56,6 +56,7 @@ int	make_moves(t_cub *cub)
 		rot_left(cub);
 	if (cub->var->rot_right == 1)
 		rot_right(cub);
+	rotate(cub);
 	draw_game(cub);
 	return (0);
 }

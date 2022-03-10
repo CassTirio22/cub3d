@@ -12,6 +12,13 @@
 
 #include "../../includes/cub3d.h"
 
+int	mouse_pos(int x, int y, t_cub *cub)
+{
+	cub->var->mouse_pos[0] = x;
+	cub->var->mouse_pos[1] = y;
+	return (0);
+}
+
 int	key_press(int key, t_cub *cub)
 {
 	if (key == KEY_ESC)
