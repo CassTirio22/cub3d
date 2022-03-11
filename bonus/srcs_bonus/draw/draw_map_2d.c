@@ -78,6 +78,9 @@ void	draw_minimap(t_cub *cub, double pos[2], char **map, double i[2])
 	else if (map[(int)(pos[1] - 10 + i[1])][(int)(pos[0] - 10 + i[0])] == '3')
 		draw_wall((int)pos[1] - pos[1] + i[1], \
 		(int)pos[0] - pos[0] + i[0], cub, 0x593b2a);
+	else if (map[(int)(pos[1] - 10 + i[1])][(int)(pos[0] - 10 + i[0])] == '4')
+		draw_wall((int)pos[1] - pos[1] + i[1], \
+		(int)pos[0] - pos[0] + i[0], cub, 0x593b2a);
 }
 
 void	draw_map(t_cub *cub)

@@ -35,11 +35,7 @@ double	add_delta_dist(double delt[2], double s_dist, int b2o, t_cub *cub)
 		s_dist += delta_dist;
 		if (!len_protect(cub->p1->pos[0] + s_dist * delt[0], \
 		cub->p1->pos[1] + s_dist * delt[1], cub))
-		{
-			if (b2o)
-				return (ft_strlen(cub->map->map[0]));
-			return (double_char_len(cub->map->map));
-		}
+			return (__DBL_MAX__);
 		if (is_wall(cub->p1->pos[0] + s_dist * delt[0], \
 		cub->p1->pos[1] + s_dist * delt[1], cub))
 			final_len = s_dist;

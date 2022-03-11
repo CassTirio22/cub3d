@@ -14,7 +14,7 @@
 
 void	init_map_fcr(t_map *map, t_var *var, int i)
 {
-	char **tmp;
+	char	**tmp;
 
 	tmp = NULL;
 	if (!ft_strncmp(map->info[i], "R", 1))
@@ -57,9 +57,9 @@ void	init_map_info(t_map *map, t_var *var)
 			var->we = ft_substr(map->info[i], 3, ft_strlen(map->info[i]) - 3);
 		init_map_fcr(map, var, i);
 	}
-	var->wall_size = var->resolution[0] / ft_strlen(map->map[0]);
-	if (var->wall_size > var->resolution[1] / double_char_len(map->map))
-		var->wall_size = var->resolution[1] / double_char_len(map->map);
+	var->wall_size = var->resolution[0] / 100;
+	if (var->wall_size > var->resolution[1] / 100)
+		var->wall_size = var->resolution[1] / 100;
 }
 
 int	init_player(t_cub *cub)

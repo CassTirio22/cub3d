@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 int	is_wall_around(double x, double y, t_cub *cub)
 {
@@ -37,6 +37,8 @@ int	is_wall_around(double x, double y, t_cub *cub)
 int	is_wall(int x, int y, t_cub *cub)
 {
 	if (cub->map->map[y][x] == '1')
+		return (1);
+	if (cub->map->map[y][x] == '3')
 		return (1);
 	return (0);
 }

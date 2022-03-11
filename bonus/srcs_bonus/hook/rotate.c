@@ -30,6 +30,7 @@ int	rot_right(t_cub *cub)
 
 int	rotate(t_cub *cub)
 {
-	cub->p1->angle = ((double)-cub->var->mouse_pos[0] / (cub->var->resolution[0] / 2)) * 360;
+	cub->p1->angle = ((double)-cub->var->mouse_pos[0] / \
+	(cub->var->resolution[0] / 2)) * 360;
 	return (0);
 }

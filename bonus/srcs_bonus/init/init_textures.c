@@ -35,7 +35,7 @@ void	init_textures(t_tex *tex, t_cub *cub)
 		tex->we->addr = mlx_get_data_addr(tex->we->img, \
 		&tex->we->bits_per_pixel, &tex->we->line_length, &tex->we->endian);
 	tex->door->img = mlx_xpm_file_to_image(cub->mlx_ptr, \
-	"../textures/door.xpm", &tex->door->img_w, &tex->door->img_h);
+	"./textures/door.xpm", &tex->door->img_w, &tex->door->img_h);
 	if (tex->door->img)
 		tex->door->addr = mlx_get_data_addr(tex->door->img, &tex->door-> \
 		bits_per_pixel, &tex->door->line_length, &tex->door->endian);
