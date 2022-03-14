@@ -99,7 +99,6 @@ double	dist_to_wall(t_cub *cub, t_player *p1, int *color)
 		cub->var->touch = 0;
 		dist = dist_x;
 	}
-	if (color)
-		*color = get_color(cub, dist);
+	*color = get_color(cub, dist);
 	return (fabs(dist));
 }

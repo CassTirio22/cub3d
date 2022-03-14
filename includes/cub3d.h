@@ -182,13 +182,14 @@ void	free_double_char(char **str);
 **		-___UTILS___-
 */
 
-char	**lst_to_double_char(t_list *lst);
-int		get_color(t_cub *cub, double dist);
 t_img	*get_side(int color, t_cub *cub);
+char	**lst_to_double_char(t_list *lst);
 double	div_protect(double a, double b);
 void	print_lst(t_list *lst);
 void	print_double_char(char **str);
 void	get_pixel(t_img *image, int x, int y, int *color);
+int		get_color(t_cub *cub, double dist);
+int		map_protect(char **map, int x, int y);
 int		do_rgb(int r, int g, int b);
 int		ft_is_white_space(char c);
 int		ft_strlen_cub3d(char *str);

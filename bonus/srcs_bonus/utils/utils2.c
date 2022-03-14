@@ -21,8 +21,10 @@ int	get_color(t_cub *cub, double dist)
 	dx = cos(cub->p1->angle * (M_PI / 180));
 	dy = -sin(cub->p1->angle * (M_PI / 180));
 	tmp = fabs(dist);
-	if (cub->map->map[(int)(cub->p1->pos[1] + dy * tmp)][(int)(cub->p1->pos[0] + dx * tmp)] == '3')
-		return (DOOR);
+	if (!map_protect(cub->map->map, cub->p1->pos[0] + dx * tmp, cub->p1->pos[1] + dy * tmp))
+		if (cub->map->map[(int)(cub->p1->pos[1] + dy * tmp)] \
+		[(int)(cub->p1->pos[0] + dx * tmp)] == '3')
+			return (DOOR);
 	if (dist < 0)
 	{
 		if (cub->var->dy < 0)
