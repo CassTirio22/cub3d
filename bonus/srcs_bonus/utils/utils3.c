@@ -12,6 +12,13 @@
 
 #include "../../../includes/cub3d.h"
 
+int	map_protect(char **map, int x, int y)
+{
+	if (x < 0 || y < 0 || x > (int)ft_strlen(map[0]) || y > double_char_len(map))
+		return (1);
+	return (0);
+}
+
 int	is_wall_around(double x, double y, t_cub *cub)
 {
 	double	i;
