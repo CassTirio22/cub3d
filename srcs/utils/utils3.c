@@ -6,18 +6,11 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:33:08 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 19:34:12 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 16:51:26 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int	map_protect(char **map, int x, int y)
-{
-	if (x < 0 || y < 0 || x > (int)ft_strlen(map[0]) || y > double_char_len(map))
-		return (1);
-	return (0);
-}
 
 int	is_wall_around(double x, double y, t_cub *cub)
 {

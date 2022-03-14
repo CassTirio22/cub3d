@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 19:03:48 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 16:57:17 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ int	closed_map(char **map)
 			if (check_char_map(map, &nb_player, max_size, inc))
 				return (0);
 	}
-	printf("nb = %d", nb_player);
 	if (nb_player != 1)
 		return (0);
 	return (1);

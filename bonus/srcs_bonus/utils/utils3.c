@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:35:10 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 19:35:23 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 16:53:44 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	map_protect(char **map, int x, int y)
 {
-	if (x < 0 || y < 0 || x > (int)ft_strlen(map[0]) || y > double_char_len(map))
+	if (x < 0 || y < 0 || x > (int)ft_strlen(map[0]) || \
+	y > double_char_len(map))
 		return (1);
 	return (0);
 }

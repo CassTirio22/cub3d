@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 19:59:30 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 19:35:43 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 16:53:23 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	get_color(t_cub *cub, double dist)
 	dx = cos(cub->p1->angle * (M_PI / 180));
 	dy = -sin(cub->p1->angle * (M_PI / 180));
 	tmp = fabs(dist);
-	if (!map_protect(cub->map->map, cub->p1->pos[0] + dx * tmp, cub->p1->pos[1] + dy * tmp))
+	if (!map_protect(cub->map->map, \
+	cub->p1->pos[0] + dx * tmp, cub->p1->pos[1] + dy * tmp))
 		if (cub->map->map[(int)(cub->p1->pos[1] + dy * tmp)] \
 		[(int)(cub->p1->pos[0] + dx * tmp)] == '3')
 			return (DOOR);

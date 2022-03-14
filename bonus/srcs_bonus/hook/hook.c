@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 17:24:38 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 16:53:02 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ void	open_close_door(t_cub *cub)
 
 	dx = cos(cub->p1->angle * (M_PI / 180));
 	dy = -sin(cub->p1->angle * (M_PI / 180));
-	if (cub->map->map[(int)(cub->p1->pos[1] + dy)][(int)(cub->p1->pos[0] + dx)] == '3')
-		cub->map->map[(int)(cub->p1->pos[1] + dy)][(int)(cub->p1->pos[0] + dx)] = '4';
-	else if (cub->map->map[(int)(cub->p1->pos[1] + dy)][(int)(cub->p1->pos[0] + dx)] == '4')
-		cub->map->map[(int)(cub->p1->pos[1] + dy)][(int)(cub->p1->pos[0] + dx)] = '3';
-	
+	if (cub->map->map[(int)(cub->p1->pos[1] + dy)] \
+	[(int)(cub->p1->pos[0] + dx)] == '3')
+		cub->map->map[(int)(cub->p1->pos[1] + dy)] \
+		[(int)(cub->p1->pos[0] + dx)] = '4';
+	else if (cub->map->map[(int)(cub->p1->pos[1] + dy)] \
+	[(int)(cub->p1->pos[0] + dx)] == '4')
+		cub->map->map[(int)(cub->p1->pos[1] + dy)] \
+		[(int)(cub->p1->pos[0] + dx)] = '3';
 }
 
 int	mouse_pos(int x, int y, t_cub *cub)
