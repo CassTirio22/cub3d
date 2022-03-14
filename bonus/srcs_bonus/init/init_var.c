@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 17:49:43 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:35:14 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_var_2(t_cub *cub)
 		cub->var->so = NULL;
 		cub->var->ea = NULL;
 		cub->var->we = NULL;
+		cub->var->run = 0;
 	}
 	if (cub->map)
 	{
@@ -49,7 +50,8 @@ int	init_var(t_cub *cub)
 	cub->map = (t_map *)malloc(sizeof(t_map));
 	cub->var = (t_var *)malloc(sizeof(t_var));
 	init_var_2(cub);
-	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex)
+	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex || \
+	!cub->var)
 		return (free_all(cub));
 	cub->map->info[7] = NULL;
 	return (0);

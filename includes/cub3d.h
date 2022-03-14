@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 17:37:07 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:38:53 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define KEY_E 14
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+# define KEY_SHIFT 257
 # define SPEED 0.1
 # define FOV 60
 # define WEST_WALL 0x991a06
@@ -65,6 +66,7 @@ typedef struct s_var
 	int		right;
 	int		rot_left;
 	int		rot_right;
+	int		run;
 	int		resolution[2];
 	int		f;
 	int		c;

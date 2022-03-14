@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 16:53:02 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 18:39:39 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int	key_press(int key, t_cub *cub)
 		cub->var->rot_right = 1;
 	else if (key == KEY_E)
 		open_close_door(cub);
+	else if (key == KEY_SHIFT)
+		cub->var->run = 1;
 	return (0);
 }
 
@@ -73,6 +75,8 @@ int	key_release(int key, t_cub *cub)
 		cub->var->rot_left = 0;
 	else if (key == KEY_RIGHT)
 		cub->var->rot_right = 0;
+	else if (key == KEY_SHIFT)
+		cub->var->run = 0;
 	return (0);
 }
 
