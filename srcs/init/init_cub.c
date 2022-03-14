@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 18:51:14 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 17:39:04 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@ void	init_map_fcr(t_map *map, t_var *var, int i)
 	char	**tmp;
 
 	tmp = NULL;
-	if (!ft_strncmp(map->info[i], "R", 1))
-	{
-		tmp = ft_split(map->info[i], ' ');
-		var->resolution[0] = ft_atoi(tmp[1]);
-		var->resolution[1] = ft_atoi(tmp[2]);
-		free_double_char(tmp);
-	}
+	var->resolution[0] = R1;
+	var->resolution[1] = R2;
 	if (!ft_strncmp(map->info[i], "F", 1))
 	{
 		tmp = ft_split(map->info[i] + 2, ',');
@@ -106,23 +101,22 @@ int	init_mlx(t_cub *cub)
 	return (0);
 }
 
-char	**init_check_info_map(int info[7])
+char	**init_check_info_map(int info[6])
 {
 	int		i;
 	char	**ret;
 
 	i = -1;
-	while (++i < 7)
+	while (++i < 6)
 		info[i] = 0;
-	ret = (char **)malloc(sizeof(char *) * 7);
+	ret = (char **)malloc(sizeof(char *) * 6);
 	if (!ret)
 		return (NULL);
-	ret[0] = "R ";
-	ret[1] = "F ";
-	ret[2] = "C ";
-	ret[3] = "NO ";
-	ret[4] = "SO ";
-	ret[5] = "WE ";
-	ret[6] = "EA ";
+	ret[0] = "F ";
+	ret[1] = "C ";
+	ret[2] = "NO ";
+	ret[3] = "SO ";
+	ret[4] = "WE ";
+	ret[5] = "EA ";
 	return (ret);
 }

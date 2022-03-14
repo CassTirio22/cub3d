@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 17:27:43 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 17:39:45 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_var_2(t_cub *cub)
 	if (cub->map)
 	{
 		cub->map->map_lst = NULL;
-		cub->map->info = (char **)malloc(sizeof(char *) * 8);
+		cub->map->info = (char **)malloc(sizeof(char *) * 7);
 	}
 }
 
@@ -50,6 +50,6 @@ int	init_var(t_cub *cub)
 	init_var_2(cub);
 	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex)
 		return (free_all(cub));
-	cub->map->info[7] = NULL;
+	cub->map->info[6] = NULL;
 	return (0);
 }

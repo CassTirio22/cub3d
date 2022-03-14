@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 16:57:17 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 17:33:19 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	get_info_map(char **argv, t_cub *cub)
 	index = 0;
 	while (get_next_line(fd, &line))
 	{
-		if (index < 7)
+		if (index < 6)
 		{
 			if (line[0])
 				get_line(line, cub, 0, index++);
@@ -41,7 +41,7 @@ int	get_info_map(char **argv, t_cub *cub)
 int	verify_map_info(t_cub *cub)
 {
 	char	**check;
-	int		info[7];
+	int		info[6];
 	int		i;
 	int		j;
 
@@ -52,13 +52,13 @@ int	verify_map_info(t_cub *cub)
 	while (cub->map->info[++i])
 	{
 		j = -1;
-		while (++j < 7)
+		while (++j < 6)
 			if (!ft_strncmp(cub->map->info[i], check[j], ft_strlen(check[j])))
 				info[j]++;
 	}
 	free(check);
 	i = -1;
-	while (++i < 7)
+	while (++i < 6)
 		if (info[i] != 1)
 			return (0);
 	if (!transform_map(cub->map))

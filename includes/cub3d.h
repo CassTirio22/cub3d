@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 19:30:23 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 17:37:07 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # define CELLING 0x7cb5d9
 # define FLOOR 0x9F7D5C
 # define DOOR 3
+# define R1 1000
+# define R2 1000
 
 /*
 **		-___STRUCT___-

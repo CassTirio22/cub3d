@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 17:28:14 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/14 17:49:43 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	init_var_2(t_cub *cub)
 		cub->tex->so = (t_img *)malloc(sizeof(t_img));
 		cub->tex->ea = (t_img *)malloc(sizeof(t_img));
 		cub->tex->we = (t_img *)malloc(sizeof(t_img));
+		cub->tex->door = (t_img *)malloc(sizeof(t_img));
 	}
 	if (cub->var)
 	{
