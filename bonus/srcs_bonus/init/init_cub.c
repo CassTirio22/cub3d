@@ -49,13 +49,13 @@ void	init_map_info(t_map *map, t_var *var, t_cub *cub)
 	while (map->info[++i])
 	{
 		if (!ft_strncmp(map->info[i], "SO", 2) && spc_inf(map->info[i], j, cub))
-			var->so = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+			var->so = ft_substr(map->info[i], 2 + j[0], j[2]);
 		if (!ft_strncmp(map->info[i], "NO", 2) && spc_inf(map->info[i], j, cub))
-			var->no = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+			var->no = ft_substr(map->info[i], 2 + j[0], j[2]);
 		if (!ft_strncmp(map->info[i], "EA", 2) && spc_inf(map->info[i], j, cub))
-			var->ea = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+			var->ea = ft_substr(map->info[i], 2 + j[0], j[2]);
 		if (!ft_strncmp(map->info[i], "WE", 2) && spc_inf(map->info[i], j, cub))
-			var->we = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+			var->we = ft_substr(map->info[i], 2 + j[0], j[2]);
 		init_map_fcr(map, var, i);
 	}
 	var->wall_size = var->resolution[0] / 100;
@@ -118,12 +118,12 @@ char	**init_check_info_map(int info[7])
 	ret = (char **)malloc(sizeof(char *) * 7);
 	if (!ret)
 		return (NULL);
-	ret[0] = "R ";
-	ret[1] = "F ";
-	ret[2] = "C ";
-	ret[3] = "NO ";
-	ret[4] = "SO ";
-	ret[5] = "WE ";
-	ret[6] = "EA ";
+	ret[0] = "R";
+	ret[1] = "F";
+	ret[2] = "C";
+	ret[3] = "NO";
+	ret[4] = "SO";
+	ret[5] = "WE";
+	ret[6] = "EA";
 	return (ret);
 }

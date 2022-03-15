@@ -60,13 +60,13 @@ int	spc_inf(char *info, int j[3], t_cub *cub)
 	i = 0;
 	info += 2;
 	while (info[j[0]] && info[j[0]] == ' ')
-		(j[0])++;
+		j[0]++;
 	while (info[i + j[0]] && info[i + j[0]] != ' ')
 		i++;
-	while (info[i + j[0] + j[1]] && info[i + j[0]] + j[1] == ' ')
-		(j[1])++;
+	while (info[i + j[0] + j[1]] && info[i + j[0] + j[1]] == ' ')
+		j[1]++;
 	if (info[i + j[0] + j[1]])
 		free_all(cub);
-	j[2] = i + j[0] + j[1];
+	j[2] = i;
 	return (1);
 }
