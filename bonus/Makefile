@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
+#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/03/10 19:35:52 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/15 17:16:43 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,13 +65,11 @@ objs_bonus/%.o:	srcs_bonus/%.c
 clean:
 			@$(RM) $(OBJS)
 			@make clean -C ../libft
-			@echo "[$(RED)✓$(RESET)] clean done"
 
 fclean:	
 			@$(RM) $(OBJS)
 			@$(RM) ../$(NAME)
 			@make fclean -C ../libft
-			@echo "[$(RED)✓$(RESET)] fclean done"
 
 re:			fclean all
 

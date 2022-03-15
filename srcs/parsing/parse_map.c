@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 17:33:19 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:29:09 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	verify_map_info(t_cub *cub)
 	while (++i < 6)
 		if (info[i] != 1)
 			return (0);
-	if (!transform_map(cub->map))
+	if (!transform_map(cub->map, cub))
 		return (0);
 	return (1);
 }

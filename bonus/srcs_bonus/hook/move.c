@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:32:54 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 18:43:53 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:10:35 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	move(float dx, float dy, t_cub *cub, int recurse)
 {
-	int		add_x;
-	int		add_y;
 	float	calc_x;
 	float	calc_y;
+	int		add_x;
+	int		add_y;
 
 	add_x = 0;
 	add_y = 0;

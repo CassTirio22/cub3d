@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 18:38:53 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:30:52 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ int		parse(char **argv, t_cub *cub);
 int		get_line(char *line, t_cub *cub, int boolean, int index);
 int		check_args(int argc, char **argv);
 int		arround_zero(char **map, int i, int j);
-int		transform_map(t_map *map);
+int		transform_map(t_map *map, t_cub *cub);
 
 /*
 **		-___RAYCASTING___-
@@ -178,7 +178,7 @@ int		rotate(t_cub *cub);
 **		-___FREE___-
 */
 
-int		free_all(t_cub *cub);
+int		free_all(t_cub *cub, int error);
 int		init_protect(t_cub *cub);
 void	free_double_char(char **str);
 

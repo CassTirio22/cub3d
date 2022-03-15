@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:14:04 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/10 19:13:10 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:33:47 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-int	transform_map_line(char **line, int max_len)
+int	transform_map_line(char **line, int max_len, t_cub *cub)
 {
 	int		i;
 
@@ -26,18 +26,18 @@ int	transform_map_line(char **line, int max_len)
 		(*line)[i] == 'E')
 			;
 		else
-			return (0);
+			free_all(cub, 3);
 	}
 	while (++i <= max_len)
 	{
 		*line = ft_gnljoin(*line, "2");
 		if (!*line)
-			return (0);
+			free_all(cub, 4);
 	}
 	return (1);
 }
 
-int	transform_map(t_map *map)
+int	transform_map(t_map *map, t_cub *cub)
 {
 	int	max_len;
 	int	i;
@@ -49,7 +49,7 @@ int	transform_map(t_map *map)
 			max_len = ft_strlen_cub3d(map->map[i]);
 	i = -1;
 	while (map->map[++i])
-		if (!transform_map_line(&map->map[i], max_len))
+		if (!transform_map_line(&map->map[i], max_len, cub))
 			return (0);
 	return (1);
 }

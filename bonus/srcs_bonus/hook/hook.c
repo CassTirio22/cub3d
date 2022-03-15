@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 18:39:39 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:10:23 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
+
+int	close_win(t_cub *cub)
+{
+	free_all(cub, 0);
+	exit (0);
+	return (0);
+}
 
 void	open_close_door(t_cub *cub)
 {
@@ -77,12 +84,5 @@ int	key_release(int key, t_cub *cub)
 		cub->var->rot_right = 0;
 	else if (key == KEY_SHIFT)
 		cub->var->run = 0;
-	return (0);
-}
-
-int	close_win(t_cub *cub)
-{
-	free_all(cub);
-	exit (0);
 	return (0);
 }

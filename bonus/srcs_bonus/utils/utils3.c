@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:35:10 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 16:53:44 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:13:21 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	spc_inf(char *info, int j[3], t_cub *cub)
 	while (info[i + j[0] + j[1]] && info[i + j[0] + j[1]] == ' ')
 		j[1]++;
 	if (info[i + j[0] + j[1]])
-		free_all(cub);
+		free_all(cub, 2);
 	j[2] = i;
 	return (1);
 }

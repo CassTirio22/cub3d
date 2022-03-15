@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 17:25:22 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:24:19 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	error_msg(int error)
+{
+	printf("Error\n");
+	if (error == 2)
+		printf("Invalid map info\n");
+	else if (error == 3)
+		printf("Invalid map\n");
+	else if (error == 4)
+		printf("Malloc Error\n");
+	else if (error == 5)
+		printf("Invalid argument\n");
+}
 
 void	free_all_2(t_cub *cub)
 {
@@ -36,7 +49,7 @@ void	free_all_2(t_cub *cub)
 	}
 }
 
-int	free_all(t_cub *cub)
+int	free_all(t_cub *cub, int error)
 {
 	if (cub->p1)
 		free(cub->p1);
@@ -49,6 +62,8 @@ int	free_all(t_cub *cub)
 		free(cub->map);
 	}
 	free_all_2(cub);
+	if (error)
+		error_msg(error);
 	exit(1);
 	return (1);
 }

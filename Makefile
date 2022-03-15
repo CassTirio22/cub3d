@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
+#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/03/10 19:34:42 by aliens           ###   ########.fr        #
+#    Updated: 2022/03/15 17:18:34 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ objs/%.o:	srcs/%.c
 
 clean:
 			@$(RM) $(OBJS)
-			@make clean -C $(LIBFT)
+			@make clean -C ./libft
 			@make clean -C ./bonus
 			@echo "[$(RED)✓$(RESET)] clean done"
 

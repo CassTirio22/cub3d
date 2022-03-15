@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 15:00:58 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 18:42:53 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:06:54 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	init_textures(t_tex *tex, t_cub *cub)
 		tex->we->addr = mlx_get_data_addr(tex->we->img, \
 		&tex->we->bits_per_pixel, &tex->we->line_length, &tex->we->endian);
 	if (!tex->no->img || !tex->ea->img || !tex->so->img || !tex->we->img)
-		free_all(cub);
+		free_all(cub, 2);
 }

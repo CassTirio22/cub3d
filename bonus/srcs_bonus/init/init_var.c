@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_var.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/14 18:35:14 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:12:30 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	init_var(t_cub *cub)
 	init_var_2(cub);
 	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex || \
 	!cub->var)
-		return (free_all(cub));
+		return (free_all(cub, 4));
 	cub->map->info[7] = NULL;
 	return (0);
 }

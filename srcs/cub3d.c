@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:39:07 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/14 17:11:27 by aliens           ###   ########.fr       */
+/*   Updated: 2022/03/15 17:23:23 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	t_cub	cub;
 
 	if (check_args(argc, argv) || init_var(&cub) || parse(argv, &cub))
-		return (free_all(&cub));
+		return (free_all(&cub, 5));
 	draw_game(&cub);
 	mlx_hook(cub.win_ptr, 2, 1L << 0, key_press, &cub);
 	mlx_hook(cub.win_ptr, 3, 1L << 1, key_release, &cub);
