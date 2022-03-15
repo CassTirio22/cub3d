@@ -60,3 +60,23 @@ double	div_protect(double a, double b)
 		return (a);
 	return (a / b);
 }
+
+int	spc_inf(char *info, int j[3], t_cub *cub)
+{
+	int	i;
+
+	j[0] = 0;
+	j[1] = 0;
+	i = 0;
+	info += 2;
+	while (info[j[0]] && info[j[0]] == ' ')
+		(j[0])++;
+	while (info[i + j[0]] && info[i + j[0]] != ' ')
+		i++;
+	while (info[i + j[0] + j[1]] && info[i + j[0]] + j[1] == ' ')
+		(j[1])++;
+	if (info[i + j[0] + j[1]])
+		free_all(cub);
+	j[2] = i + j[0] + j[1];
+	return (1);
+}

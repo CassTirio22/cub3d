@@ -124,7 +124,7 @@ typedef struct s_cub
 **		-___INIT___-
 */
 
-void	init_map_info(t_map *map, t_var *var);
+void	init_map_info(t_map *map, t_var *var, t_cub *cub);
 void	init_textures(t_tex *tex, t_cub *cub);
 char	**init_check_info_map(int info[8]);
 int		init_player(t_cub *cub);
@@ -200,5 +200,6 @@ int		ft_strlen_cub3d(char *str);
 int		double_char_len(char **str);
 int		is_wall(int x, int y, t_cub *cub);
 int		is_wall_around(double x, double y, t_cub *cub);
+int		spc_inf(char *info, int j[3], t_cub *cub);
 
 #endif

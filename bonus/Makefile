@@ -48,7 +48,7 @@ OBJS	=	$(patsubst srcs_bonus%.c, objs_bonus%.o, $(SRCS))
 CC		=	gcc -Wall -Wextra -Werror -g
 MFLAGS	=	-lmlx -framework OpenGL -framework AppKit
 
-NAME	=	cub3d_bonus
+NAME	=	cub3D_bonus
 RM		=	rm -f
 
 all:		$(NAME)
@@ -56,7 +56,7 @@ all:		$(NAME)
 $(NAME):	$(OBJS)
 			@make full -C ../libft
 			@$(CC) $(MFLAGS) -o $(NAME) $(OBJS) ../libft/libft.a
-			@echo "\r[$(GREEN)✓$(RESET)] cub3d_bonus compiled                        "
+			@echo "\r[$(GREEN)✓$(RESET)] $(NAME) compiled                        "
 
 objs_bonus/%.o:	srcs_bonus/%.c			
 			@printf "\r[$(LIGHTPURPLE)✓$(RESET)] compilation of $<           \r"

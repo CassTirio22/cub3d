@@ -49,7 +49,7 @@ int	free_all(t_cub *cub)
 		free(cub->map);
 	}
 	free_all_2(cub);
-	exit(1);	
+	exit(1);
 	return (1);
 }
 

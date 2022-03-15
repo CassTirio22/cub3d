@@ -34,4 +34,6 @@ void	init_textures(t_tex *tex, t_cub *cub)
 	if (tex->we->img)
 		tex->we->addr = mlx_get_data_addr(tex->we->img, \
 		&tex->we->bits_per_pixel, &tex->we->line_length, &tex->we->endian);
+	if (!tex->no->img || !tex->ea->img || !tex->so->img || !tex->we->img)
+		free_all(cub);
 }

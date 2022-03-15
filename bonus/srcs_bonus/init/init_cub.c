@@ -38,23 +38,24 @@ void	init_map_fcr(t_map *map, t_var *var, int i)
 	}
 }
 
-void	init_map_info(t_map *map, t_var *var)
+void	init_map_info(t_map *map, t_var *var, t_cub *cub)
 {
 	char	**tmp;
+	int		j[3];
 	int		i;
 
 	i = -1;
 	tmp = NULL;
 	while (map->info[++i])
 	{
-		if (!ft_strncmp(map->info[i], "SO", 2))
-			var->so = ft_substr(map->info[i], 3, ft_strlen(map->info[i]) - 3);
-		if (!ft_strncmp(map->info[i], "NO", 2))
-			var->no = ft_substr(map->info[i], 3, ft_strlen(map->info[i]) - 3);
-		if (!ft_strncmp(map->info[i], "EA", 2))
-			var->ea = ft_substr(map->info[i], 3, ft_strlen(map->info[i]) - 3);
-		if (!ft_strncmp(map->info[i], "WE", 2))
-			var->we = ft_substr(map->info[i], 3, ft_strlen(map->info[i]) - 3);
+		if (!ft_strncmp(map->info[i], "SO", 2) && spc_inf(map->info[i], j, cub))
+			var->so = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+		if (!ft_strncmp(map->info[i], "NO", 2) && spc_inf(map->info[i], j, cub))
+			var->no = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+		if (!ft_strncmp(map->info[i], "EA", 2) && spc_inf(map->info[i], j, cub))
+			var->ea = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
+		if (!ft_strncmp(map->info[i], "WE", 2) && spc_inf(map->info[i], j, cub))
+			var->we = ft_substr(map->info[i], 2 + j[0], j[2] - j[1]);
 		init_map_fcr(map, var, i);
 	}
 	var->wall_size = var->resolution[0] / 100;

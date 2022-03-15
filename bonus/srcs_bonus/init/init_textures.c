@@ -12,6 +12,17 @@
 
 #include "../../../includes/cub3d.h"
 
+void	init_textures_2(t_tex *tex, t_cub *cub)
+{
+	tex->door->img = mlx_xpm_file_to_image(cub->mlx_ptr, \
+	"./textures/door.xpm", &tex->door->img_w, &tex->door->img_h);
+	if (tex->door->img)
+		tex->door->addr = mlx_get_data_addr(tex->door->img, &tex->door-> \
+		bits_per_pixel, &tex->door->line_length, &tex->door->endian);
+	if (!tex->no->img || !tex->ea->img || !tex->so->img || !tex->we->img)
+		free_all(cub);
+}
+
 void	init_textures(t_tex *tex, t_cub *cub)
 {
 	tex->no->img = mlx_xpm_file_to_image(cub->mlx_ptr, cub->var->no, \
@@ -34,9 +45,5 @@ void	init_textures(t_tex *tex, t_cub *cub)
 	if (tex->we->img)
 		tex->we->addr = mlx_get_data_addr(tex->we->img, \
 		&tex->we->bits_per_pixel, &tex->we->line_length, &tex->we->endian);
-	tex->door->img = mlx_xpm_file_to_image(cub->mlx_ptr, \
-	"./textures/door.xpm", &tex->door->img_w, &tex->door->img_h);
-	if (tex->door->img)
-		tex->door->addr = mlx_get_data_addr(tex->door->img, &tex->door-> \
-		bits_per_pixel, &tex->door->line_length, &tex->door->endian);
+	init_textures_2(tex, cub);
 }

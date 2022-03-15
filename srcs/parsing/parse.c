@@ -18,7 +18,7 @@ int	parse(char **argv, t_cub *cub)
 		return (free_all(cub));
 	if (!closed_map(cub->map->map))
 		return (free_all(cub));
-	init_map_info(cub->map, cub->var);
+	init_map_info(cub->map, cub->var, cub);
 	init_player(cub);
 	init_mlx(cub);
 	return (0);
