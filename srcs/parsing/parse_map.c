@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/15 17:29:09 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:47:42 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	get_info_map(char **argv, t_cub *cub)
 		{
 			if (line[0])
 				get_line(line, cub, 0, index++);
+			free(line);
 		}
 		else
 			get_line(line, cub, 1, index);

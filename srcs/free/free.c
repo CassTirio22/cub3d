@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/15 17:24:19 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:39:34 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	free_all(t_cub *cub, int error)
 		free(cub->img);
 	if (cub->map)
 	{
-		free_double_char(cub->map->map);
 		free_double_char(cub->map->info);
+		free_double_char(cub->map->map);
 		free(cub->map);
 	}
 	free_all_2(cub);
