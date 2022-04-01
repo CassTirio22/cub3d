@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/28 16:39:34 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/01 17:37:55 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,27 @@
 
 void	error_msg(int error)
 {
+	if (error == 1)
+		return ;
 	printf("Error\n");
 	if (error == 2)
-		printf("Invalid map info\n");
+		printf("Invalid textures\n");
 	else if (error == 3)
-		printf("Invalid map\n");
+		printf("Invalid character in map\n");
 	else if (error == 4)
 		printf("Malloc Error\n");
 	else if (error == 5)
-		printf("Invalid argument\n");
+		printf("Invalid argument\nUsage : ./cub3D <path_to_map.cub>\n");
+	else if (error == 6)
+		printf("Map does not exist\n");
+	else if (error == 7)
+		printf("Map is not closed\n");
+	else if (error == 8)
+		printf("No player on map\n");
+	else if (error == 9)
+		printf("Too much player on map\n");
+	else if (error == 10)
+		printf("Invalid color\n");
 }
 
 void	free_all_2(t_cub *cub)
@@ -57,14 +69,16 @@ int	free_all(t_cub *cub, int error)
 		free(cub->img);
 	if (cub->map)
 	{
-		free_double_char(cub->map->info);
-		free_double_char(cub->map->map);
+		if (cub->map->info)
+			free_double_char(cub->map->info);
+		if (cub->map->map)
+			free_double_char(cub->map->map);
 		free(cub->map);
 	}
 	free_all_2(cub);
 	if (error)
 		error_msg(error);
-	exit(1);
+	exit(error);
 	return (1);
 }
 

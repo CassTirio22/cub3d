@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/31 16:45:38 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/01 17:32:33 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int		init_var(t_cub *cub);
 **		-___PARSING___-
 */
 
-int		closed_map(char **map);
+int		closed_map(char **map, t_cub *cub);
 int		get_info_map(char **argv, t_cub *cub);
 int		verify_map_info(t_cub *cub);
 int		parse(char **argv, t_cub *cub);
@@ -201,5 +201,7 @@ int		double_char_len(char **str);
 int		is_wall(int x, int y, t_cub *cub);
 int		is_wall_around(double x, double y, t_cub *cub);
 int		spc_inf(char *info, int j[3], t_cub *cub);
+void	info_check(int info[6], char **check, t_cub *cub);
+int		check_color(char **tmp);
 
 #endif

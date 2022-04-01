@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:33:08 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/15 17:07:57 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:59:41 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,19 @@ int	spc_inf(char *info, int j[3], t_cub *cub)
 		free_all(cub, 2);
 	j[2] = i;
 	return (1);
+}
+
+void	info_check(int info[6], char **check, t_cub *cub)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 6)
+	{
+		if (info[i] != 1)
+		{
+			printf("Error\n%s is missing\n", check[i]);
+			free_all(cub, 1);
+		}
+	}
 }

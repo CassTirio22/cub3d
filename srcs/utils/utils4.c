@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/20 15:45:07 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/01 17:09:18 by ctirions         ###   ########.fr       */
+/*   Created: 2022/04/01 17:30:00 by ctirions          #+#    #+#             */
+/*   Updated: 2022/04/01 17:35:21 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	parse(char **argv, t_cub *cub)
+int	check_color(char **tmp)
 {
-	if (!get_info_map(argv, cub) || !verify_map_info(cub))
-		return (free_all(cub, 2));
-	if (!closed_map(cub->map->map, cub))
-		return (free_all(cub, 3));
-	init_map_info(cub->map, cub->var, cub);
-	init_player(cub);
-	init_mlx(cub);
+	int i;
+	int j;
+
+	i = -1;
+	while (++i < 3)
+	{
+		j = -1;
+		while (tmp[i][++j])
+			if (ft_isalpha(tmp[i][j]))
+				return (1);
+		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
+			return (1);
+	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_var.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/15 17:04:20 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/01 16:22:49 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ void	init_var_2(t_cub *cub)
 	if (cub->map)
 	{
 		cub->map->map_lst = NULL;
+		cub->map->map = NULL;
 		cub->map->info = (char **)malloc(sizeof(char *) * 7);
 	}
 }
 
 int	init_var(t_cub *cub)
 {
+	int	i;
+
 	cub->p1 = NULL;
 	cub->img = NULL;
 	cub->map = NULL;
@@ -50,6 +53,8 @@ int	init_var(t_cub *cub)
 	init_var_2(cub);
 	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex)
 		return (free_all(cub, 4));
-	cub->map->info[6] = NULL;
+	i = -1;
+	while (++i < 7)
+		cub->map->info[i] = NULL;
 	return (0);
 }

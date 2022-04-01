@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/28 16:47:42 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/01 17:06:56 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	get_info_map(char **argv, t_cub *cub)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		return (0);
+		free_all(cub, 6);
 	index = 0;
 	while (get_next_line(fd, &line))
 	{
@@ -58,10 +58,7 @@ int	verify_map_info(t_cub *cub)
 				info[j]++;
 	}
 	free(check);
-	i = -1;
-	while (++i < 6)
-		if (info[i] != 1)
-			return (0);
+	info_check(info, check, cub);
 	if (!transform_map(cub->map, cub))
 		return (0);
 	return (1);
@@ -89,7 +86,7 @@ int	check_char_map(char **map, int *nb_player, int max_size, int inc[2])
 	return (0);
 }
 
-int	closed_map(char **map)
+int	closed_map(char **map, t_cub *cub)
 {
 	int	nb_player;
 	int	max_size;
@@ -103,10 +100,12 @@ int	closed_map(char **map)
 		inc[1] = -1;
 		while (map[inc[0]][++inc[1]])
 			if (check_char_map(map, &nb_player, max_size, inc))
-				return (0);
+				free_all(cub, 7);
 	}
-	if (nb_player != 1)
-		return (0);
+	if (!nb_player)
+		free_all(cub, 8);
+	else if (nb_player > 1)
+		free_all(cub, 9);
 	return (1);
 }
 
