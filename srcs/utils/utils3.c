@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 19:33:08 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/01 16:59:41 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/01 18:18:14 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,12 @@ void	info_check(int info[6], char **check, t_cub *cub)
 
 	i = -1;
 	while (++i < 6)
+		if (info[i] > 1)
+			free_all(cub, 11);
+	i = -1;
+	while (++i < 6)
 	{
-		if (info[i] != 1)
+		if (!info[i])
 		{
 			printf("Error\n%s is missing\n", check[i]);
 			free_all(cub, 1);

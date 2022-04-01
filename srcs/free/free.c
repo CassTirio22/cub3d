@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/01 17:37:55 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/01 18:20:53 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	error_msg(int error)
 		printf("Too much player on map\n");
 	else if (error == 10)
 		printf("Invalid color\n");
+	else if (error == 11)
+		printf("Multiple map infos declaration\n");
 }
 
 void	free_all_2(t_cub *cub)

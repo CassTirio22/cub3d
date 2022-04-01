@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/01 17:30:00 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/01 18:03:24 by aliens           ###   ########.fr       */
+/*   Created: 2022/04/01 18:01:41 by aliens            #+#    #+#             */
+/*   Updated: 2022/04/01 18:22:20 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../../../includes/cub3d.h"
 
 int	check_color(char **tmp)
 {
@@ -28,4 +28,23 @@ int	check_color(char **tmp)
 			return (1);
 	}
 	return (0);
+}
+
+void	info_check(int info[6], char **check, t_cub *cub)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 6)
+		if (info[i] > 1)
+			free_all(cub, 11);
+	i = -1;
+	while (++i < 6)
+	{
+		if (info[i] != 1)
+		{
+			printf("Error\n%s is missing\n", check[i]);
+			free_all(cub, 1);
+		}
+	}
 }

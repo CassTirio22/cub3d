@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
+#    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/03/15 17:16:43 by zminhas          ###   ########.fr        #
+#    Updated: 2022/04/01 18:05:01 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ FILES	=	cub3d.c						\
 			raycasting/dist_to_wall.c	\
 			utils/utils.c				\
 			utils/utils2.c				\
-			utils/utils3.c
+			utils/utils3.c				\
+			utils/utils4.c
 
 SRCS	=	$(addprefix srcs_bonus/, $(FILES))
 OBJS	=	$(patsubst srcs_bonus%.c, objs_bonus%.o, $(SRCS))
