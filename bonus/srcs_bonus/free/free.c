@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/01 18:21:57 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/02 15:31:31 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	error_msg(int error)
 		printf("Invalid color\n");
 	else if (error == 11)
 		printf("Multiple map infos declaration\n");
+	else if (error == 12)
+		printf("Invalid resolution\n");
 }
 
 void	free_all_2(t_cub *cub)
@@ -59,6 +61,8 @@ void	free_all_2(t_cub *cub)
 			free(cub->tex->ea);
 		if (cub->tex->we)
 			free(cub->tex->we);
+		if (cub->tex->door)
+			free(cub->tex->door);
 		free(cub->tex);
 	}
 }
@@ -80,6 +84,7 @@ int	free_all(t_cub *cub, int error)
 	free_all_2(cub);
 	if (error)
 		error_msg(error);
+	system("leaks cub3D_bonus");
 	exit(error);
 	return (1);
 }

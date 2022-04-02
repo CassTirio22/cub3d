@@ -3,22 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/01 17:55:41 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/02 15:33:35 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	init_map_fcr(t_map *map, t_var *var, int i, t_cub *cub)
+void	init_map_fc(t_map *map, t_var *var, int i, t_cub *cub)
 {
 	char	**tmp;
 
 	tmp = NULL;
-	var->resolution[0] = R1;
-	var->resolution[1] = R2;
 	if (!ft_strncmp(map->info[i], "F", 1) || !ft_strncmp(map->info[i], "C", 1))
 	{
 		tmp = ft_split(map->info[i] + 2, ',');
@@ -53,7 +51,8 @@ void	init_map_info(t_map *map, t_var *var, t_cub *cub)
 			var->ea = ft_substr(map->info[i], 2 + j[0], j[2]);
 		if (!ft_strncmp(map->info[i], "WE", 2) && spc_inf(map->info[i], j, cub))
 			var->we = ft_substr(map->info[i], 2 + j[0], j[2]);
-		init_map_fcr(map, var, i, cub);
+		init_map_fc(map, var, i, cub);
+		init_map_r(map, var, i, cub);
 	}
 	var->wall_size = var->resolution[0] / 100;
 	if (var->wall_size > var->resolution[1] / 100)

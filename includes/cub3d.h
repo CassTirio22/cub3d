@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/01 17:32:33 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:35:02 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,5 +203,7 @@ int		is_wall_around(double x, double y, t_cub *cub);
 int		spc_inf(char *info, int j[3], t_cub *cub);
 void	info_check(int info[6], char **check, t_cub *cub);
 int		check_color(char **tmp);
+int		check_res(char **tmp);
+void	init_map_r(t_map *map, t_var *var, int i, t_cub *cub);
 
 #endif
