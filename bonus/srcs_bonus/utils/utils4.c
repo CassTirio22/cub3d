@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:01:41 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/02 15:43:59 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/02 17:47:51 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
+
+int	ft_intlen(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n < 0)
+		len = 1;
+	while (n / 10)
+	{
+		len++;
+		n /= 10;
+	}
+	return (++len);
+}
 
 int	check_color(char **tmp)
 {
@@ -22,9 +37,11 @@ int	check_color(char **tmp)
 	{
 		j = -1;
 		while (tmp[i][++j])
-			if (!ft_isdigit(tmp[i][j]) && tmp[i][j] != ' ')
+			if (!ft_isdigit(tmp[i][j]) && tmp[i][j] != ' ' && tmp[i][j] != '\t')
 				return (1);
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
+			return (1);
+		if (tmp[i][ft_intlen(ft_atoi(tmp[i])) + 1])
 			return (1);
 	}
 	return (0);
@@ -40,7 +57,7 @@ int	check_res(char **tmp)
 	{
 		j = -1;
 		while (tmp[i][++j])
-			if (!ft_isdigit(tmp[i][j]) && tmp[i][j] != '-' && tmp[i][j] != '+')
+			if (!ft_isdigit(tmp[i][j]))
 				return (1);
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 2000)
 			return (1);
