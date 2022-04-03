@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 16:23:35 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 18:41:16 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	error_msg(int error)
 		printf("Invalid color\nUsage : C or F <0~255>, <0~255>, <0~255>\n");
 	else if (error == 11)
 		printf("Multiple map infos declaration\n");
+	else if (error == 12)
+		printf("Invalid map infos declaration\n");
 }
 
 void	free_cub_var(t_cub *cub)

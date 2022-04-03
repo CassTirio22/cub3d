@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 15:32:54 by ctirions          #+#    #+#             */
-/*   Updated: 2022/03/15 17:10:35 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:28:03 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int	make_moves(t_cub *cub)
 		rot_left(cub);
 	if (cub->var->rot_right == 1)
 		rot_right(cub);
-	rotate(cub);
 	draw_game(cub);
 	return (0);
 }

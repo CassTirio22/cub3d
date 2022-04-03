@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
+#    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/04/03 16:58:36 by zminhas          ###   ########.fr        #
+#    Updated: 2022/04/03 19:23:20 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ FILES	=	cub3d.c						\
 			draw/draw_map_2d.c			\
 			draw/draw_player_2d.c		\
 			free/free.c					\
+			free/error_msg.c			\
 			hook/hook.c					\
 			hook/move.c					\
 			hook/rotate.c				\

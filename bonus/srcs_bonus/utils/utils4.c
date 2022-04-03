@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:01:41 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/02 17:47:51 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:03:39 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,23 +65,14 @@ int	check_res(char **tmp)
 	return (0);
 }
 
-void	info_check(int info[6], char **check, t_cub *cub)
+void	info_check_bonus(int info[7], t_cub *cub)
 {
 	int	i;
 
 	i = -1;
-	while (++i < 6)
+	while (++i < 7)
 		if (info[i] > 1)
 			free_all(cub, 11);
-	i = -1;
-	while (++i < 6)
-	{
-		if (info[i] != 1)
-		{
-			printf("Error\n%s is missing\n", check[i]);
-			free_all(cub, 1);
-		}
-	}
 }
 
 void	init_map_r(t_map *map, t_var *var, int i, t_cub *cub)

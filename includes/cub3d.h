@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:26:12 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 19:24:01 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ int		rotate(t_cub *cub);
 int		free_all(t_cub *cub, int error);
 int		init_protect(t_cub *cub);
 void	free_double_char(char **str);
+void	error_msg_bonus(int error);
 
 /*
 **		-___UTILS___-
@@ -203,7 +204,8 @@ int		double_char_len(char **str);
 int		is_wall(int x, int y, t_cub *cub);
 int		is_wall_around(double x, double y, t_cub *cub);
 int		spc_inf(char *info, int j[3], t_cub *cub);
-void	info_check(int info[6], char **check, t_cub *cub);
+void	info_check(int info[6], t_cub *cub);
+void	info_check_bonus(int info[7], t_cub *cub);
 int		check_color(char **tmp);
 int		check_res(char **tmp);
 void	init_map_r(t_map *map, t_var *var, int i, t_cub *cub);

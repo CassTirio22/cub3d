@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:42:10 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:13:59 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,27 @@ int	verify_map_info(t_cub *cub)
 	int		info[7];
 	int		i;
 	int		j;
+	int		b2o;
 
 	check = init_check_info_map_bonus(info, cub);
 	i = -1;
 	while (cub->map->info[++i])
 	{
+		b2o = 0;
 		j = -1;
 		while (++j < 7)
+		{
 			if (!ft_strncmp(cub->map->info[i], check[j], ft_strlen(check[j])))
 				info[j]++;
+			else
+				b2o++;
+		}
+		if (b2o == 7)
+			free_all(cub, 13);
 	}
+	info_check_bonus(info, cub);
 	free(check);
-	info_check(info, check, cub);
-	if (!transform_map(cub->map, cub))
-		return (0);
-	return (1);
+	return (ft_ternint(!transform_map(cub->map, cub), 0, 1));
 }
 
 int	check_char_map(char **map, int *nb_player, int max_size, int inc[2])
