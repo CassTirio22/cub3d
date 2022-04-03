@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/02 17:46:42 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 15:51:29 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,24 @@ void	error_msg(int error)
 		printf("Invalid resolution\n");
 }
 
-void	free_all_2(t_cub *cub)
+void	free_cub_var(t_cub *cub)
 {
 	if (cub->var)
 	{
-		free(cub->var->so);
-		free(cub->var->no);
-		free(cub->var->ea);
-		free(cub->var->we);
+		if (cub->var->so)
+			free(cub->var->so);
+		if (cub->var->no)
+			free(cub->var->no);
+		if (cub->var->ea)
+			free(cub->var->ea);
+		if (cub->var->we)
+			free(cub->var->we);
 		free(cub->var);
 	}
+}
+
+void	free_cub_tex(t_cub *cub)
+{
 	if (cub->tex)
 	{
 		if (cub->tex->no)
@@ -61,8 +69,6 @@ void	free_all_2(t_cub *cub)
 			free(cub->tex->ea);
 		if (cub->tex->we)
 			free(cub->tex->we);
-		if (cub->tex->door)
-			free(cub->tex->door);
 		free(cub->tex);
 	}
 }
@@ -75,13 +81,14 @@ int	free_all(t_cub *cub, int error)
 		free(cub->img);
 	if (cub->map)
 	{
-		if (cub->map->map)
-			free_double_char(cub->map->map);
 		if (cub->map->info)
 			free_double_char(cub->map->info);
+		if (cub->map->map)
+			free_double_char(cub->map->map);
 		free(cub->map);
 	}
-	free_all_2(cub);
+	free_cub_var(cub);
+	free_cub_tex(cub);
 	if (error)
 		error_msg(error);
 	exit(error);

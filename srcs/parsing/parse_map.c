@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/01 17:06:56 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/03 15:48:16 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ int	get_info_map(char **argv, t_cub *cub)
 	int		fd;
 	int		index;
 
+	line = NULL;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		free_all(cub, 6);
 	index = 0;
 	while (get_next_line(fd, &line))
 	{
+		if (!line)
+			free_all(cub, 4);
 		if (index < 6)
 		{
 			if (line[0])
@@ -35,6 +38,8 @@ int	get_info_map(char **argv, t_cub *cub)
 	}
 	get_line(line, cub, 1, index);
 	cub->map->map = lst_to_double_char(cub->map->map_lst);
+	if (!cub->map->map)
+		free_all(cub, 4);
 	close(fd);
 	return (1);
 }
@@ -115,12 +120,9 @@ int	get_line(char *line, t_cub *cub, int boolean, int index)
 	{
 		cub->map->info[index] = ft_strdup(line);
 		if (!cub->map->info[index])
-		{
-			free_double_char(cub->map->info);
-			return (1);
-		}	
+			free_all(cub, 4);
 	}
 	else
-		ft_lstadd_back(&cub->map->map_lst, ft_lstnew((char *)line));
+		ft_lstadd_back(&cub->map->map_lst, ft_lstnew((char *)line));//!!!!!!!!!!!!!!!!!!!!!!!!!!
 	return (0);
 }

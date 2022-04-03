@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 15:58:23 by ctirions          #+#    #+#             */
-/*   Updated: 2022/02/12 16:01:18 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/03 13:26:08 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ char	*ft_get_line(char *str)
 	while (str[size] && str[size] != '\n')
 		size++;
 	dest = (char *)malloc(sizeof(char) * (size + 1));
-	while (++i < size + 1)
-		dest[i] = 0;
 	if (!dest)
 		return (NULL);
+	while (++i < size + 1)
+		dest[i] = 0;
 	size = 0;
 	while (str[size] && str[size] != '\n')
 	{

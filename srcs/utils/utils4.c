@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:30:00 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/02 18:09:50 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 12:53:33 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,8 @@ int	check_color(char **tmp)
 		while (tmp[i][++j])
 			if (!ft_isdigit(tmp[i][j]))
 				return (1);
-		// if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
-		// 	return (1);
-		// printf("|%d|-|%c|\n", (j - ft_intlen(ft_atoi(tmp[i]))), tmp[i][ft_intlen(ft_atoi(tmp[i])) + (j - ft_intlen(ft_atoi(tmp[i])))]);
-		// if (tmp[i][ft_intlen(ft_atoi(tmp[i])) + (j - ft_intlen(ft_atoi(tmp[i])))])
-		// 	return (1);
+		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
+			return (1);
 	}
 	return (0);
 }
