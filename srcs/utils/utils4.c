@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:30:00 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:06:35 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:27:51 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	check_color(char **tmp)
 		j = 0;
 		while (tmp[i][j] && (tmp[i][j] == ' ' || tmp[i][j] == '\t'))
 			j++;
-		while (tmp[i][++j])
-			if (!ft_isdigit(tmp[i][j]))
+		while (tmp[i][j])
+			if (!ft_isdigit(tmp[i][j++]))
 				return (1);
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
 			return (1);

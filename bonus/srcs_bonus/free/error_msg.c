@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 19:16:13 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 19:20:55 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 20:06:04 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	error_msg_bonus(int error)
 	else if (error == 4)
 		printf("Malloc Error\n");
 	else if (error == 5)
-		printf("Invalid argument\nUsage : ./cub3D <path_to_map.cub>\n");
+		printf("Invalid argument\nUsage : ./cub3D_bonus <path_to_map.cub>\n");
 	else if (error == 6)
 		printf("Map does not exist\n");
 	else if (error == 7)

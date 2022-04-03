@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 19:24:01 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 21:05:49 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct s_player
 
 typedef struct s_var
 {
-	int		mouse_pos[2];
 	int		touch;
 	int		up;
 	int		down;
@@ -170,11 +169,9 @@ void	draw_player(t_cub *cub);
 int		make_moves(t_cub *cub);
 int		key_press(int key, t_cub *cub);
 int		key_release(int key, t_cub *cub);
-int		mouse_pos(int x, int y, t_cub *cub);
 int		close_win(t_cub *cub);
 int		rot_left(t_cub *cub);
 int		rot_right(t_cub *cub);
-int		rotate(t_cub *cub);
 
 /*
 **		-___FREE___-

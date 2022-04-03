@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 18:26:14 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:43:07 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 21:05:14 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,5 @@ int	rot_right(t_cub *cub)
 	cub->p1->angle -= 2;
 	if (cub->p1->angle < 0)
 		cub->p1->angle += 360;
-	return (0);
-}
-
-int	rotate(t_cub *cub)
-{
-	cub->p1->angle = ((double)-cub->var->mouse_pos[0] / \
-	(cub->var->resolution[0] / 2)) * 360;
 	return (0);
 }

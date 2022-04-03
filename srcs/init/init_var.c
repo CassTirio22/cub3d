@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 16:34:48 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 21:02:39 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,23 @@ void	init_var_2(t_cub *cub)
 	}
 }
 
+void	init_var_3(t_cub *cub)
+{
+	if (cub->var)
+	{
+		cub->var->touch = 0;
+		cub->var->up = 0;
+		cub->var->down = 0;
+		cub->var->left = 0;
+		cub->var->right = 0;
+		cub->var->rot_left = 0;
+		cub->var->rot_right = 0;
+		cub->var->run = 0;
+		cub->var->f = 0;
+		cub->var->c = 0;
+	}
+}
+
 int	init_var(t_cub *cub)
 {
 	cub->p1 = NULL;
@@ -54,6 +71,7 @@ int	init_var(t_cub *cub)
 	cub->map = (t_map *)malloc(sizeof(t_map));
 	cub->var = (t_var *)malloc(sizeof(t_var));
 	init_var_2(cub);
+	//init_var_3(cub);
 	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex || \
 	!cub->var || !cub->tex->no || !cub->tex->so || !cub->tex->ea || \
 	!cub->tex->we)

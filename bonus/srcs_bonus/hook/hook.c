@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:42:14 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/15 17:10:23 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 21:05:30 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,6 @@ void	open_close_door(t_cub *cub)
 	[(int)(cub->p1->pos[0] + dx)] == '4')
 		cub->map->map[(int)(cub->p1->pos[1] + dy)] \
 		[(int)(cub->p1->pos[0] + dx)] = '3';
-}
-
-int	mouse_pos(int x, int y, t_cub *cub)
-{
-	cub->var->mouse_pos[0] = x;
-	cub->var->mouse_pos[1] = y;
-	return (0);
 }
 
 int	key_press(int key, t_cub *cub)

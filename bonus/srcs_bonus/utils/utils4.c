@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:01:41 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 19:03:39 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 20:26:51 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ int	check_color(char **tmp)
 	i = -1;
 	while (++i < 3)
 	{
-		j = -1;
-		while (tmp[i][++j])
-			if (!ft_isdigit(tmp[i][j]) && tmp[i][j] != ' ' && tmp[i][j] != '\t')
+		j = 0;
+		while (tmp[i][j] && (tmp[i][j] == ' ' || tmp[i][j] == '\t'))
+			j++;
+		while (tmp[i][j])
+			if (!ft_isdigit(tmp[i][j++]))
 				return (1);
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
-			return (1);
-		if (tmp[i][ft_intlen(ft_atoi(tmp[i])) + 1])
 			return (1);
 	}
 	return (0);

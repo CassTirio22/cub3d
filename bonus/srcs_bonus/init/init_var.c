@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_var.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 17:04:09 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 21:04:50 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,16 @@ void	init_cub_var(t_cub *cub)
 {
 	if (cub->var)
 	{
+		cub->var->touch = 0;
+		cub->var->up = 0;
+		cub->var->down = 0;
+		cub->var->left = 0;
+		cub->var->right = 0;
+		cub->var->rot_left = 0;
+		cub->var->rot_right = 0;
+		cub->var->run = 0;
+		cub->var->f = 0;
+		cub->var->c = 0;
 		cub->var->no = NULL;
 		cub->var->so = NULL;
 		cub->var->ea = NULL;
