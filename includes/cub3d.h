@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 16:56:08 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 17:26:12 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ typedef struct s_cub
 
 void	init_map_info(t_map *map, t_var *var, t_cub *cub);
 void	init_textures(t_tex *tex, t_cub *cub);
-char	**init_check_info_map(int info[8]);
+char	**init_check_info_map(int info[6], t_cub *cub);
+char	**init_check_info_map_bonus(int info[7], t_cub *cub);
 int		init_player(t_cub *cub);
 int		init_mlx(t_cub *cub);
 int		init_var(t_cub *cub);

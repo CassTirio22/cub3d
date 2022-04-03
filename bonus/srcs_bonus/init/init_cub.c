@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/02 15:33:35 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/03 17:26:47 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	init_mlx(t_cub *cub)
 	return (0);
 }
 
-char	**init_check_info_map(int info[7])
+char	**init_check_info_map_bonus(int info[7], t_cub *cub)
 {
 	int		i;
 	char	**ret;

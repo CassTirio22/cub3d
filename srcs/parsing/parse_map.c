@@ -6,7 +6,7 @@
 /*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 16:56:43 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 17:31:31 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,7 @@ int	verify_map_info(t_cub *cub)
 	int		i;
 	int		j;
 
-	check = init_check_info_map(info);
-	if (!check)
-		return (0);
+	check = init_check_info_map(info, cub);
 	i = -1;
 	while (cub->map->info[++i])
 	{

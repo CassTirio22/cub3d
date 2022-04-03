@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 13:15:53 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 17:30:19 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	init_mlx(t_cub *cub)
 	return (0);
 }
 
-char	**init_check_info_map(int info[6])
+char	**init_check_info_map(int info[6], t_cub *cub)
 {
 	int		i;
 	char	**ret;
@@ -114,7 +114,7 @@ char	**init_check_info_map(int info[6])
 		info[i] = 0;
 	ret = (char **)malloc(sizeof(char *) * 6);
 	if (!ret)
-		return (NULL);
+		free_all(cub, 4);
 	ret[0] = "F";
 	ret[1] = "C";
 	ret[2] = "NO";
