@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 15:48:16 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 16:33:14 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ int	closed_map(char **map, t_cub *cub)
 
 int	get_line(char *line, t_cub *cub, int boolean, int index)
 {
+	t_list	*tmp;
+
 	if (!boolean)
 	{
 		cub->map->info[index] = ft_strdup(line);
@@ -123,6 +125,11 @@ int	get_line(char *line, t_cub *cub, int boolean, int index)
 			free_all(cub, 4);
 	}
 	else
-		ft_lstadd_back(&cub->map->map_lst, ft_lstnew((char *)line));//!!!!!!!!!!!!!!!!!!!!!!!!!!
+	{
+		tmp = ft_lstnew((char *)line);
+		if (!tmp)
+			free_all(cub, 4);
+		ft_lstadd_back(&cub->map->map_lst, tmp);
+	}
 	return (0);
 }

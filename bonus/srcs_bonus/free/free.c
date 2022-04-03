@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 15:51:29 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 16:27:26 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	free_cub_tex(t_cub *cub)
 			free(cub->tex->ea);
 		if (cub->tex->we)
 			free(cub->tex->we);
+		if (cub->tex->door)
+			free(cub->tex->door);
 		free(cub->tex);
 	}
 }
@@ -91,6 +93,7 @@ int	free_all(t_cub *cub, int error)
 	free_cub_tex(cub);
 	if (error)
 		error_msg(error);
+	system("leaks cub3D_bonus");
 	exit(error);
 	return (1);
 }
