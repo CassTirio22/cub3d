@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 16:33:39 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 16:41:53 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ int	get_info_map(char **argv, t_cub *cub)
 	int		fd;
 	int		index;
 
+	line = NULL;
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 		free_all(cub, 6);
 	index = 0;
 	while (get_next_line(fd, &line))
 	{
+		if (!line)
+			free_all(cub, 4);
 		if (index < 7)
 		{
 			if (line[0])

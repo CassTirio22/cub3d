@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:21:42 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 16:27:26 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 16:45:25 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ int	free_all(t_cub *cub, int error)
 	free_cub_tex(cub);
 	if (error)
 		error_msg(error);
-	system("leaks cub3D_bonus");
 	exit(error);
 	return (1);
 }
