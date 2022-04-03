@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init_var.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 16:35:44 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 17:04:09 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
 
-void	init_var_2(t_cub *cub)
+void	init_cub_tex(t_cub *cub)
 {
-	int	i;
-
 	if (cub->tex)
 	{
 		cub->tex->no = (t_img *)malloc(sizeof(t_img));
@@ -24,6 +22,10 @@ void	init_var_2(t_cub *cub)
 		cub->tex->we = (t_img *)malloc(sizeof(t_img));
 		cub->tex->door = (t_img *)malloc(sizeof(t_img));
 	}
+}
+
+void	init_cub_var(t_cub *cub)
+{
 	if (cub->var)
 	{
 		cub->var->no = NULL;
@@ -32,6 +34,12 @@ void	init_var_2(t_cub *cub)
 		cub->var->we = NULL;
 		cub->var->run = 0;
 	}
+}
+
+void	init_cub_map(t_cub *cub)
+{
+	int	i;
+
 	if (cub->map)
 	{
 		cub->map->map_lst = NULL;
@@ -55,7 +63,9 @@ int	init_var(t_cub *cub)
 	cub->tex = (t_tex *)malloc(sizeof(t_tex));
 	cub->map = (t_map *)malloc(sizeof(t_map));
 	cub->var = (t_var *)malloc(sizeof(t_var));
-	init_var_2(cub);
+	init_cub_tex(cub);
+	init_cub_var(cub);
+	init_cub_map(cub);
 	if (!cub->p1 || !cub->img || !cub->map || !cub->map->info || !cub->tex || \
 	!cub->var || !cub->tex->no || !cub->tex->so || !cub->tex->ea || \
 	!cub->tex->we || !cub->tex->door)

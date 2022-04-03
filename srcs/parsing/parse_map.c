@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 16:41:51 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 16:56:43 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,7 @@ int	get_info_map(char **argv, t_cub *cub)
 		free_all(cub, 6);
 	index = 0;
 	while (get_next_line(fd, &line))
-	{
-		if (!line)
-			free_all(cub, 4);
-		if (index < 6)
-		{
-			if (line[0])
-				get_line(line, cub, 0, index++);
-			free(line);
-		}
-		else
-			get_line(line, cub, 1, index);
-	}
+		recup_info_map(line, &index, cub);
 	get_line(line, cub, 1, index);
 	cub->map->map = lst_to_double_char(cub->map->map_lst);
 	if (!cub->map->map)

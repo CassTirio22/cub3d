@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
+/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/02 15:35:02 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/03 16:56:08 by zminhas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ int		get_line(char *line, t_cub *cub, int boolean, int index);
 int		check_args(int argc, char **argv);
 int		arround_zero(char **map, int i, int j);
 int		transform_map(t_map *map, t_cub *cub);
+void	recup_info_map(char *line, int *index, t_cub *cub);
 
 /*
 **		-___RAYCASTING___-

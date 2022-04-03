@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
+#    By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 17:16:15 by aliens            #+#    #+#              #
-#    Updated: 2022/04/01 18:05:01 by aliens           ###   ########.fr        #
+#    Updated: 2022/04/03 16:58:36 by zminhas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ FILES	=	cub3d.c						\
 			utils/utils.c				\
 			utils/utils2.c				\
 			utils/utils3.c				\
-			utils/utils4.c
+			utils/utils4.c				\
+			utils/utils5.c
 
 SRCS	=	$(addprefix srcs_bonus/, $(FILES))
 OBJS	=	$(patsubst srcs_bonus%.c, objs_bonus%.o, $(SRCS))
