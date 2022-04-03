@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_msg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 19:16:13 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 20:06:04 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 23:26:13 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	error_msg2(int error)
 		printf("Invalid resolution\n");
 	else if (error == 13)
 		printf("Invalid map infos declaration\n");
+	else if (error == 14)
+		printf("Mlx Error\n");
 }
 
 void	error_msg_bonus(int error)

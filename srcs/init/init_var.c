@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_var.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 14:40:59 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/03 21:15:27 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/03 23:21:13 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	init_var(t_cub *cub)
 	cub->map = NULL;
 	cub->var = NULL;
 	cub->tex = NULL;
+	cub->mlx_ptr = NULL;
+	cub->win_ptr = NULL;
 	cub->p1 = (t_player *)malloc(sizeof(t_player));
 	cub->img = (t_img *)malloc(sizeof(t_img));
 	cub->tex = (t_tex *)malloc(sizeof(t_tex));

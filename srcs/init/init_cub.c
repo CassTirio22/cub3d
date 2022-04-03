@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:30:19 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 23:26:35 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	init_map_info(t_map *map, t_var *var, t_cub *cub)
 		var->wall_size = var->resolution[1] / double_char_len(map->map);
 }
 
-int	init_player(t_cub *cub)
+void	init_player(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -86,14 +86,13 @@ int	init_player(t_cub *cub)
 			}
 		}
 	}
-	return (0);
 }
 
-int	init_mlx(t_cub *cub)
+void	init_mlx(t_cub *cub)
 {
 	cub->mlx_ptr = mlx_init();
 	if (!cub->mlx_ptr)
-		return (1);
+		free_all(cub, 14);
 	cub->win_ptr = mlx_new_window(cub->mlx_ptr, \
 	cub->var->resolution[0], cub->var->resolution[1], "cub3D");
 	cub->img->img = mlx_new_image(cub->mlx_ptr, \
@@ -101,7 +100,6 @@ int	init_mlx(t_cub *cub)
 	cub->img->addr = mlx_get_data_addr(cub->img->img, \
 	&cub->img->bits_per_pixel, &cub->img->line_length, &cub->img->endian);
 	init_textures(cub->tex, cub);
-	return (0);
 }
 
 char	**init_check_info_map(int info[6], t_cub *cub)
