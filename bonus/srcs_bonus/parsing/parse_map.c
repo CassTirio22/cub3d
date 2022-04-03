@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:40:53 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:27:59 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 17:42:10 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	verify_map_info(t_cub *cub)
 	int		i;
 	int		j;
 
-	check = init_check_info_map(info, cub);
+	check = init_check_info_map_bonus(info, cub);
 	i = -1;
 	while (cub->map->info[++i])
 	{

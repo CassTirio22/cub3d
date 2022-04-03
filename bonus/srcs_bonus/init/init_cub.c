@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 17:26:47 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/03 17:41:16 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char	**init_check_info_map_bonus(int info[7], t_cub *cub)
 		info[i] = 0;
 	ret = (char **)malloc(sizeof(char *) * 7);
 	if (!ret)
-		return (NULL);
+		free_all(cub, 4);
 	ret[0] = "R";
 	ret[1] = "F";
 	ret[2] = "C";
