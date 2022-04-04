@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zminhas <zminhas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 16:57:36 by zminhas           #+#    #+#             */
-/*   Updated: 2022/04/03 17:07:13 by zminhas          ###   ########.fr       */
+/*   Updated: 2022/04/04 12:00:47 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,20 @@ void	recup_info_map(char *line, int *index, t_cub *cub)
 	}
 	else
 		get_line(line, cub, 1, *index);
+}
+
+void	draw_extern(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < cub->var->resolution[0])
+	{
+		j = -1;
+		while (++j < cub->var->resolution[1])
+			if (!j || !i || j == cub->var->resolution[1] \
+			|| i == cub->var->resolution[0])
+				draw_pixel(cub->img, i, j, 0);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/04 10:40:02 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 12:01:11 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,5 +207,6 @@ void	info_check_bonus(int info[7], t_cub *cub);
 int		check_color(char **tmp);
 int		check_res(char **tmp);
 void	init_map_r(t_map *map, t_var *var, int i, t_cub *cub);
+void	draw_extern(t_cub *cub);
 
 #endif

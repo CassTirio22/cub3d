@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:30:00 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 20:27:51 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 12:03:10 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,20 @@ int	check_color(char **tmp)
 			return (1);
 	}
 	return (0);
+}
+
+void	draw_extern(t_cub *cub)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < cub->var->resolution[0])
+	{
+		j = -1;
+		while (++j < cub->var->resolution[1])
+			if (!j || !i || j == cub->var->resolution[1] \
+			|| i == cub->var->resolution[0])
+				draw_pixel(cub->img, i, j, 0);
+	}
 }

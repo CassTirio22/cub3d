@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:43:21 by aliens            #+#    #+#             */
-/*   Updated: 2022/03/10 18:35:30 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 11:57:22 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_fc(t_cub *cub, t_var *var)
 	}
 }
 
-void	draw_line_height(t_cub *cub, int color, float calc[3])
+void	draw_line_height(t_cub *cub, int color, float calc[3], int r_x)
 {
 	float	j;
 	float	offset;
@@ -66,7 +66,7 @@ void	draw_line_height(t_cub *cub, int color, float calc[3])
 	offset = (cub->var->resolution[1] - line_height) / 2;
 	j = 0;
 	while (j < offset && j < cub->var->resolution[1])
-		draw_pixel(cub->img, -calc[1], j++, cub->var->c);
+		draw_pixel(cub->img, r_x - calc[1], j++, cub->var->c);
 	j = -1;
 	if (offset < 0)
 		j = -offset;
@@ -74,11 +74,11 @@ void	draw_line_height(t_cub *cub, int color, float calc[3])
 	{
 		get_pixel(tex, (calc[0] - (int)calc[0]) * (tex->img_h), \
 		j * (tex->img_h / line_height), &color);
-		draw_pixel(cub->img, -calc[1], j + offset, color);
+		draw_pixel(cub->img, r_x - calc[1], j + offset, color);
 	}
 	j--;
 	while (++j + offset < cub->var->resolution[1])
-		draw_pixel(cub->img, -calc[1], j + offset, cub->var->f);
+		draw_pixel(cub->img, r_x - calc[1], j + offset, cub->var->f);
 }
 
 void	draw_game(t_cub *cub)
@@ -103,8 +103,9 @@ void	draw_game(t_cub *cub)
 		else
 			calc[0] = cub->var->dist_wall * cub->var->dx + cub->p1->pos[0];
 		calc[1] = i;
-		draw_line_height(cub, color, calc);
+		draw_line_height(cub, color, calc, cub->var->resolution[0]);
 	}
+	draw_extern(cub);
 	draw_map(cub);
 	mlx_put_image_to_window(cub->mlx_ptr, cub->win_ptr, cub->img->img, 0, 0);
 }
