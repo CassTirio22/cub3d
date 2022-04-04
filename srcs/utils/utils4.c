@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils4.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 17:30:00 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/04 12:03:10 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 12:50:22 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	check_color(char **tmp)
 		j = 0;
 		while (tmp[i][j] && (tmp[i][j] == ' ' || tmp[i][j] == '\t'))
 			j++;
+		if (!tmp[i][j])
+			return (1);
 		while (tmp[i][j])
 			if (!ft_isdigit(tmp[i][j++]))
 				return (1);
