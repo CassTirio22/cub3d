@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 18:01:41 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/04 12:57:05 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/04 13:13:31 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	check_res(char **tmp)
 		while (tmp[i][++j])
 			if (!ft_isdigit(tmp[i][j]))
 				return (1);
-		if (ft_atoi(tmp[i]) < 100 || ft_atoi(tmp[i]) > 2000)
+		if (ft_atoi(tmp[i]) < 100 || ft_atoi(tmp[i]) > 1000)
 			return (1);
 	}
 	return (0);
@@ -84,7 +84,7 @@ void	init_map_r(t_map *map, t_var *var, int i, t_cub *cub)
 	tmp = NULL;
 	if (!ft_strncmp(map->info[i], "R", 1))
 	{
-		tmp = ft_split(map->info[i] + 2, ' ');
+		tmp = ft_split(map->info[i] + 1, ' ');
 		if (double_char_len(tmp) != 2 || check_res(tmp))
 		{
 			free_double_char(tmp);

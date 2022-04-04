@@ -6,7 +6,7 @@
 /*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 19:16:13 by aliens            #+#    #+#             */
-/*   Updated: 2022/04/04 12:58:16 by ctirions         ###   ########.fr       */
+/*   Updated: 2022/04/04 13:07:15 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	error_msg2(int error)
 {
 	if (error == 12)
-		printf("Invalid resolution\nUsage : R <100~2000> <100~2000>\n");
+		printf("Invalid resolution\nUsage : R <100~1000> <100~1000>\n");
 	else if (error == 13)
 		printf("Invalid map infos declaration\n");
 	else if (error == 14)
