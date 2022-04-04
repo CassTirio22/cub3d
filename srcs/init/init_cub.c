@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_cub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ctirions <ctirions@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/04 10:42:29 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 12:43:54 by ctirions         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_map_fcr(t_map *map, t_var *var, int i, t_cub *cub)
 	var->resolution[1] = R2;
 	if (!ft_strncmp(map->info[i], "F", 1) || !ft_strncmp(map->info[i], "C", 1))
 	{
-		tmp = ft_split(map->info[i] + 2, ',');
+		tmp = ft_split(map->info[i] + 1, ',');
 		if (double_char_len(tmp) != 3 || check_color(tmp))
 		{
 			free_double_char(tmp);
