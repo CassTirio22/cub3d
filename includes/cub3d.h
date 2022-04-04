@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aliens <aliens@student.s19.be>             +#+  +:+       +#+        */
+/*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 18:37:45 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/03 23:22:53 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 10:40:02 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,7 @@ int		free_all(t_cub *cub, int error);
 int		init_protect(t_cub *cub);
 void	free_double_char(char **str);
 void	error_msg_bonus(int error);
+void	error_msg(int error);
 
 /*
 **		-___UTILS___-

@@ -6,7 +6,7 @@
 #    By: aliens <aliens@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/03 14:52:52 by ctirions          #+#    #+#              #
-#    Updated: 2022/04/03 19:22:57 by aliens           ###   ########.fr        #
+#    Updated: 2022/04/04 10:39:23 by aliens           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ OBJSDIR	=	objs/
 
 FILES	=	cub3d.c						\
 			draw/draw.c					\
+			free/error_msg.c			\
 			free/free.c					\
 			hook/hook.c					\
 			hook/move.c					\

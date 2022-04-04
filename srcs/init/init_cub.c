@@ -6,7 +6,7 @@
 /*   By: aliens <aliens@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 19:06:50 by ctirions          #+#    #+#             */
-/*   Updated: 2022/04/04 10:28:03 by aliens           ###   ########.fr       */
+/*   Updated: 2022/04/04 10:42:29 by aliens           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	init_mlx(t_cub *cub)
 {
 	cub->mlx_ptr = mlx_init();
 	if (!cub->mlx_ptr)
-		free_all(cub, 14);
+		free_all(cub, 13);
 	cub->win_ptr = mlx_new_window(cub->mlx_ptr, \
 	cub->var->resolution[0], cub->var->resolution[1], "cub3D");
 	cub->img->img = mlx_new_image(cub->mlx_ptr, \
